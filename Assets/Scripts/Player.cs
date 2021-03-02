@@ -19,10 +19,11 @@ class Player : MonoBehaviour
     {
         controller = this.GetComponent<CharacterController>();
         facing = transform.forward;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
-    
+
     void Update()
     { 
         MoveCharacter();
@@ -30,10 +31,22 @@ class Player : MonoBehaviour
 
     void MoveCharacter()
     {
-        Vector3 movedirection = new Vector3();
-        if (elementState == 0)
-            movedirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
+        Vector3 movedirection = new Vector3();
+        bool jump = false;
+
+        if (elementState == 0)
+        {
+            movedirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+            jump = Input.GetKeyDown(KeyCode.Space);
+        }
+        if (controller.isGrounded && jump)
+            velocity.y = 5f;
+        velocity.y += -9.81f * Time.deltaTime;
+        if (controller.isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
         Vector3 realmovedirection = new Vector3();
         if (movedirection.magnitude > 0)
         {
