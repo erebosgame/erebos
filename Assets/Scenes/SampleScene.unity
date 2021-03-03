@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -145,7 +145,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374053902}
-  m_LocalRotation: {x: 0.19424808, y: -1e-45, z: -0, w: 0.98095244}
+  m_LocalRotation: {x: 0.19424808, y: -0, z: -0, w: 0.98095244}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -207,8 +207,9 @@ GameObject:
   - component: {fileID: 540612089}
   - component: {fileID: 540612088}
   - component: {fileID: 540612087}
-  - component: {fileID: 540612091}
   - component: {fileID: 540612086}
+  - component: {fileID: 540612093}
+  - component: {fileID: 540612094}
   - component: {fileID: 540612092}
   m_Layer: 0
   m_Name: Player
@@ -312,22 +313,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &540612091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 540612085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca1a5ee0f97556f41b591639809b83ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 963194227}
-  elementState: 0
-  velocity: {x: 0, y: 0, z: 0}
-  facing: {x: 0, y: 0, z: 0}
 --- !u!114 &540612092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,11 +322,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 540612085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c7304e5e5b2e04fb864441f23a3a4e, type: 3}
+  m_Script: {fileID: 11500000, guid: e5607bbf95b465d4c9ed498d4d63cb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 5509305661840162670, guid: d746b781d6b41ff40960c1aa8a931995,
     type: 3}
+  explosionPrefab: {fileID: 106012303621799758, guid: b6ceab1be96f0304bb44f68bc6f8dfa5,
+    type: 3}
+--- !u!114 &540612093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540612085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a05d8db2547cd47b1a67c5cee21e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &540612094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540612085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9460350ce617a428308aa6f1afb887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  elementState: 0
 --- !u!1 &608943747
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +484,7 @@ MonoBehaviour:
     m_Radius: 8
   - m_Height: 7
     m_Radius: 14
-  - m_Height: -0.9
+  - m_Height: -2.5
     m_Radius: 8
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
@@ -601,6 +615,8 @@ GameObject:
   - component: {fileID: 643277347}
   - component: {fileID: 643277346}
   - component: {fileID: 643277345}
+  - component: {fileID: 643277351}
+  - component: {fileID: 643277350}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Enemy
@@ -698,6 +714,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &643277350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643277344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &643277351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643277344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
 --- !u!1 &659101381
 GameObject:
   m_ObjectHideFlags: 3
