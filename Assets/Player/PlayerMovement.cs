@@ -6,11 +6,16 @@ class PlayerMovement : MonoBehaviour
 {
     CharacterController controller;
     public Vector3 velocity;
+    private Vector3 jumpVector = new Vector3();
     public Vector3 facingDirection { get; private set; }
 
-    float speed = 10f;
-    float jumpVelocity = 5f;
-    float gravity = -9.81f;
+    private float speed = 7f;
+    private float jumpVelocity = 6f;
+    private float gravity = -9.81f;
+    private float fallMultiplier = 2.5f;
+    private float airControl = 0.7f;
+
+    bool isJumping = false;
 
     void Awake()
     {
@@ -27,54 +32,82 @@ class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        ApplyGravity(Time.fixedDeltaTime, gravity);
+        ApplyGravity(Time.fixedDeltaTime);
     }
 
     // Update is called once per frame
     void Update()
     { 
         Vector3 moveDirection = new Vector3();
+        Vector3 moveVector = new Vector3();
         bool jump = false;
+
+        moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        jump = Input.GetKeyDown(KeyCode.Space);
+        isJumping = Input.GetKey(KeyCode.Space);
 
         if (CanMove()) 
         {
-            moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-            jump = Input.GetKeyDown(KeyCode.Space);
+            Vector3 relativeMoveDirection = Vector3.zero;
+            if (moveDirection.magnitude > 0)
+            {
+                relativeMoveDirection = GetRelativeDirection(moveDirection);
+            }
+            if (controller.isGrounded)
+            {
+                if (moveDirection.magnitude > 0)
+                {
+                    facingDirection = relativeMoveDirection;
+                }
+                if (jump)
+                {
+                    jumpVector = (relativeMoveDirection * speed * airControl) + Vector3.up * jumpVelocity;
+                }
+                else
+                {
+                    moveVector = relativeMoveDirection * speed * (1-airControl);
+                }
+            }
+            else 
+            {
+                moveVector = relativeMoveDirection * speed * 0.3f;
+            }
         }
 
-        if (controller.isGrounded && jump)
-        {
-            Jump(jumpVelocity);
-        }
-
-        Vector3 relativeMoveDirection = new Vector3();
-        if (moveDirection.magnitude > 0)
-        {
-            FaceRelativeDirection(moveDirection);
-            relativeMoveDirection = facingDirection;
-        }
-
-        controller.Move((relativeMoveDirection * speed + velocity) * Time.deltaTime);
+        controller.Move((moveVector + jumpVector + velocity) * Time.deltaTime);
         RotatePlayer(facingDirection);
     }
     
+    public Vector3 GetRelativeDirection(Vector3 direction) 
+    {
+        return Quaternion.LookRotation(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z)) * direction;
+    }
     public void FaceRelativeDirection(Vector3 direction) 
     {
-        facingDirection = Quaternion.LookRotation(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z)) * direction;
+        facingDirection = GetRelativeDirection(direction);
     }
     
-    private void ApplyGravity(float elapsed, float acceleration)
+    private void ApplyGravity(float elapsed)
     {
-        velocity.y += acceleration * elapsed;
-        if (controller.isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
+        if (controller.isGrounded) 
+        {   
+            if (jumpVector.y < 0)
+            {
+                jumpVector = Vector3.zero + Vector3.up * -2f;
+            }
         }
-    }
-
-    private void Jump(float v) 
-    {
-        velocity.y = v;
+        else 
+        {
+            // if (jumpVector.y <= 0 || !isJumping)
+            if (jumpVector.y <= 0)
+            {
+                jumpVector.y += gravity * fallMultiplier * elapsed;
+            }
+            else 
+            {
+                jumpVector.y += gravity * elapsed;
+            }
+        }
     }
 
     private void RotatePlayer(Vector3 newRotation)
