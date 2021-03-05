@@ -23,7 +23,8 @@ public class HpBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        canvas.enabled = enemy.health < enemy.maxHealth;
+        if(!canvas.enabled)
+            canvas.enabled = enemy.health < enemy.maxHealth;
 
         if (canvas.enabled) {
             hpBar.fillAmount = enemy.health / enemy.maxHealth;
