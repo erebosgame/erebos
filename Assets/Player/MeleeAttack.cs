@@ -34,7 +34,12 @@ public class MeleeAttack : MonoBehaviour
         {
             selectedOutline.OutlineWidth = 0;
             selected = null;
-    }
+        }
+        if (Player.stats.elementState != Element.NoElement)
+        {
+            return;
+        }
+        
         List<(float,Collider)> angles = new List<(float, Collider)>();
 
         foreach (Collider collider in triggerList) {

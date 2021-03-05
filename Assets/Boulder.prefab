@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4945593045935131069}
   - component: {fileID: 4945593045935131068}
   - component: {fileID: 4945593045935131059}
-  - component: {fileID: 5263394643129002959}
+  - component: {fileID: 4578649056531178773}
   - component: {fileID: 732902879985847045}
   m_Layer: 0
   m_Name: Boulder
@@ -95,7 +95,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &5263394643129002959
+--- !u!54 &4578649056531178773
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

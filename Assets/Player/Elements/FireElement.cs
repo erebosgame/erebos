@@ -46,10 +46,9 @@ class FireElement : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Vector3 direction = (other.transform.position - Player.gameObject.transform.position).normalized;
-            print(System.Math.Abs(Vector3.Angle(Player.gameObject.transform.forward, direction)));
-            if (System.Math.Abs(Vector3.Angle(Player.gameObject.transform.forward, direction)) > 120)
+            if (System.Math.Abs(Vector3.Angle(initialDirection, direction)) > 120)
                 return;
-            print("test");
+
             Enemy enemy= other.GetComponent<Enemy>();
             GameObject explosion = UnityEngine.Object.Instantiate(explosionPrefab);
             // GameObject enemyFire = UnityEngine.Object.Instantiate(fireballPrefab, other.transform);

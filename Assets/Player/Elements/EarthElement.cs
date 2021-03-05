@@ -12,6 +12,8 @@ class EarthElement : MonoBehaviour
 
     private float boulderRadius;
 
+    private int hitsRemaining;
+
     public EarthElement(GameObject boulderPrefab, GameObject explosionPrefab)
     {
         this.explosionPrefab = explosionPrefab;
@@ -21,9 +23,10 @@ class EarthElement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        hitsRemaining = 3;
 
-        Player.gameObject.GetComponent<CharacterController>().detectCollisions = false;
-        Player.stats.elementState = Element.Fire;
+        Player.gameObject.GetComponent<CharacterController>().enabled = false;
+        Player.stats.elementState = Element.Earth;
         
         meshRenderer = Player.gameObject.GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;
@@ -59,15 +62,22 @@ class EarthElement : MonoBehaviour
             UnityEngine.Object.Destroy(explosion, 10f);
             collision.collider.GetComponent<Rigidbody>().AddForce(500f*direction);
             rb.AddForce(-500f*direction*rb.velocity.magnitude);
-            // End();
+
+            hitsRemaining--;
+            if (hitsRemaining <= 0)
+            {
+                End();
+            }
         }
     }
 
     public void End() 
     {
-        meshRenderer.enabled = true;
-        Player.stats.elementState = Element.NoElement;
         transform.DetachChildren();
+        Player.gameObject.GetComponent<CharacterController>().enabled = true;
+        Player.gameObject.transform.rotation = Quaternion.identity;
+        Player.stats.elementState = Element.NoElement;
+        meshRenderer.enabled = true;
         UnityEngine.Object.Destroy(this.gameObject);
     }
     public Vector3 GetRelativeDirection(Vector3 direction) 
