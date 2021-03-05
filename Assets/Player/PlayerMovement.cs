@@ -27,6 +27,7 @@ class PlayerMovement : MonoBehaviour
     {
         controller = this.GetComponent<CharacterController>();
         facingDirection = transform.forward;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void FixedUpdate()

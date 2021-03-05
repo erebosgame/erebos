@@ -1,17 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public float health = 100;
-    [Header("HealthBar")]
-    public Image HpBar;
-    // Start is called before the first frame update
+    public float maxHealth = 100;
+    public float health;
+        // Start is called before the first frame update
     void Start()
     {
-        HpBar.fillAmount = health / 100f;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -21,20 +19,11 @@ public class Enemy : MonoBehaviour
         {
             TakeDamage(10f);
         }
-
-        if(HpBar.fillAmount == 1)
-        {
-            HpBar.enabled = false;
-        }
     }
 
     public void TakeDamage(float ammount)
     {
-        HpBar.enabled = true;
-
         health -= ammount;
-
-        HpBar.fillAmount = health / 100f;
 
         if(health <= 0)
             Die();  
