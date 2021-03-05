@@ -48,11 +48,13 @@ class FireElement : MonoBehaviour
             
         if (other.tag == "Enemy")
         {
+            Enemy enemy= other.GetComponent<Enemy>();
             GameObject explosion = UnityEngine.Object.Instantiate(explosionPrefab);
             // GameObject enemyFire = UnityEngine.Object.Instantiate(fireballPrefab, other.transform);
             explosion.transform.position = Player.gameObject.transform.position;
             UnityEngine.Object.Destroy(explosion, 10f);
             other.GetComponent<Rigidbody>().AddForce(200f*direction);
+            enemy.TakeDamage(40);
             End();
         }
     }
