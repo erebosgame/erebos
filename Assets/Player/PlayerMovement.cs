@@ -5,9 +5,9 @@ using UnityEngine;
 class PlayerMovement : MonoBehaviour
 {
     CharacterController controller;
-    public Vector3 velocity;
     private Vector3 jumpVector = new Vector3();
     public Vector3 facingDirection { get; private set; }
+    public Vector3 currentVelocity { get; private set; }
 
     private float speed = 7f;
     private float jumpVelocity = 6f;
@@ -27,7 +27,6 @@ class PlayerMovement : MonoBehaviour
     {
         controller = this.GetComponent<CharacterController>();
         facingDirection = transform.forward;
-        velocity = new Vector3();
     }
 
     void FixedUpdate()
@@ -65,17 +64,23 @@ class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    moveVector = relativeMoveDirection * speed * (1-airControl);
+                    moveVector = relativeMoveDirection * speed;
                 }
             }
             else 
             {
-                moveVector = relativeMoveDirection * speed * 0.3f;
+                moveVector = relativeMoveDirection * speed * (1-airControl);
             }
-        }
 
-        controller.Move((moveVector + jumpVector + velocity) * Time.deltaTime);
-        RotatePlayer(facingDirection);
+            currentVelocity = moveVector + jumpVector;
+            Move(currentVelocity * Time.deltaTime);
+            RotatePlayer(facingDirection, 900f);
+        }
+    }
+
+    public void Move(Vector3 vector)
+    {
+        controller.Move(vector);
     }
     
     public Vector3 GetRelativeDirection(Vector3 direction) 
@@ -110,9 +115,17 @@ class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void RotatePlayer(Vector3 newRotation)
+    public void RotatePlayer(Vector3 newRotation, float speed)
     {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(newRotation), 900f * Time.deltaTime);
+        facingDirection = newRotation;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(newRotation), speed * Time.deltaTime);
+    }
+
+
+    public void RotatePlayer(float degrees)
+    {
+        facingDirection = Quaternion.Euler(0,degrees,0) * facingDirection;
+        transform.forward = facingDirection;
     }
 
     bool CanMove()

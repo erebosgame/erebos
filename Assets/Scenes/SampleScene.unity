@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -305,7 +305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540612085}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.14, z: 0}
+  m_LocalPosition: {x: 0, y: 1.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 608943748}
@@ -325,9 +325,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5607bbf95b465d4c9ed498d4d63cb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballPrefab: {fileID: 5509305661840162670, guid: d746b781d6b41ff40960c1aa8a931995,
+  fireballPrefab: {fileID: 7846340642988919664, guid: 8bbd4135a97171a4f99d9cedeb7d1fdc,
     type: 3}
-  explosionPrefab: {fileID: 106012303621799758, guid: b6ceab1be96f0304bb44f68bc6f8dfa5,
+  boulderPrefab: {fileID: 4945593045935131058, guid: 55aaafedda83161408ab9f4a640847be,
+    type: 3}
+  rockplosionPrefab: {fileID: 7570665235340684715, guid: f2f6e12e4eec27f4cbf9a585e5432e3c,
     type: 3}
 --- !u!114 &540612093
 MonoBehaviour:
@@ -341,7 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a05d8db2547cd47b1a67c5cee21e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &540612094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,7 +485,7 @@ MonoBehaviour:
     m_Radius: 8
   - m_Height: 7
     m_Radius: 14
-  - m_Height: -2.5
+  - m_Height: -0.87
     m_Radius: 8
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
@@ -745,7 +746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 7570665235340684715, guid: f2f6e12e4eec27f4cbf9a585e5432e3c,
+    type: 3}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!1 &659101381
@@ -1170,7 +1172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.21201204, y: -0.000000014562416, z: 0.0000000031592258, w: 0.9772671}
-  m_LocalPosition: {x: 0, y: 9.14, z: -14}
+  m_LocalPosition: {x: 0, y: 8.08, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1447,7 +1449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909408197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: 0, z: -500}
+  m_LocalPosition: {x: -500, y: 0, z: -500.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

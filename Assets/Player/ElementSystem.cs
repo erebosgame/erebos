@@ -5,38 +5,37 @@ using UnityEngine;
 class ElementSystem : MonoBehaviour
 {    
     public GameObject fireballPrefab;
-    public GameObject explosionPrefab;
-    private IElement currentElement;
+    public GameObject boulderPrefab;
+    public GameObject rockplosionPrefab;
+    
+    // private IElement currentElement;
 
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentElement == null)
+        if (Player.stats.elementState == Element.NoElement)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                currentElement = new FireElement(fireballPrefab, explosionPrefab);
-                currentElement.Start();
-                (currentElement as FireElement).onEndListener += (() => currentElement = null);
+                Instantiate(fireballPrefab, Player.gameObject.transform.position, Quaternion.identity);
+                // currentElement = new FireElement(fireballPrefab, explosionPrefab);
+                // currentElement.Start();
+                // (currentElement as FireElement).onEndListener += (() => currentElement = null);
             }
-        }
-
-        if (currentElement != null)
-        {
-            currentElement.Update();
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Instantiate(boulderPrefab, Player.gameObject.transform.position, Quaternion.identity);
+            //     currentElement = new EarthElement(boulderPrefab, rockplosionPrefab);
+            //     currentElement.Start();
+            //     (currentElement as EarthElement).onEndListener += (() => currentElement = null);
+            }
         }
     }
     
-    void OnTriggerEnter(Collider other)
-    {
-        if (currentElement != null)
-        {
-            currentElement.Trigger(other);
-        }
-    }
 }

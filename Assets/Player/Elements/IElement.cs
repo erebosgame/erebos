@@ -3,7 +3,7 @@ public interface IElement
 {
     void Start();
     void End();
-    void Update();
+    void Update(float delta);
     void Trigger(Collider other);
 }
 
