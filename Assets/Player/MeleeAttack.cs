@@ -64,10 +64,13 @@ public class MeleeAttack : MonoBehaviour
     void Update() 
     {
         GetAimed();
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Player.stats.CanUseSkill(Element.NoElement))
         {
             if (selected)
-                selectedEnemy.TakeDamage(3);
+            {
+                selectedEnemy.TakeDamage(15);
+                Player.stats.UseSkill(Element.NoElement);
+            }
         }    
     }
 
