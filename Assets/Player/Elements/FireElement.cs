@@ -26,7 +26,7 @@ class FireElement : MonoBehaviour
         Player.gameObject.transform.SetParent(this.gameObject.transform);
 
         Player.movement.FaceRelativeDirection(new Vector3(0,0,1));
-        initialDirection = Player.movement.facingDirection;
+        initialDirection = Camera.main.transform.forward;
         initialPosition = Player.gameObject.transform.position;
     }
 

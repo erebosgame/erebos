@@ -8,9 +8,9 @@ class PlayerStats : MonoBehaviour
 {
     public int maxHealth = 100;
     public int health;
-
     public int experience;
     public int expToNextLevel = 10;
+
     public Element elementState;
 
     public Dictionary<Element, float> lastUse = new Dictionary<Element, float>();
@@ -24,7 +24,7 @@ class PlayerStats : MonoBehaviour
     public void Start()
     {
         health = maxHealth;
-        experience = 2;
+        experience = 0;
 
         cooldowns.Add(Element.Fire, 8f);
         cooldowns.Add(Element.Water, 5f);
@@ -47,6 +47,15 @@ class PlayerStats : MonoBehaviour
         else
         {
             return true;
+        }
+    }
+
+    public void AddExperience (int amount)
+    {
+        experience += amount;
+        if(experience > expToNextLevel)
+        {
+            expToNextLevel += experience;
         }
     }
 }

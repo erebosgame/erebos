@@ -7,6 +7,8 @@ class ElementSystem : MonoBehaviour
     public GameObject fireballPrefab;
     public GameObject boulderPrefab;
     public GameObject rockplosionPrefab;
+
+    public GameObject puddlePrefab;
     
     // private IElement currentElement;
 
@@ -36,6 +38,11 @@ class ElementSystem : MonoBehaviour
             //     currentElement = new EarthElement(boulderPrefab, rockplosionPrefab);
             //     currentElement.Start();
             //     (currentElement as EarthElement).onEndListener += (() => currentElement = null);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3)  && Player.stats.CanUseSkill(Element.Water))
+            {
+                Instantiate(puddlePrefab, Player.gameObject.transform.position, Quaternion.identity);
+                Player.stats.UseSkill(Element.Water);
             }
         }
     }

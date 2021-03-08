@@ -14,7 +14,7 @@ class EarthElement : MonoBehaviour
 
     private int hitsRemaining;
 
-    public EarthElement(GameObject boulderPrefab, GameObject explosionPrefab)
+    public EarthElement(GameObject explosionPrefab)
     {
         this.explosionPrefab = explosionPrefab;
         this.meshRenderer = Player.gameObject.GetComponent<MeshRenderer>();
