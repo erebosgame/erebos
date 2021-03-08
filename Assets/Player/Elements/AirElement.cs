@@ -30,6 +30,8 @@ class AirElement : MonoBehaviour
         Player.movement.FaceRelativeDirection(new Vector3(0,0,1));
         initialDirection = Camera.main.transform.forward;
         initialPosition = Player.gameObject.transform.position;
+
+        StartCoroutine("EndAfterTime");
     }
 
     void Update()
@@ -40,6 +42,12 @@ class AirElement : MonoBehaviour
             End();
 
         controller.Move(initialDirection * 60f * Time.deltaTime);
+    }
+
+    IEnumerator EndAfterTime()
+    {
+        yield return new WaitForSeconds(5f);
+        End();
     }
 
     void End() 

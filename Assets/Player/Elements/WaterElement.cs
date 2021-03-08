@@ -32,6 +32,7 @@ class WaterElement : MonoBehaviour
         this.gameObject.transform.SetParent(Player.gameObject.transform.parent);
         Player.gameObject.transform.SetParent(this.gameObject.transform);
         Player.gameObject.transform.localPosition = Vector3.zero;
+        StartCoroutine("EndAfterTime");
     }
 
     void Update()
@@ -110,8 +111,10 @@ class WaterElement : MonoBehaviour
         transform.forward = facingDirection;
     }
 
-    void OnCollisionEnter(Collision collision)
+    IEnumerator EndAfterTime()
     {
+        yield return new WaitForSeconds(10f);
+        End();
     }
 
     public void End() 

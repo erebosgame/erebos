@@ -36,6 +36,8 @@ class EarthElement : MonoBehaviour
         Player.gameObject.transform.localPosition = Vector3.zero;
 
         rb.velocity = Player.movement.currentVelocity;
+
+        StartCoroutine("EndAfterTime");
     }
 
     void Update()
@@ -72,6 +74,11 @@ class EarthElement : MonoBehaviour
         }
     }
 
+    IEnumerator EndAfterTime()
+    {
+        yield return new WaitForSeconds(30f);
+        End();
+    }
     public void End() 
     {
         transform.DetachChildren();

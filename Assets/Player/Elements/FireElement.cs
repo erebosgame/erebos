@@ -30,6 +30,8 @@ class FireElement : MonoBehaviour
         Player.movement.FaceRelativeDirection(new Vector3(0,0,1));
         initialDirection = Camera.main.transform.forward;
         initialPosition = Player.gameObject.transform.position;
+
+        StartCoroutine("EndAfterTime");
     }
 
     void Update()
@@ -59,6 +61,11 @@ class FireElement : MonoBehaviour
             enemy.TakeDamage(40);
             End();
         }
+    }
+    IEnumerator EndAfterTime()
+    {
+        yield return new WaitForSeconds(5f);
+        End();
     }
 
     void End() 
