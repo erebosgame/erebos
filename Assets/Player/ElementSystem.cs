@@ -4,6 +4,7 @@ using UnityEngine;
 
 class ElementSystem : MonoBehaviour
 {    
+    public GameObject airballPrefab;
     public GameObject fireballPrefab;
     public GameObject boulderPrefab;
     public GameObject rockplosionPrefab;
@@ -31,7 +32,7 @@ class ElementSystem : MonoBehaviour
                 // currentElement.Start();
                 // (currentElement as FireElement).onEndListener += (() => currentElement = null);
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2)  && Player.stats.CanUseSkill(Element.Earth))
+            if (Input.GetKeyDown(KeyCode.Alpha2) && Player.stats.CanUseSkill(Element.Earth))
             {
                 Instantiate(boulderPrefab, Player.gameObject.transform.position, Quaternion.identity);
                 Player.stats.UseSkill(Element.Earth);
@@ -39,10 +40,15 @@ class ElementSystem : MonoBehaviour
             //     currentElement.Start();
             //     (currentElement as EarthElement).onEndListener += (() => currentElement = null);
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3)  && Player.stats.CanUseSkill(Element.Water))
+            if (Input.GetKeyDown(KeyCode.Alpha3) && Player.stats.CanUseSkill(Element.Water))
             {
                 Instantiate(puddlePrefab, Player.gameObject.transform.position, Quaternion.identity);
                 Player.stats.UseSkill(Element.Water);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4) && Player.stats.CanUseSkill(Element.Air))
+            {
+                Instantiate(airballPrefab, Player.gameObject.transform.position, Quaternion.identity);
+                Player.stats.UseSkill(Element.Air);
             }
         }
     }

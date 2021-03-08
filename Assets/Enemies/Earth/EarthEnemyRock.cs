@@ -10,22 +10,30 @@ public class EarthEnemyRock : MonoBehaviour
     private bool isAggroed;
     private bool isAttacking;
 
-    Vector3 attackOrigin;
+    private Vector3 playerNormal;
 
+    private Coroutine attackRoutine;
+    private float lastAttack;
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
-        attackForce = 1000f;
+        attackForce = 1200f;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        Vector3 normal = (Player.gameObject.transform.position - attackOrigin).normalized;
-        if (Vector3.Dot(normal, this.transform.position - Player.gameObject.transform.position) > 0)
+    {       
+        if (isAttacking)
         {
-            this.rb.velocity = new Vector3(0.85f*this.rb.velocity.x, this.rb.velocity.y, 0.85f*this.rb.velocity.z);
+            Vector3 newRotation = new Vector3(Player.gameObject.transform.position.x - this.transform.position.x, 0 ,Player.gameObject.transform.position.z - this.transform.position.z);
+            rb.velocity = Vector3.RotateTowards(rb.velocity, newRotation.normalized * rb.velocity.magnitude, 0.8f* Time.deltaTime, 1f);
+        }
+
+        if (Vector3.Dot(playerNormal, this.transform.position - Player.gameObject.transform.position) > 0)
+        {
+            //add delta time
+            this.rb.velocity = new Vector3(0.9f*this.rb.velocity.x, this.rb.velocity.y, 0.9f*this.rb.velocity.z);
             isAttacking = false;
         }
     }
@@ -34,15 +42,17 @@ public class EarthEnemyRock : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            isAggroed = true;
-            StartCoroutine("Attack");
+            if (attackRoutine != null)
+                StopCoroutine(attackRoutine);
+
+            attackRoutine = StartCoroutine("Attack");
         }
     }
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
-            isAggroed = false;
+            StopCoroutine(attackRoutine);
         }
     }
 
@@ -58,7 +68,10 @@ public class EarthEnemyRock : MonoBehaviour
 
     IEnumerator Attack()
     {
-        while(isAggroed) 
+        if (lastAttack != 0 && Time.time-lastAttack < 3)
+            yield return new WaitForSeconds(3-(Time.time-lastAttack));
+        
+        while(true) 
         {
             AttackTarget(Player.gameObject);
             yield return new WaitForSeconds(3);
@@ -67,7 +80,9 @@ public class EarthEnemyRock : MonoBehaviour
 
     void AttackTarget(GameObject target) 
     {        
-        attackOrigin = this.transform.position;
+        lastAttack = Time.time;
+        playerNormal = (Player.gameObject.transform.position - this.transform.position).normalized;
+        
         Vector3 attackDirection = (target.transform.position - this.transform.position);
         attackDirection.y = 0;
         attackDirection = attackDirection.normalized;

@@ -46,9 +46,9 @@ class EarthElement : MonoBehaviour
         {
             relativeMoveDirection = GetRelativeDirection(moveDirection);
         }
-        this.rb.AddForce(relativeMoveDirection*7000f*Time.deltaTime);
-        if (this.rb.velocity.magnitude >= 30)
-            this.rb.velocity = this.rb.velocity.normalized * 30;
+        this.rb.AddForce(relativeMoveDirection*8000f*Time.deltaTime);
+        if (this.rb.velocity.magnitude >= 40)
+            this.rb.velocity = this.rb.velocity.normalized * 40;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -60,8 +60,9 @@ class EarthElement : MonoBehaviour
             GameObject explosion = UnityEngine.Object.Instantiate(explosionPrefab);
             explosion.transform.position = collision.contacts[0].point;
             UnityEngine.Object.Destroy(explosion, 10f);
-            collision.collider.GetComponent<Rigidbody>().AddForce(500f*direction);
+            collision.collider.GetComponent<Rigidbody>().AddForce(100f*direction);
             rb.AddForce(-500f*direction*rb.velocity.magnitude);
+            collision.collider.gameObject.GetComponent<Enemy>().TakeDamage(rb.velocity.magnitude/40f * 40);
 
             hitsRemaining--;
             if (hitsRemaining <= 0)

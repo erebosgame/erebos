@@ -793,7 +793,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.20159717, y: 0.000000016774438, z: -0.0000000034525653, w: 0.9794685}
+  m_LocalRotation: {x: 0.20159717, y: -0.000000016863074, z: 0.0000000034708088, w: 0.9794685}
   m_LocalPosition: {x: 0, y: 8.08, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1309,14 +1309,14 @@ GameObject:
   - component: {fileID: 1825864936}
   - component: {fileID: 1825864941}
   - component: {fileID: 1825864935}
-  - component: {fileID: 1825864942}
+  - component: {fileID: 1825864943}
   m_Layer: 0
   m_Name: EarthEnemyRock
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1825864935
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1328,7 +1328,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1825864936
 MonoBehaviour:
@@ -1436,7 +1436,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1825864942
+--- !u!114 &1825864943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1445,15 +1445,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1825864934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ca75aa1a7995fe45a3f2d37d529287c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &1909408197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1459,7 @@ GameObject:
   - component: {fileID: 1909408200}
   - component: {fileID: 1909408199}
   - component: {fileID: 1909408198}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1861,22 +1855,22 @@ PrefabInstance:
     - target: {fileID: 6637153287766285550, guid: 72d2ffe7a0afa234f90652c1954be74a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000000826809
+      value: -0.0000000084464675
       objectReference: {fileID: 0}
     - target: {fileID: 6637153287766285550, guid: 72d2ffe7a0afa234f90652c1954be74a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000017017633
+      value: 0.0000000017384775
       objectReference: {fileID: 0}
     - target: {fileID: 6637153288423257985, guid: 72d2ffe7a0afa234f90652c1954be74a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000187227
+      value: -0.0000000187227
       objectReference: {fileID: 0}
     - target: {fileID: 6637153288423257985, guid: 72d2ffe7a0afa234f90652c1954be74a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000044198294
+      value: 0.0000000044198294
       objectReference: {fileID: 0}
     - target: {fileID: 6637153289005032667, guid: 72d2ffe7a0afa234f90652c1954be74a,
         type: 3}
@@ -1891,12 +1885,12 @@ PrefabInstance:
     - target: {fileID: 6637153289005032667, guid: 72d2ffe7a0afa234f90652c1954be74a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017539934
+      value: 0.000000019125098
       objectReference: {fileID: 0}
     - target: {fileID: 6637153289005032667, guid: 72d2ffe7a0afa234f90652c1954be74a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000003089335
+      value: -0.0000000033685328
       objectReference: {fileID: 0}
     - target: {fileID: 6637153289058905667, guid: 72d2ffe7a0afa234f90652c1954be74a,
         type: 3}
@@ -1913,16 +1907,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6637153289702436131, guid: 72d2ffe7a0afa234f90652c1954be74a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6637153289702436136, guid: 72d2ffe7a0afa234f90652c1954be74a,
         type: 3}
       propertyPath: puddlePrefab
       value: 
       objectReference: {fileID: 8439561413291206264, guid: 0999444d21e66a345adc3a7dbf8a5cef,
+        type: 3}
+    - target: {fileID: 6637153289702436136, guid: 72d2ffe7a0afa234f90652c1954be74a,
+        type: 3}
+      propertyPath: airballPrefab
+      value: 
+      objectReference: {fileID: 7846340642988919664, guid: c98eb47b91e334e42862d56f1b90d0f1,
         type: 3}
     - target: {fileID: 6637153289702436137, guid: 72d2ffe7a0afa234f90652c1954be74a,
         type: 3}

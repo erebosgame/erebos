@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4582818865673918922}
   - component: {fileID: 6789756933865711222}
   - component: {fileID: 1949920920097062559}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Puddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -542,7 +542,6 @@ GameObject:
   - component: {fileID: 6637153289702436142}
   - component: {fileID: 6637153289702436141}
   - component: {fileID: 6637153289702436140}
-  - component: {fileID: 6637153289702436131}
   - component: {fileID: 6637153289702436130}
   - component: {fileID: 6637153289702436137}
   - component: {fileID: 6637153289702436138}
@@ -617,20 +616,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &6637153289702436131
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6637153289702436129}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &6637153289702436130
 CharacterController:
   m_ObjectHideFlags: 0
@@ -690,6 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5607bbf95b465d4c9ed498d4d63cb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  airballPrefab: {fileID: 0}
   fireballPrefab: {fileID: 7846340642988919664, guid: 8bbd4135a97171a4f99d9cedeb7d1fdc,
     type: 3}
   boulderPrefab: {fileID: 4945593045935131058, guid: 55aaafedda83161408ab9f4a640847be,
