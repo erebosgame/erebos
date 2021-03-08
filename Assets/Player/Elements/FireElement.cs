@@ -13,6 +13,8 @@ class FireElement : MonoBehaviour
     private Vector3 initialDirection;
 
     private float maxDistance = 30f;
+    
+    private bool ended;
 
     void Start()
     {
@@ -42,7 +44,6 @@ class FireElement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-            
         if (other.tag == "Enemy")
         {
             Vector3 direction = (other.transform.position - Player.gameObject.transform.position).normalized;
@@ -62,6 +63,10 @@ class FireElement : MonoBehaviour
 
     void End() 
     {
+        if (ended)
+            return;
+        ended = true;
+
         this.GetComponentInChildren<ParticleSystem>().Stop(true);
         meshRenderer.enabled = true;
         Player.stats.elementState = Element.NoElement;
