@@ -50,6 +50,7 @@ public class EarthEnemyRock : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             StopCoroutine(attackRoutine);
+            isAttacking = false;
         }
     }
 

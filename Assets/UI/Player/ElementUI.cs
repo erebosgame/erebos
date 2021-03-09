@@ -45,8 +45,9 @@ public class ElementUI : MonoBehaviour
                 continue;
             found++;
             float angle = (Mathf.PI/2) * found / (count+1);
-            print(angle);
-            print(new Vector3(-Mathf.Cos(angle), Mathf.Sin(angle), 0)*15);
+            //TODO: migliorare posizione
+            //print(angle);
+            //print(new Vector3(-Mathf.Cos(angle), Mathf.Sin(angle), 0)*15);
             elements[e].GetComponent<RectTransform>().anchoredPosition =
                 new Vector3(-Mathf.Cos(angle)*300 - 25 + 30, 
                             Mathf.Sin(angle)*300 - 25 - 30, 0);
