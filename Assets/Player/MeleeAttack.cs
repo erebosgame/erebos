@@ -11,7 +11,7 @@ public class MeleeAttack : MonoBehaviour
  
     void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Enemy"))
+        if (!other.CompareTag("Enemy") || other.isTrigger)
             return;
 
         if(!triggerList.Contains(other))

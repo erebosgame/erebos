@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Element {NoElement,Fire,Water,Earth,Air};
+public enum Element {NoElement, Fire, Earth, Water, Air};
 
 class PlayerStats : MonoBehaviour
 {
@@ -27,8 +27,8 @@ class PlayerStats : MonoBehaviour
         experience = 0;
 
         cooldowns.Add(Element.Fire, 8f);
-        cooldowns.Add(Element.Water, 5f);
         cooldowns.Add(Element.Earth, 10f);
+        cooldowns.Add(Element.Water, 5f);
         cooldowns.Add(Element.Air, 7f); 
         cooldowns.Add(Element.NoElement, 1.2f);        
     }
