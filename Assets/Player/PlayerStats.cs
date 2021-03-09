@@ -13,8 +13,9 @@ class PlayerStats : MonoBehaviour
 
     public Element elementState;
 
-    public Dictionary<Element, float> lastUse = new Dictionary<Element, float>();
-    public Dictionary<Element, float> cooldowns = new Dictionary<Element, float>();
+    public Dictionary<Element, bool> unlockedElements;
+    public Dictionary<Element, float> lastUse;
+    public Dictionary<Element, float> cooldowns;
 
     public void Awake() {
         Player.stats = this;
@@ -26,11 +27,22 @@ class PlayerStats : MonoBehaviour
         health = maxHealth;
         experience = 0;
 
-        cooldowns.Add(Element.Fire, 8f);
-        cooldowns.Add(Element.Earth, 10f);
-        cooldowns.Add(Element.Water, 5f);
-        cooldowns.Add(Element.Air, 7f); 
-        cooldowns.Add(Element.NoElement, 1.2f);        
+        lastUse = new Dictionary<Element, float>();
+        unlockedElements = new Dictionary<Element, bool>
+        {
+            { Element.Fire, false },
+            { Element.Earth, false },
+            { Element.Water, false },
+            { Element.Air, false },
+        };
+        cooldowns = new Dictionary<Element, float>
+        {
+            { Element.Fire, 8f },
+            { Element.Earth, 10f },
+            { Element.Water, 5f },
+            { Element.Air, 7f },
+            { Element.NoElement, 1.2f }
+        };
     }
 
     public void UseSkill(Element e)

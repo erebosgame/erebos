@@ -43,9 +43,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float ammount)
+    public void TakeDamage(float amount)
     {
-        health -= ammount;
+        health -= amount;
 
         if(health <= 0)
             Die();  
