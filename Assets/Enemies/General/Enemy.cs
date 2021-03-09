@@ -7,9 +7,10 @@ public class Enemy : MonoBehaviour
     public GameObject healthBarPrefab;
     private GameObject healthBar;
     private Outline outline;
-    public float maxHealth = 100;
+    public float maxHealth;
     public float health;
-    
+
+    private Spawner spawner;
 
     void Awake()
     {
@@ -24,7 +25,13 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth = 100;
         health = maxHealth;
+
+        if (this.transform.parent && this.transform.parent.CompareTag("Spawner"))
+        {
+            spawner = this.transform.parent.GetComponent<Spawner>();
+        }
     }
 
     // Update is called once per frame
@@ -48,7 +55,11 @@ public class Enemy : MonoBehaviour
     {
         //droploot
         //play animation  
-        Player.stats.AddExperience(5);   
+        Player.stats.AddExperience(5);
+
+        if (spawner)
+            spawner.OnSpawnedDeath();
+
         Destroy(this.gameObject);
     }
 }
