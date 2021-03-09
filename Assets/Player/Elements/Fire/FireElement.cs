@@ -11,7 +11,6 @@ class FireElement : MonoBehaviour
     
     private Vector3 initialPosition;
     private Vector3 initialDirection;
-
     private float maxDistance = 30f;
     
     private bool ended;

@@ -8,6 +8,7 @@ public class StatsBar : MonoBehaviour
     Canvas canvas;
     public Image hpBar;
     public Image xpBar;
+    
     // Start is called before the first frame update
     void Start()
     {

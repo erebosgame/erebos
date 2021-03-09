@@ -8,7 +8,6 @@ class ElementSystem : MonoBehaviour
     public GameObject fireballPrefab;
     public GameObject boulderPrefab;
     public GameObject rockplosionPrefab;
-
     public GameObject puddlePrefab;
     
     // private IElement currentElement;

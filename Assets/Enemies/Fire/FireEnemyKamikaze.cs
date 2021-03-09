@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EarthEnemyRock : MonoBehaviour
+public class FireEnemyKamikaze : MonoBehaviour
 {
     private Rigidbody rb;
-    private float attackForce;
+    private float speed = 6f;
     private bool isAggroed;
     private bool isAttacking;
     private Vector3 playerNormal;
     private Coroutine attackRoutine;
     private float lastAttack;
+
+    public GameObject explosionPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
-        attackForce = 1200f;
     }
 
     // Update is called once per frame
@@ -23,8 +25,8 @@ public class EarthEnemyRock : MonoBehaviour
     {       
         if (isAttacking)
         {
-            Vector3 newRotation = new Vector3(Player.gameObject.transform.position.x - this.transform.position.x, 0 ,Player.gameObject.transform.position.z - this.transform.position.z);
-            rb.velocity = Vector3.RotateTowards(rb.velocity, newRotation.normalized * rb.velocity.magnitude, 0.8f* Time.deltaTime, 1f);
+            float step =  speed * Time.deltaTime; // calculate distance to move
+            transform.position = Vector3.MoveTowards(transform.position, Player.gameObject.transform.position, step);
         }
 
         if (Vector3.Dot(playerNormal, this.transform.position - Player.gameObject.transform.position) > 0)
@@ -37,12 +39,13 @@ public class EarthEnemyRock : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("AAA");
         if (other.CompareTag("Player"))
         {
             if (attackRoutine != null)
                 StopCoroutine(attackRoutine);
 
-            attackRoutine = StartCoroutine("Attack");
+            attackRoutine = StartCoroutine("Explode");
         }
     }
     void OnTriggerExit(Collider other)
@@ -63,15 +66,18 @@ public class EarthEnemyRock : MonoBehaviour
     }
     
 
-    IEnumerator Attack()
+    IEnumerator Explode()
     {
-        if (lastAttack != 0 && Time.time-lastAttack < 3)
-            yield return new WaitForSeconds(3-(Time.time-lastAttack));
-        
-        while(true) 
+        isAttacking = true;
+        yield return new WaitForSeconds(5);
+
+        GameObject explosion = UnityEngine.Object.Instantiate(explosionPrefab);
+        explosion.transform.position = this.transform.position;
+        UnityEngine.Object.Destroy(explosion, 10f); 
+        Destroy(this.gameObject);    
+        if(Vector3.Distance(Player.gameObject.transform.position,this.transform.position) < 5)
         {
-            AttackTarget(Player.gameObject);
-            yield return new WaitForSeconds(3);
+            Player.stats.health -= 100;
         }
     }
 
@@ -83,7 +89,7 @@ public class EarthEnemyRock : MonoBehaviour
         Vector3 attackDirection = (target.transform.position - this.transform.position);
         attackDirection.y = 0;
         attackDirection = attackDirection.normalized;
-        rb.AddForce(attackDirection * attackForce);
+        //rb.AddForce(attackDirection * attackForce);
         isAttacking = true;
     }
 }
