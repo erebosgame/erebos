@@ -5,6 +5,9 @@ using UnityEngine;
 class PlayerMovement : MonoBehaviour
 {
     CharacterController controller;
+
+    Camera mainCamera;
+
     private Vector3 jumpVector = new Vector3();
     public Vector3 facingDirection { get; private set; }
     public Vector3 currentVelocity { get; private set; }
@@ -26,6 +29,7 @@ class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = this.GetComponent<CharacterController>();
+        mainCamera = Camera.main;
         facingDirection = transform.forward;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -86,7 +90,7 @@ class PlayerMovement : MonoBehaviour
     
     public Vector3 GetRelativeDirection(Vector3 direction) 
     {
-        return Quaternion.LookRotation(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z)) * direction;
+        return Quaternion.LookRotation(new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z)) * direction;
     }
     public void FaceRelativeDirection(Vector3 direction) 
     {

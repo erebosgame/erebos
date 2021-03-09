@@ -46,7 +46,7 @@ class FireElement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy" && !other.isTrigger)
+        if (other.CompareTag("Enemy") && !other.isTrigger)
         {
             Vector3 direction = (other.transform.position - Player.gameObject.transform.position).normalized;
             if (System.Math.Abs(Vector3.Angle(initialDirection, direction)) > 120)

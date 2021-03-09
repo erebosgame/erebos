@@ -8,6 +8,8 @@ class WaterElement : MonoBehaviour
     private MeshRenderer meshRenderer;
 
     CharacterController controller;
+
+    Camera mainCamera;
     
     public Vector3 facingDirection { get; private set; }
     public Vector3 currentVelocity { get; private set; }
@@ -19,6 +21,7 @@ class WaterElement : MonoBehaviour
 
     void Start()
     {
+        mainCamera = Camera.main;
         speed = 7f;
         Player.stats.elementState = Element.Water;
         Player.gameObject.GetComponent<CharacterController>().enabled = false;
@@ -91,7 +94,7 @@ class WaterElement : MonoBehaviour
     
     public Vector3 GetRelativeDirection(Vector3 direction) 
     {
-        return Quaternion.LookRotation(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z)) * direction;
+        return Quaternion.LookRotation(new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z)) * direction;
     }
     public void FaceRelativeDirection(Vector3 direction) 
     {

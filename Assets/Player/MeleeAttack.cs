@@ -11,7 +11,7 @@ public class MeleeAttack : MonoBehaviour
  
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Enemy")
+        if (!other.CompareTag("Enemy"))
             return;
 
         if(!triggerList.Contains(other))
@@ -76,6 +76,7 @@ public class MeleeAttack : MonoBehaviour
 
     float GetColliderAngle(Collider collider)
     {
+        // TODO: rimuovere  Camera.main
         Vector3 cameraPos = Camera.main.transform.position;
         Vector3 playerPos = Player.gameObject.transform.position;
         Vector3 enemyPos = collider.gameObject.transform.position;

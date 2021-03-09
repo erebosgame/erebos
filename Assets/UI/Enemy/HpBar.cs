@@ -32,6 +32,7 @@ public class HpBar : MonoBehaviour
     }
     void LateUpdate()
     {
+        // TODO: rinuovere Camera.main
         this.transform.localPosition = Quaternion.Inverse(transform.parent.rotation) * offset;
         transform.LookAt(Camera.main.transform);
         transform.Rotate(0,180,0);

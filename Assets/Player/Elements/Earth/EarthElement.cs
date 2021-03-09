@@ -5,6 +5,8 @@ using UnityEngine;
 
 class EarthElement : MonoBehaviour
 {
+    Camera mainCamera;
+
     public GameObject explosionPrefab;
 
     private MeshRenderer meshRenderer;
@@ -22,6 +24,7 @@ class EarthElement : MonoBehaviour
 
     void Start()
     {
+        mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
         hitsRemaining = 3;
 
@@ -57,7 +60,7 @@ class EarthElement : MonoBehaviour
     {
         Vector3 direction = (collision.collider.transform.position - Player.gameObject.transform.position).normalized;
             
-        if (collision.collider.tag == "Enemy")
+        if (collision.collider.CompareTag("Enemy"))
         {
             GameObject explosion = UnityEngine.Object.Instantiate(explosionPrefab);
             explosion.transform.position = collision.contacts[0].point;
@@ -90,6 +93,6 @@ class EarthElement : MonoBehaviour
     }
     public Vector3 GetRelativeDirection(Vector3 direction) 
     {
-        return Quaternion.LookRotation(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z)) * direction;
+        return Quaternion.LookRotation(new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z)) * direction;
     }
 }

@@ -40,7 +40,7 @@ public class EarthEnemyRock : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             if (attackRoutine != null)
                 StopCoroutine(attackRoutine);
@@ -50,7 +50,7 @@ public class EarthEnemyRock : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             StopCoroutine(attackRoutine);
         }
@@ -58,7 +58,7 @@ public class EarthEnemyRock : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Player" && isAttacking)
+        if (collision.collider.CompareTag("Player") && isAttacking)
         {
             Player.stats.health -= 40;
             isAttacking = false;
