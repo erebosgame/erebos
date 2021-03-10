@@ -67,7 +67,7 @@ class EarthElement : MonoBehaviour
             UnityEngine.Object.Destroy(explosion, 10f);
             // collision.collider.GetComponent<Rigidbody>().AddForce(100f*direction);
             rb.AddForce(-500f*direction*rb.velocity.magnitude);
-            collision.collider.gameObject.GetComponent<Enemy>().TakeDamage(rb.velocity.magnitude/40f * 40);
+            collision.collider.gameObject.GetComponent<Enemy>().TakeDamage((int)rb.velocity.magnitude*40/40);
 
             hitsRemaining--;
             if (hitsRemaining <= 0)

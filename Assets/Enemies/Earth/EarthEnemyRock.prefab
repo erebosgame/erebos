@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7179386004499267432}
   - component: {fileID: 7179386004499267433}
   - component: {fileID: 7179386004499267434}
-  - component: {fileID: 7179386004499267435}
   - component: {fileID: 7179386004499267438}
   - component: {fileID: 7179386004499267428}
+  - component: {fileID: 7179386004499267435}
   - component: {fileID: 7179386004499267436}
   m_Layer: 0
   m_Name: EarthEnemyRock
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7179386004499267429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6268632, y: 0, z: 7.959386}
+  m_LocalPosition: {x: -0.45211127, y: 0, z: 1.183225}
   m_LocalScale: {x: 1.35, y: 1.35, z: 1.35}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,22 +97,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7179386004499267435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7179386004499267429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0ae07c159392f34da86c6a9af1b4e98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBarPrefab: {fileID: 1904692497953718069, guid: f49b17edff782074cb86ec12de5f2c2d,
-    type: 3}
-  maxHealth: 100
-  health: 0
 --- !u!54 &7179386004499267438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -142,6 +126,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7179386004499267435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7179386004499267429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ae07c159392f34da86c6a9af1b4e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarPrefab: {fileID: 1904692497953718069, guid: f49b17edff782074cb86ec12de5f2c2d,
+    type: 3}
+  maxHealth: 100
+  health: 0
 --- !u!114 &7179386004499267436
 MonoBehaviour:
   m_ObjectHideFlags: 0

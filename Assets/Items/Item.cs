@@ -2,19 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, Targetable, Interactable
 {
     private Outline outline;
 
-    void Awake()
+    protected virtual void Start()
     {
-        outline = this.gameObject.AddComponent<Outline>();
-        outline.OutlineMode = Outline.Mode.OutlineAll;
-        outline.OutlineColor = Color.green;
-        outline.OutlineWidth = 0;
+        outline = GetComponent<Outline>();
+        if (outline)
+        {
+            outline.OutlineMode = Outline.Mode.OutlineAll;
+            outline.OutlineColor = Color.green;
+            outline.OutlineWidth = 0;
+        }
     } 
+    
+    public void OnTargetStart() 
+    { 
+        if (outline)
+            outline.OutlineWidth = 2; 
+    }
+    public void OnTargetStop() 
+    { 
+        if (outline)
+            outline.OutlineWidth = 0; 
+    }
+    public KeyCode GetInteractKey()
+    {
+        return KeyCode.F;
+    }
 
-    virtual public void PickUp()
+    public virtual void OnInteract()
     {
         Destroy(this.gameObject);
     }

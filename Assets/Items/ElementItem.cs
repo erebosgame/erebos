@@ -6,14 +6,15 @@ public class ElementItem : Item
 {
     public Element element;
 
-    void Start()
+    protected override void Start()
     {
         this.gameObject.GetComponent<Renderer>().material.color = element.GetColor();
+        base.Start();
     }
 
-    override public void PickUp()
+    public override void OnInteract()
     {
         Player.stats.UnlockElement(element);
-        base.PickUp();
+        base.OnInteract();
     }
 }

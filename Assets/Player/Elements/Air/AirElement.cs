@@ -59,6 +59,7 @@ class AirElement : MonoBehaviour
         meshRenderer.enabled = true;
         Player.gameObject.GetComponent<CharacterController>().enabled = true;
         Player.stats.elementState = Element.NoElement;
+        this.GetComponentInChildren<ParticleSystem>().Stop(true);
         transform.DetachChildren();
         UnityEngine.Object.Destroy(this.gameObject);
     }

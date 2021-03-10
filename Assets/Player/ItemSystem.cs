@@ -7,7 +7,6 @@ public class ItemSystem : MonoBehaviour
     List<Collider> triggerList = new List<Collider>();
     GameObject selected;
     Item selectedItem;
-    Outline selectedOutline;
 
     void OnTriggerEnter(Collider other)
     {
@@ -32,7 +31,7 @@ public class ItemSystem : MonoBehaviour
     {
         if (selected)
         {
-            selectedOutline.OutlineWidth = 0;
+            selectedItem.OnTargetStop();
             selected = null;
         }
         if (Player.stats.elementState != Element.NoElement)
@@ -53,9 +52,8 @@ public class ItemSystem : MonoBehaviour
         if (angles.Count > 0)
         {
             selected = angles[0].Item2.gameObject;
-            selectedOutline = selected.GetComponent<Outline>();
-            selectedOutline.OutlineWidth = 3;
             selectedItem = selected.GetComponent<Item>();
+            selectedItem.OnTargetStart();
         }
     }
 
@@ -66,7 +64,7 @@ public class ItemSystem : MonoBehaviour
         {
             if (selected)
             {
-                selectedItem.PickUp();
+                selectedItem.OnInteract();
             }
         }
     }

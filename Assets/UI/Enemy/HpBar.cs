@@ -5,30 +5,16 @@ using UnityEngine.UI;
 
 public class HpBar : MonoBehaviour
 {
-    Vector3 offset;
-    Enemy enemy;
-    Canvas canvas;
+    private Canvas canvas;
     public Image hpBar;
+    private Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
     {
         canvas = this.GetComponent<Canvas>();
-        enemy = this.GetComponentInParent<Enemy>();
-
         offset = this.transform.localPosition;
         canvas.enabled = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(!canvas.enabled)
-            canvas.enabled = enemy.health < enemy.maxHealth;
-
-        if (canvas.enabled) {
-            hpBar.fillAmount = enemy.health / enemy.maxHealth;
-        }
     }
     void LateUpdate()
     {
@@ -36,5 +22,15 @@ public class HpBar : MonoBehaviour
         this.transform.localPosition = Quaternion.Inverse(transform.parent.rotation) * offset;
         transform.LookAt(Camera.main.transform);
         transform.Rotate(0,180,0);
+    }
+
+    public void UpdateHealth(int health, int maxHealth)
+    {
+        if(!canvas.enabled)
+            canvas.enabled = health < maxHealth;
+
+        if (canvas.enabled) {
+            hpBar.fillAmount = (float)health / maxHealth;
+        }
     }
 }
