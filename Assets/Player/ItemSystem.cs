@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class ItemSystem : MonoBehaviour
 {
+    Camera mainCamera;
     List<Collider> triggerList = new List<Collider>();
     GameObject selected;
     Item selectedItem;
+
+    void Start()
+    {
+        mainCamera = Camera.main;
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -33,6 +39,7 @@ public class ItemSystem : MonoBehaviour
         {
             selectedItem.OnTargetStop();
             selected = null;
+            selectedItem = null;
         }
         if (Player.stats.elementState != Element.NoElement)
         {
@@ -43,7 +50,7 @@ public class ItemSystem : MonoBehaviour
 
         foreach (Collider collider in triggerList)
         {
-            if (collider)
+            if (collider && collider.CompareTag("Item") && !collider.isTrigger)
                 angles.Add((GetColliderAngle(collider), collider));
         }
 
@@ -60,23 +67,23 @@ public class ItemSystem : MonoBehaviour
     void Update()
     {
         GetAimed();
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Player.stats.CanUseSkill(Element.NoElement))
+        if (selectedItem && Input.GetKeyDown(selectedItem.GetInteractKey()))
         {
-            if (selected)
-            {
-                selectedItem.OnInteract();
-            }
+            selectedItem.OnInteract();
         }
     }
     float GetColliderAngle(Collider collider)
     {
-        Vector3 cameraPos = Camera.main.transform.position;
+        Vector3 cameraAngle = mainCamera.transform.forward;
+        cameraAngle.y = 0;
+        cameraAngle = cameraAngle.normalized;
         Vector3 playerPos = Player.gameObject.transform.position;
+        playerPos.y = 0;
         Vector3 enemyPos = collider.gameObject.transform.position;
+        enemyPos.y = 0;
 
-        Vector3 playerAngle = (playerPos - cameraPos).normalized;
-        Vector3 enemyAngle = (enemyPos - playerPos).normalized;
+        Vector3 enemyAngle = (enemyPos-playerPos).normalized;
 
-        return Vector3.Angle(playerAngle, enemyAngle);
+        return Vector3.Angle(cameraAngle,enemyAngle);
     }
 }
