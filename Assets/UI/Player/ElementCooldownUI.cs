@@ -7,12 +7,14 @@ using UnityEngine.UI;
 public class ElementCooldownUI : MonoBehaviour
 {
     public Element element;
-    Image image;
+    public Image imageCD;
+    public Image imageBG;
 
     // Start is called before the first frame update
     void Start()
     {
-        image = GetComponent<Image>();
+        imageCD.color = element.GetColor();
+        imageBG.color = Color.black;
     }
 
     // Update is called once per frame
@@ -20,13 +22,15 @@ public class ElementCooldownUI : MonoBehaviour
     { 
         if (Player.stats.CanUseSkill(element))
         {
-            image.color = element.GetColor();
+            imageCD.fillAmount = 1;
+            imageCD.color = element.GetColor();
         }
         else
         {
+            imageCD.fillAmount = Player.stats.GetCooldownProportion(element);
             float h,s,v;
             Color.RGBToHSV(element.GetColor(), out h, out s, out v);
-            image.color = Color.HSVToRGB(h,s*0.5f,v*0.8f);
+            imageCD.color = Color.HSVToRGB(h,s*0.5f,v*0.8f);
         }
     }
 }

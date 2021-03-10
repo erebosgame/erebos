@@ -88,6 +88,21 @@ class PlayerStats : MonoBehaviour
         }
     }
 
+    public float GetCooldownProportion(Element e)
+    {
+        if (!unlockedElements[e])
+            return -1;
+        if (!lastUse.ContainsKey(e))
+            return 0;
+        
+        float cd = (Time.time - lastUse[e])/cooldowns[e];
+
+        if (cd > 0)
+            return cd;
+        else 
+            return 0;
+    }
+
     public void AddExperience(int amount)
     {
         experience += amount;
