@@ -17,7 +17,7 @@ public class ElementCooldownUI : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         if (Player.stats.CanUseSkill(element))
         {
             image.color = Color.green;

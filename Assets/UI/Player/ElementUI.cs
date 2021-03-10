@@ -51,7 +51,6 @@ public class ElementUI : MonoBehaviour
             elements[e].GetComponent<RectTransform>().anchoredPosition =
                 new Vector3(-Mathf.Cos(angle)*300 - 25 + 30, 
                             Mathf.Sin(angle)*300 - 25 - 30, 0);
-            print(elements[e].GetComponent<RectTransform>().localPosition);
         }
     }
 }

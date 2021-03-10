@@ -27,7 +27,6 @@ class WaterElement : MonoBehaviour
         Player.gameObject.GetComponent<CharacterController>().enabled = false;
 
         controller = this.GetComponent<CharacterController>();
-        controller.detectCollisions = false;
 
         meshRenderer = Player.gameObject.GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;

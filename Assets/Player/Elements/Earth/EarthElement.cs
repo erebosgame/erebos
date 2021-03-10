@@ -59,13 +59,13 @@ class EarthElement : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Vector3 direction = (collision.collider.transform.position - Player.gameObject.transform.position).normalized;
-            
+        
         if (collision.collider.CompareTag("Enemy"))
         {
             GameObject explosion = UnityEngine.Object.Instantiate(explosionPrefab);
             explosion.transform.position = collision.contacts[0].point;
             UnityEngine.Object.Destroy(explosion, 10f);
-            collision.collider.GetComponent<Rigidbody>().AddForce(100f*direction);
+            // collision.collider.GetComponent<Rigidbody>().AddForce(100f*direction);
             rb.AddForce(-500f*direction*rb.velocity.magnitude);
             collision.collider.gameObject.GetComponent<Enemy>().TakeDamage(rb.velocity.magnitude/40f * 40);
 

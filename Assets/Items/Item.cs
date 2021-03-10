@@ -12,7 +12,7 @@ public class Item : MonoBehaviour
         outline.OutlineMode = Outline.Mode.OutlineAll;
         outline.OutlineColor = Color.green;
         outline.OutlineWidth = 0;
-    }
+    } 
 
     public void PickUp()
     {
