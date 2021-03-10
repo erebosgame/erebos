@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
         outline.OutlineWidth = 0;
     } 
 
-    public void PickUp()
+    virtual public void PickUp()
     {
         Destroy(this.gameObject);
     }

@@ -69,7 +69,6 @@ public class FireEnemyKamikaze : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            print("uscito");
             StopCoroutine(attackRoutine);
             isAttacking = false;
         }

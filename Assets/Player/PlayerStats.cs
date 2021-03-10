@@ -4,6 +4,28 @@ using UnityEngine;
 
 public enum Element {NoElement, Fire, Earth, Water, Air};
 
+public static class ElementMethods
+{
+    public static Color GetColor(this Element e)
+    {
+        switch (e)
+        {
+            case Element.Fire:
+                return Color.red;
+            case Element.Water:
+                return Color.blue;
+            case Element.Earth:
+                return new Color(0.8f, 0.6f, 0.1f);
+            case Element.Air:
+                return Color.cyan;
+            case Element.NoElement:
+                return Color.white;
+            default:
+                return Color.magenta;
+        }
+    }
+}
+
 class PlayerStats : MonoBehaviour
 {
     public int maxHealth = 100;
@@ -34,6 +56,7 @@ class PlayerStats : MonoBehaviour
             { Element.Earth, false },
             { Element.Water, false },
             { Element.Air, false },
+            { Element.NoElement, true }
         };
         cooldowns = new Dictionary<Element, float>
         {
@@ -52,6 +75,9 @@ class PlayerStats : MonoBehaviour
 
     public bool CanUseSkill(Element e)
     {
+        if (!unlockedElements[e])
+            return false;
+
         if (lastUse.ContainsKey(e))
         {
             return (Time.time - lastUse[e]) > cooldowns[e];
@@ -62,12 +88,18 @@ class PlayerStats : MonoBehaviour
         }
     }
 
-    public void AddExperience (int amount)
+    public void AddExperience(int amount)
     {
         experience += amount;
         if(experience > expToNextLevel)
         {
             expToNextLevel += experience;
         }
+    }
+
+    public void UnlockElement(Element e)
+    {
+        unlockedElements[e] = true;
+        ElementUI._instance.AddElement(e);
     }
 }

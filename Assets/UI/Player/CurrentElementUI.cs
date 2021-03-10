@@ -16,26 +16,6 @@ public class CurrentElementUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(Player.stats.elementState)
-        {
-            case Element.Fire:
-                image.color = Color.red;
-                break;
-            case Element.Water:
-                image.color = Color.blue;
-                break;
-            case Element.Earth:
-                image.color = new Color(0.8f, 0.6f, 0.1f);
-                break;
-            case Element.Air:
-                image.color = Color.cyan;
-                break;
-            case Element.NoElement:
-                image.color = Color.white;
-                break;
-            default:
-                image.color = Color.magenta;
-                break;
-        }
+        image.color = Player.stats.elementState.GetColor();
     }
 }

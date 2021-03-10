@@ -20,11 +20,13 @@ public class ElementCooldownUI : MonoBehaviour
     { 
         if (Player.stats.CanUseSkill(element))
         {
-            image.color = Color.green;
+            image.color = element.GetColor();
         }
         else
         {
-            image.color = Color.red;
+            float h,s,v;
+            Color.RGBToHSV(element.GetColor(), out h, out s, out v);
+            image.color = Color.HSVToRGB(h,s*0.5f,v*0.8f);
         }
     }
 }

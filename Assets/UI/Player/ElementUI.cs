@@ -10,18 +10,18 @@ public class ElementUI : MonoBehaviour
     public GameObject elementPrefab;
     private Dictionary<Element, GameObject> elements;
 
+    public static ElementUI _instance;
+
+    void Awake()
+    {
+        _instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         elements = new Dictionary<Element, GameObject>();
         currentElement = Instantiate(currentElementPrefab, this.transform);
-
-        AddElement(Element.Fire);
-        AddElement(Element.Earth);
-        AddElement(Element.Water);
-        AddElement(Element.Air);
-
-        UpdateElementPosition();
     }
 
     // Update is called once per frame
@@ -29,10 +29,11 @@ public class ElementUI : MonoBehaviour
     {
          
     }
-    void AddElement(Element e)
+    public void AddElement(Element e)
     {
         elements[e] = Instantiate(elementPrefab, this.transform);
         elements[e].GetComponent<ElementCooldownUI>().element = e;
+        UpdateElementPosition();
     }
 
     void UpdateElementPosition()
@@ -46,7 +47,7 @@ public class ElementUI : MonoBehaviour
             found++;
             float angle = (Mathf.PI/2) * found / (count+1);
             //TODO: migliorare posizione
-            //print(angle);
+            //x(angle);
             //print(new Vector3(-Mathf.Cos(angle), Mathf.Sin(angle), 0)*15);
             elements[e].GetComponent<RectTransform>().anchoredPosition =
                 new Vector3(-Mathf.Cos(angle)*300 - 25 + 30, 
