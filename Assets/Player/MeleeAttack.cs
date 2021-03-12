@@ -9,6 +9,12 @@ public class MeleeAttack : MonoBehaviour
     GameObject hitEnemyObject;
     Enemy hitEnemy;
 
+    public GameObject ammo;
+
+    public GameObject reticle;
+
+    public GameObject cameraRotator;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -18,18 +24,26 @@ public class MeleeAttack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && Player.stats.CanUseSkill(Element.NoElement))
         {
-            for (int i = 0; i < 4; i++)
+            if(Player.stats.weapon)
             {
-                Collider collider = GetColliderAtDistance(i);
-                if (collider)
+                for (int i = 0; i < 4; i++)
                 {
-                    hitEnemyObject = collider.gameObject;
-                    hitEnemy = hitEnemyObject.GetComponent<Enemy>();
-                    hitEnemy.TakeDamage(15);
-                    Player.stats.UseSkill(Element.NoElement);
-                    break;
+                    Collider collider = GetColliderAtDistance(i);
+                    if (collider)
+                    {
+                        hitEnemyObject = collider.gameObject;
+                        hitEnemy = hitEnemyObject.GetComponent<Enemy>();
+                        hitEnemy.TakeDamage(15);
+                        Player.stats.UseSkill(Element.NoElement);
+                        break;
+                    }
                 }
             }
+            else
+            {
+                StartCoroutine("FireSling");
+            }
+
         }    
     }
 
@@ -68,5 +82,22 @@ public class MeleeAttack : MonoBehaviour
         Vector3 enemyAngle = (enemyPos-playerPos).normalized;
 
         return Vector3.Angle(cameraAngle,enemyAngle);
+    }
+
+    IEnumerator FireSling()
+    {
+        GameObject projectile = Instantiate(ammo);
+        projectile.transform.position = Player.gameObject.transform.position;
+
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
+        Vector3 direction = (ray.GetPoint(1000) - transform.position).normalized;
+
+        Debug.DrawRay(transform.position, direction * 100, Color.red, 10f);
+
+        projectile.transform.forward = direction;
+        yield return new WaitForSeconds(0.1f);
+
+        projectile.GetComponent<SlingShot>().Fire(cameraRotator.transform.forward);
     }
 }

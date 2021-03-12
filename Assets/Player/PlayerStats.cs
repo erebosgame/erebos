@@ -33,6 +33,8 @@ class PlayerStats : MonoBehaviour
     public int experience;
     public int expToNextLevel = 10;
 
+    public bool weapon;
+
     public Element elementState;
 
     public Dictionary<Element, bool> unlockedElements;
@@ -42,6 +44,7 @@ class PlayerStats : MonoBehaviour
     public void Awake() {
         Player.stats = this;
         Player.gameObject = this.gameObject;
+        weapon = true;
     }
 
     public void Start()

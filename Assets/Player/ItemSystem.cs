@@ -66,6 +66,9 @@ public class ItemSystem : MonoBehaviour
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.R))
+            Player.stats.weapon = !Player.stats.weapon;
         GetAimed();
         if (selectedItem && Input.GetKeyDown(selectedItem.GetInteractKey()))
         {

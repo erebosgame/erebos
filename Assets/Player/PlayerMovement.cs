@@ -79,7 +79,8 @@ class PlayerMovement : MonoBehaviour
 
             currentVelocity = moveVector + jumpVector;
             Move(currentVelocity * Time.deltaTime);
-            RotatePlayer(facingDirection, 900f);
+            if(Player.stats.weapon)
+                RotatePlayer(facingDirection, 900f);
         }
     }
 
