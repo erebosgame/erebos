@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6637153287766285550}
   - component: {fileID: 6637153287766285551}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 6637153288224347278}
   - component: {fileID: 6637153288224347277}
   - component: {fileID: 6637153288224347276}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6637153288423257985}
   - component: {fileID: 6637153288423257986}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6637153289005032667}
   - component: {fileID: 6637153289005032644}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 6637153289058905665}
   - component: {fileID: 6637153289058905667}
   - component: {fileID: 6637153289058905666}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: MeleeSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,6 +405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6519114b03aa94da066183d3b8813e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammo: {fileID: 0}
+  reticle: {fileID: 0}
+  cameraRotator: {fileID: 0}
 --- !u!1 &6637153289504902771
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +420,7 @@ GameObject:
   - component: {fileID: 6637153289504902783}
   - component: {fileID: 6637153289504902782}
   - component: {fileID: 6637153289504902781}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +549,7 @@ GameObject:
   - component: {fileID: 6637153289702436137}
   - component: {fileID: 6637153289702436138}
   - component: {fileID: 6637153289702436136}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -662,6 +665,7 @@ MonoBehaviour:
   health: 0
   experience: 0
   expToNextLevel: 10
+  weapon: 0
   elementState: 0
 --- !u!114 &6637153289702436136
 MonoBehaviour:
@@ -693,7 +697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6637153289776776784}
   - component: {fileID: 6637153289776776785}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Third Person Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,7 +834,7 @@ GameObject:
   - component: {fileID: 6637153289827216925}
   - component: {fileID: 6637153289827216924}
   - component: {fileID: 6637153289827216915}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

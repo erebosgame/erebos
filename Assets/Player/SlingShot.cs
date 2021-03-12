@@ -21,7 +21,7 @@ public class SlingShot : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.collider.CompareTag("Enemy"))
         {
             Debug.Log("Hit!");
             Destroy(gameObject);

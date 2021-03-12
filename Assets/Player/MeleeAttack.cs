@@ -41,7 +41,7 @@ public class MeleeAttack : MonoBehaviour
             }
             else
             {
-                StartCoroutine("FireSling");
+                FireSling();
             }
 
         }    
@@ -84,20 +84,24 @@ public class MeleeAttack : MonoBehaviour
         return Vector3.Angle(cameraAngle,enemyAngle);
     }
 
-    IEnumerator FireSling()
+    void FireSling()
     {
-        GameObject projectile = Instantiate(ammo);
-        projectile.transform.position = Player.gameObject.transform.position;
+        GameObject projectile = Instantiate(ammo, Player.gameObject.transform.position, Quaternion.identity);
 
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
 
-        Vector3 direction = (ray.GetPoint(1000) - transform.position).normalized;
+        Vector3 target;
+        Physics.Raycast(ray, out hit, 1000f, ~LayerMask.GetMask(), QueryTriggerInteraction.Ignore);
+        if (hit.collider)
+            target = hit.point;
+        else
+            target = ray.GetPoint(1000);
 
-        Debug.DrawRay(transform.position, direction * 100, Color.red, 10f);
+        Vector3 direction = (target - projectile.transform.position).normalized;
 
         projectile.transform.forward = direction;
-        yield return new WaitForSeconds(0.1f);
 
-        projectile.GetComponent<SlingShot>().Fire(cameraRotator.transform.forward);
+        projectile.GetComponent<SlingShot>().Fire(direction);
     }
 }

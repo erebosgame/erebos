@@ -20,9 +20,9 @@ TagManager:
   - WaterElement
   - AirElement
   - BiomesData
-  - 
-  - 
-  - 
+  - FriendlyProjectile
+  - EnemyProjectile
+  - Player
   - 
   - 
   - 
