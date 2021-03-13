@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireEnemyKamikaze : MonoBehaviour
 {
     private EnemyController controller;
+    private Enemy enemy;
 
     private bool isAttacking;
     private Coroutine attackRoutine;
@@ -14,6 +15,7 @@ public class FireEnemyKamikaze : MonoBehaviour
     void Start()
     {
         controller = this.GetComponent<EnemyController>();
+        enemy = this.GetComponent<Enemy>();
     }
 
     // Update is called once per frame
@@ -63,13 +65,12 @@ public class FireEnemyKamikaze : MonoBehaviour
 
     private void Explosion()
     {
-        GameObject explosion = UnityEngine.Object.Instantiate(explosionPrefab);
-        explosion.transform.position = this.transform.position;
+        GameObject explosion = UnityEngine.Object.Instantiate(explosionPrefab, this.transform.position, Quaternion.identity);
         UnityEngine.Object.Destroy(explosion, 10f);
-        Destroy(this.gameObject);
         if (Vector3.Distance(Player.gameObject.transform.position, this.transform.position) < 5)
         {
             Player.stats.health -= 100;
         }
+        enemy.OnDeath();
     }
 }

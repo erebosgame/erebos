@@ -24,6 +24,7 @@ public class SlingShot : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             Debug.Log("Hit!");
+            collision.collider.GetComponent<Damageable>().TakeDamage(20);
             Destroy(gameObject);
         }
     }

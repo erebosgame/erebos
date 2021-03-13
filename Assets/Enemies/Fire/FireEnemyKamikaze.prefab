@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 921022236446021998}
   - component: {fileID: 921022236446021969}
   - component: {fileID: 921022236446021995}
+  - component: {fileID: -1238160982570368523}
   m_Layer: 0
   m_Name: FireEnemyKamikaze
   m_TagString: Enemy
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921022236446021993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.18, y: 1.445, z: 7.7199993}
+  m_LocalPosition: {x: 5.098496, y: 0, z: -2.0497892}
   m_LocalScale: {x: 1, y: 0.554739, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 0}
@@ -144,3 +145,16 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1238160982570368523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921022236446021993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f191d9d8c6fc64419be2a751a7806a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
