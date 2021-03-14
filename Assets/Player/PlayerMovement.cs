@@ -14,11 +14,14 @@ class PlayerMovement : MonoBehaviour
 
     private float speed = 7f;
     private float jumpVelocity = 6f;
-    private float gravity = -9.81f;
-    private float fallMultiplier = 2.5f;
+    private float fallMultiplier = 2.8f;
     private float airControl = 0.7f;
 
+    private bool isGliding = false;
+
     bool isJumping = false;
+
+    public GameObject glider;
 
     void Awake()
     {
@@ -65,7 +68,7 @@ class PlayerMovement : MonoBehaviour
                 }
                 if (jump)
                 {
-                    jumpVector = (relativeMoveDirection * speed * airControl) + Vector3.up * jumpVelocity;
+                    jumpVector = (relativeMoveDirection * speed * (isGliding ? 0f : airControl)) + Vector3.up * jumpVelocity;
                 }
                 else
                 {
@@ -74,7 +77,13 @@ class PlayerMovement : MonoBehaviour
             }
             else 
             {
-                moveVector = relativeMoveDirection * speed * (1-airControl);
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    ActivateGlider();
+                }
+
+                moveVector = relativeMoveDirection * (isGliding ? 5.5f :speed) * (1- (isGliding ? 0f : airControl));
             }
 
             currentVelocity = moveVector + jumpVector;
@@ -101,22 +110,33 @@ class PlayerMovement : MonoBehaviour
     private void ApplyGravity(float elapsed)
     {
         if (controller.isGrounded) 
-        {   
+        {
+            isGliding = false;
+            glider.SetActive(isGliding);
+
             if (jumpVector.y < 0)
             {
                 jumpVector = Vector3.zero + Vector3.up * -2f;
             }
         }
-        else 
+        else //is falling 
         {
             // if (jumpVector.y <= 0 || !isJumping)
             if (jumpVector.y <= 0)
             {
-                jumpVector.y += gravity * fallMultiplier * elapsed;
+                if(isGliding)
+                {
+                    jumpVector.y += -Physics.gravity.magnitude * 0.09f * elapsed;
+
+                }
+                else
+                {
+                    jumpVector.y += -Physics.gravity.magnitude * fallMultiplier * elapsed;
+                }
             }
             else 
             {
-                jumpVector.y += gravity * elapsed;
+                jumpVector.y += -Physics.gravity.magnitude * elapsed;
             }
         }
     }
@@ -137,5 +157,17 @@ class PlayerMovement : MonoBehaviour
     bool CanMove()
     {
         return Player.stats.elementState == Element.NoElement;
+    }
+
+    private void ActivateGlider()
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, Vector3.down, out hit);
+        if (hit.distance > 4)
+        {
+            isGliding = !isGliding;
+            glider.SetActive(isGliding);
+            jumpVector = Vector3.zero;
+        }
     }
 }

@@ -7,7 +7,7 @@ public class MeleeAttack : MonoBehaviour
     Camera mainCamera;
     List<Collider> triggerList = new List<Collider>();
     GameObject hitEnemyObject;
-    Enemy hitEnemy;
+    Damageable hitEnemy;
 
     public GameObject ammo;
 
@@ -32,7 +32,8 @@ public class MeleeAttack : MonoBehaviour
                     if (collider)
                     {
                         hitEnemyObject = collider.gameObject;
-                        hitEnemy = hitEnemyObject.GetComponent<Enemy>();
+                        hitEnemy = hitEnemyObject.GetComponent<Damageable>();
+                        Debug.Log(hitEnemy);
                         hitEnemy.TakeDamage(15);
                         Player.stats.UseSkill(Element.NoElement);
                         break;
@@ -43,7 +44,6 @@ public class MeleeAttack : MonoBehaviour
             {
                 FireSling();
             }
-
         }    
     }
 
