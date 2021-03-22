@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
@@ -52,10 +53,14 @@ public class MeleeAttack : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(this.transform.position - this.transform.forward, distance);        
         List<(float,Collider)> angles = new List<(float, Collider)>();
 
-        foreach (Collider collider in colliders) {
+        angles.AddRange(colliders
+            .Where(c => c.CompareTag("Enemy") && !c.isTrigger)
+            .Select(c => (GetColliderAngle(c), c)));
+
+     /*   foreach (Collider collider in colliders) {  
             if (collider.CompareTag("Enemy") && !collider.isTrigger)
                 angles.Add((GetColliderAngle(collider),collider));
-        }         
+        }        */ 
 
         angles.Sort((x,y) => x.Item1.CompareTo(y.Item1));
 

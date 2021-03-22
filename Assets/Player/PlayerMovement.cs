@@ -170,4 +170,9 @@ class PlayerMovement : MonoBehaviour
             jumpVector = Vector3.zero;
         }
     }
+
+    public void PushPlayer(Vector3 direction, float force)
+    {
+        jumpVector += direction.normalized * force;
+    }
 }

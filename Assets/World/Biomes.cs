@@ -46,6 +46,12 @@ public class Biomes : MonoBehaviour
         alphaPos.z = ((hit.point.z - t.gameObject.transform.position.z) / t.terrainData.size.z) * t.terrainData.alphamapHeight;
         float[,,] map = (t.terrainData.GetAlphamaps((int)alphaPos.x, (int)alphaPos.z, 1, 1));
         Element newBiome = (Element)GetMaxIndex(map);
+        /*
+         *      Debug.Log(t.terrainData.terrainLayers[1].maskMapTexture.width +"" + t.terrainData.terrainLayers[1].maskMapTexture.height);
+                Color color = (t.terrainData.terrainLayers[1].maskMapTexture.GetPixel((int)alphaPos.x, (int)alphaPos.z));
+        
+                Element newBiome = (Element) color.maxColorComponent;
+         */
         if (currentBiome != newBiome)
         {
             currentBiome = newBiome;
