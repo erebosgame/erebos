@@ -8,7 +8,7 @@ class PlayerMovement : MonoBehaviour
 
     Camera mainCamera;
 
-    private Vector3 jumpVector = new Vector3();
+    public Vector3 jumpVector = new Vector3();
     public Vector3 facingDirection { get; private set; }
     public Vector3 currentVelocity { get; private set; }
 
