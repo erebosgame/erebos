@@ -34,6 +34,7 @@ class WaterElement : MonoBehaviour
         this.gameObject.transform.SetParent(Player.gameObject.transform.parent);
         Player.gameObject.transform.SetParent(this.gameObject.transform);
         Player.gameObject.transform.localPosition = Vector3.zero;
+        Player.elementGameObject = this.gameObject;
         StartCoroutine("EndAfterTime");
     }
 
@@ -121,11 +122,15 @@ class WaterElement : MonoBehaviour
 
     public void End() 
     {
-        transform.DetachChildren();
+        while (transform.childCount > 0) 
+        {
+            transform.GetChild(0).parent = transform.parent;
+        }
         Player.gameObject.GetComponent<CharacterController>().enabled = true;
         Player.gameObject.transform.rotation = Quaternion.identity;
         Player.stats.elementState = Element.NoElement;
         meshRenderer.enabled = true;
+        Player.elementGameObject = null;
         UnityEngine.Object.Destroy(this.gameObject);
     }
 }

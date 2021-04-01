@@ -13,9 +13,8 @@ public class EarthEnemyBoss : MonoBehaviour
     public GameObject elbowTarget;
     public BioIK.BioIK bioIK;
 
-    public Vector3 fistPosition = new Vector3(1.886f, 1.351f, 1.198f);
-    public Vector3 elbowPosition;
-
+    private Dictionary<string, BioIK.BioSegment> segments;
+    private Vector3 fistPosition = new Vector3(1.5f, 2.1f, 1.7f);
     BioIK.Position elbowObjective;
     Vector3 direction;
     Vector3 target;
@@ -23,10 +22,16 @@ public class EarthEnemyBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        elbowTarget.transform.position = fistTarget.transform.position + direction * 100;
         colliderVectors = new Dictionary<Collider, Vector3>();
         elbowObjective = (BioIK.Position) bioIK.Segments.Where(s => s.name.Equals("LowerArm.R")).Single().Objectives.GetValue(0);
         colliders = GetComponentsInChildren<MeshCollider>();
         colliders.ToList().ForEach(c => colliderVectors[c] = c.transform.position);
+        segments = new Dictionary<string, BioIK.BioSegment>();
+        bioIK.Segments.ForEach(s => segments[s.name] = s);
+        print(segments["Head"].Joint.X.LowerLimit);
+        WakeUp();
     }
 
     // Update is called once per frame
@@ -37,7 +42,7 @@ public class EarthEnemyBoss : MonoBehaviour
             attack = !attack;
             if (attack)
             {
-                target = Player.gameObject.transform.position;            
+                target = Player.gameObject.transform.position + Vector3.down * 5f;            
                 ToConvex();
             }
             else
@@ -61,6 +66,13 @@ public class EarthEnemyBoss : MonoBehaviour
         colliders.ToList().ForEach(c => colliderVectors[c] = c.transform.position);
     }
 
+    public void WakeUp()
+    {
+        segments["Head"].Joint.X.UpperLimit = 20;
+        segments["Head"].Joint.X.TargetValue = 0;
+        segments["Torso"].Joint.X.UpperLimit = 10;
+    }
+
     private void MoveFistToTarget()
     {
         fistTarget.transform.position = Vector3.MoveTowards(fistTarget.transform.position, target, 350f*Time.deltaTime );
@@ -79,11 +91,11 @@ public class EarthEnemyBoss : MonoBehaviour
 
     private void ToConvex()
     {
-        colliders.ToList().ForEach(c => c.convex = true);
+        // colliders.ToList().ForEach(c => c.convex = true);
     }
     private void ToConcave()
     {
-        colliders.ToList().Where(c => !c.isTrigger).ToList().ForEach(c => c.convex = false);
+        // colliders.ToList().Where(c => !c.isTrigger).ToList().ForEach(c => c.convex = false);
     }
 
     private bool IsIdle()
@@ -114,7 +126,24 @@ public class EarthEnemyBoss : MonoBehaviour
             direction = direction.normalized;
             print("Damage: "+ v);
             Player.stats.health -= (int)v;
-            Player.movement.PushPlayer(direction, v*10f);   
+            Player.movement.PushPlayer(direction, 10f);   
+        }
+        else
+        {
+            Player.ActiveGameObject.transform.SetParent(collided.transform.parent);
+            print(collider.name + " enter");
+        }
+    }
+
+    public void OnChildTriggerExit(Collider collided, Collider collider)
+    {
+        if (!collider.CompareTag("Player"))
+            return;
+
+        if (Player.ActiveGameObject.transform.parent == collider.transform.parent)
+        {
+            Player.ActiveGameObject.transform.SetParent(null);
+            print(collider.name + " exit");
         }
     }
 }

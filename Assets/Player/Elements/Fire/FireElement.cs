@@ -25,6 +25,7 @@ class FireElement : MonoBehaviour
         
         this.gameObject.transform.SetParent(Player.gameObject.transform.parent);
         Player.gameObject.transform.SetParent(this.gameObject.transform);
+        Player.elementGameObject = this.gameObject;
 
         Player.movement.FaceRelativeDirection(new Vector3(0,0,1));
         initialDirection = Camera.main.transform.forward;
@@ -76,7 +77,11 @@ class FireElement : MonoBehaviour
         this.GetComponentInChildren<ParticleSystem>().Stop(true);
         meshRenderer.enabled = true;
         Player.stats.elementState = Element.NoElement;
-        transform.DetachChildren();
+        while (transform.childCount > 0) 
+        {
+            transform.GetChild(0).parent = transform.parent;
+        }
+        Player.elementGameObject = null;
         UnityEngine.Object.Destroy(this.gameObject);
     }
 }

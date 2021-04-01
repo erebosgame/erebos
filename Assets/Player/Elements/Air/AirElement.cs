@@ -26,6 +26,7 @@ class AirElement : MonoBehaviour
         
         this.gameObject.transform.SetParent(Player.gameObject.transform.parent);
         Player.gameObject.transform.SetParent(this.gameObject.transform);
+        Player.elementGameObject = this.gameObject;
 
         Player.movement.FaceRelativeDirection(new Vector3(0,0,1));
         initialDirection = Camera.main.transform.forward;
@@ -60,7 +61,11 @@ class AirElement : MonoBehaviour
         Player.gameObject.GetComponent<CharacterController>().enabled = true;
         Player.stats.elementState = Element.NoElement;
         this.GetComponentInChildren<ParticleSystem>().Stop(true);
-        transform.DetachChildren();
+        while (transform.childCount > 0) 
+        {
+            transform.GetChild(0).parent = transform.parent;
+        }
+        Player.elementGameObject = null;
         UnityEngine.Object.Destroy(this.gameObject);
     }
 }

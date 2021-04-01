@@ -11,5 +11,9 @@ public class RaiseCollision : MonoBehaviour
     {
         parent.OnChildTriggerEnter(GetComponent<MeshCollider>(), other);
     }
+    void OnTriggerExit(Collider other)
+    {
+        parent.OnChildTriggerExit(GetComponent<MeshCollider>(), other);
+    }
 }
 
