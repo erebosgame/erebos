@@ -1,3 +1,5 @@
+/Assets/Packages/*
+
 # =============== #
 # Unity generated #
 # =============== #
@@ -45,3 +47,5 @@ ehthumbs.db
 Corridor/Library/ShaderCache/
 Corridor/Library/metadata/
 Logs/
+
+Assets/Packages/

@@ -22,7 +22,6 @@ public class EarthEnemyBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         elbowTarget.transform.position = fistTarget.transform.position + direction * 100;
         colliderVectors = new Dictionary<Collider, Vector3>();
         elbowObjective = (BioIK.Position) bioIK.Segments.Where(s => s.name.Equals("LowerArm.R")).Single().Objectives.GetValue(0);
@@ -30,7 +29,7 @@ public class EarthEnemyBoss : MonoBehaviour
         colliders.ToList().ForEach(c => colliderVectors[c] = c.transform.position);
         segments = new Dictionary<string, BioIK.BioSegment>();
         bioIK.Segments.ForEach(s => segments[s.name] = s);
-        print(segments["Head"].Joint.X.LowerLimit);
+        //print(segments["Head 1"].Joint.X.LowerLimit);
         WakeUp();
     }
 
@@ -68,8 +67,8 @@ public class EarthEnemyBoss : MonoBehaviour
 
     public void WakeUp()
     {
-        segments["Head"].Joint.X.UpperLimit = 20;
-        segments["Head"].Joint.X.TargetValue = 0;
+        segments["Head 1"].Joint.X.UpperLimit = 20;
+        segments["Head 1"].Joint.X.TargetValue = 0;
         segments["Torso"].Joint.X.UpperLimit = 10;
     }
 
@@ -106,7 +105,7 @@ public class EarthEnemyBoss : MonoBehaviour
     private float GetVelocity(Collider c)
     {
         return (c.transform.position - colliderVectors[c]).magnitude;
-    }
+    }   
 
     public void OnChildTriggerEnter(Collider collided, Collider collider)
     {

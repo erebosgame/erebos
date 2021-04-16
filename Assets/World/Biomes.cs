@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class Biomes : MonoBehaviour
 {
-    public Element currentBiome = Element.NoElement;
+    /*public Element currentBiome = Element.NoElement;
     public VolumeProfile fireProfile;
     public VolumeProfile earthProfile;
     public VolumeProfile waterProfile;
@@ -51,7 +51,7 @@ public class Biomes : MonoBehaviour
                 Color color = (t.terrainData.terrainLayers[1].maskMapTexture.GetPixel((int)alphaPos.x, (int)alphaPos.z));
         
                 Element newBiome = (Element) color.maxColorComponent;
-         */
+         
         if (currentBiome != newBiome)
         {
             currentBiome = newBiome;
@@ -74,5 +74,5 @@ public class Biomes : MonoBehaviour
                     break;
             }
         }
-    }
+    } */
 }
