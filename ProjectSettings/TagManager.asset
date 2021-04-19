@@ -23,7 +23,7 @@ TagManager:
   - FriendlyProjectile
   - EnemyProjectile
   - Player
-  - 
+  - PostProcessing
   - 
   - 
   - 
