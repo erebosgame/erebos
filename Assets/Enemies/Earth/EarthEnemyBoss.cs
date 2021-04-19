@@ -130,6 +130,9 @@ public class EarthEnemyBoss : MonoBehaviour
         else
         {
             Player.ActiveGameObject.transform.SetParent(collided.transform.parent);
+            Debug.Log("Player" + Player.gameObject.transform.forward);
+            Debug.Log("Camera" + Camera.main.transform.forward);
+            Debug.Log("Direzione palla" + collider.transform.forward);
             print(collider.name + " enter");
         }
     }

@@ -52,7 +52,7 @@ public class AnimationHandler : MonoBehaviour
             yield return new WaitForSeconds(total_time/steps);
             bioik.AnimationBlend = 1 - (float)i*(1-min) / steps;
             bioik.AnimationWeight = 1 - (float)i*(1-min) / steps;
-            print(bioik.AnimationBlend);
+            //print(bioik.AnimationBlend);
         }
     }
 }
