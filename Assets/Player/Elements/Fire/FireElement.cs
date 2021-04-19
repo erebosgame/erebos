@@ -24,7 +24,9 @@ class FireElement : MonoBehaviour
         meshRenderer.enabled = false;
         
         this.gameObject.transform.SetParent(Player.gameObject.transform.parent);
+        Debug.Log("Padre palla: "+ Player.gameObject.transform.parent);
         Player.gameObject.transform.SetParent(this.gameObject.transform);
+        //Debug.Log(Player.gameObject.transform.parent);
         Player.elementGameObject = this.gameObject;
 
         Player.movement.FaceRelativeDirection(new Vector3(0,0,1));

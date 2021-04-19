@@ -14,14 +14,9 @@ public class FireThrower : MonoBehaviour
     private State state;
     private EnemyController controller;
     private Enemy enemy;
-
-
     private bool isAttacking;
     private bool isMovingIdle;
-    private Coroutine attackRoutine = null;
-
     public GameObject ammo;
-
     private Vector3 destination;
     Vector2 direction;
     private Vector3 spawnPosition;
@@ -60,21 +55,20 @@ public class FireThrower : MonoBehaviour
                 controller.MoveTowards(destination, Time.deltaTime);
             break;
             case State.ChaseTarget:
-
                 controller.MoveTowards(Player.gameObject.transform.position, Time.deltaTime);
-        
+
                 if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < 10F)
                 {   
                     state = State.Attack;
                 }
-                else if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < 5F)
+                else if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < 8F)
                 {   
                     state = State.Escape;
                 }
             break;
             case State.Attack:
                 isAttacking = true;
-                if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < 5F)
+                if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < 8F)
                 {   
                     state = State.Escape;
                 }
@@ -91,6 +85,7 @@ public class FireThrower : MonoBehaviour
             break;
             case State.Escape:
                 isAttacking = false;
+                controller.speed = 8;
                 if (!isMovingIdle)
                 {
                     direction = (Player.gameObject.transform.position - this.transform.position) * -1* Random.Range(10f,7f);
@@ -99,7 +94,7 @@ public class FireThrower : MonoBehaviour
                 }
                 else
                 {
-                    if (Vector3.Distance(this.gameObject.transform.position, destination) < 5f && isMovingIdle)
+                    if (Vector3.Distance(this.gameObject.transform.position, destination) < 8f && isMovingIdle)
                     {
                         isMovingIdle = false;
                     }
@@ -107,6 +102,7 @@ public class FireThrower : MonoBehaviour
                 controller.MoveTowards(destination, Time.deltaTime);
                 if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) >= 10F)
                 {   
+                    controller.speed = 5;
                     state = State.Attack;
                 }
             break;

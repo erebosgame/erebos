@@ -16,9 +16,9 @@ class PlayerMovement : MonoBehaviour
     private float jumpVelocity = 6f;
     private float fallMultiplier = 2.8f;
     private float airControl = 0.7f;
-
     private bool isGliding = false;
-
+    private float glidingGravity = 0.07f;
+    private float glidingSpeed = 8.5f;
     bool isJumping = false;
 
     public GameObject glider;
@@ -34,7 +34,7 @@ class PlayerMovement : MonoBehaviour
         controller = this.GetComponent<CharacterController>();
         mainCamera = Camera.main;
         facingDirection = transform.forward;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     void FixedUpdate()
@@ -83,7 +83,7 @@ class PlayerMovement : MonoBehaviour
                     ActivateGlider();
                 }
 
-                moveVector = relativeMoveDirection * (isGliding ? 5.5f :speed) * (1- (isGliding ? 0f : airControl));
+                moveVector = relativeMoveDirection * (isGliding ? glidingSpeed : speed) * (1- (isGliding ? 0f : airControl));
             }
 
             currentVelocity = moveVector + jumpVector;
@@ -126,7 +126,7 @@ class PlayerMovement : MonoBehaviour
             {
                 if(isGliding)
                 {
-                    jumpVector.y += -Physics.gravity.magnitude * 0.09f * elapsed;
+                    jumpVector.y += -Physics.gravity.magnitude * glidingGravity * elapsed;
 
                 }
                 else

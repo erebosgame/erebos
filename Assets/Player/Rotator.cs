@@ -20,9 +20,9 @@ public class Rotator : MonoBehaviour
     private void Update()
     {
         //Rotate the Follow Target transform based on the input
-        this.transform.rotation *= Quaternion.AngleAxis(Input.GetAxis("Mouse X") * sens, Vector3.up);
+        this.transform.rotation *= Quaternion.AngleAxis(Input.GetAxis("Mouse X") * sens * Time.deltaTime * 100, Vector3.up);
 
-        this.transform.rotation *= Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * 1.5f * -1, Vector3.right);
+        this.transform.rotation *= Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * 1.5f * -1 * Time.deltaTime * 100, Vector3.right);
 
         var angles = this.transform.localEulerAngles;
         angles.z = 0;

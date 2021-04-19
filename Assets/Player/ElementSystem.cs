@@ -26,6 +26,7 @@ class ElementSystem : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1) && Player.stats.CanUseSkill(Element.Fire))
             {
                 Instantiate(fireballPrefab, Player.gameObject.transform.position, Quaternion.identity);
+                Debug.Log(Player.gameObject.transform.position);
                 Player.stats.UseSkill(Element.Fire);
                 // currentElement = new FireElement(fireballPrefab, explosionPrefab);
                 // currentElement.Start();
