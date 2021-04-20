@@ -17,8 +17,8 @@ class PlayerMovement : MonoBehaviour
     private float fallMultiplier = 2.8f;
     private float airControl = 0.7f;
     private bool isGliding = false;
-    private float glidingGravity = 0.07f;
-    private float glidingSpeed = 8.5f;
+    private float glidingGravity = 0.065f;
+    private float glidingSpeed = 12f;
     bool isJumping = false;
 
     public GameObject glider;
