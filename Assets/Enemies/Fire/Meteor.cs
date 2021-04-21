@@ -14,6 +14,7 @@ public class Meteor : MonoBehaviour, Damageable
     GameObject recallTarget;
     Collider recallCollider;
     Rigidbody rb;
+    public GameObject destroyParticles;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -86,8 +87,9 @@ public class Meteor : MonoBehaviour, Damageable
 
     public void OnDeath()
     {
+        Instantiate(destroyParticles, this.transform.position, Quaternion.identity);
+        
         fireBoss.OnMeteorDestroy();
         this.gameObject.SetActive(false);
-        // Destroy(this.gameObject);
     }
 }

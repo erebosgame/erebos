@@ -33,7 +33,6 @@ public class HpBar : MonoBehaviour
     }
     public void UpdateHealth(int health, int maxHealth, bool forceShow)
     {
-        print(canvas);
         canvas.enabled = health < maxHealth || forceShow;
 
         if (canvas.enabled) {

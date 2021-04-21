@@ -7,7 +7,6 @@ public class MeteorDamageable : MonoBehaviour, Damageable
     Meteor meteor;
     public void OnTriggerEnter(Collider collider) 
     {
-        print("TEST");
         if (collider.CompareTag("Player"))
         {
             meteor.OnCollisionPlayer(collider);
