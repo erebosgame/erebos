@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 1123574959111478925}
   - component: {fileID: 1641717576299970663}
   - component: {fileID: 815572732873417751}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: PlayerHit
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.12
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.005, y: -0.02, z: 0}
 --- !u!1 &2090760655022692392
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-    m_AmplitudeGain: 1
+    m_AmplitudeGain: 50
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 1
@@ -284,7 +284,7 @@ MonoBehaviour:
       m_ScaleWithImpact: 1
       m_HoldForever: 0
     m_ImpactRadius: 100
-    m_DirectionMode: 0
+    m_DirectionMode: 1
     m_DissipationMode: 2
     m_DissipationDistance: 1000
     m_PropagationSpeed: 2000
