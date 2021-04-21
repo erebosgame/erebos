@@ -12,7 +12,7 @@ class PlayerMovement : MonoBehaviour
     public Vector3 facingDirection { get; private set; }
     public Vector3 currentVelocity { get; private set; }
 
-    private float speed = 7f;
+    private float speed = 8f;
     private float jumpVelocity = 6f;
     private float fallMultiplier = 2.8f;
     private float airControl = 0.7f;
