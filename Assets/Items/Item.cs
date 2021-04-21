@@ -12,7 +12,7 @@ public class Item : MonoBehaviour, Targetable, Interactable
         if (outline)
         {
             outline.OutlineMode = Outline.Mode.OutlineAll;
-            outline.OutlineColor = Color.green;
+            // outline.OutlineColor = Color.green;
             outline.OutlineWidth = 0;
         }
     } 
@@ -20,7 +20,7 @@ public class Item : MonoBehaviour, Targetable, Interactable
     public void OnTargetStart() 
     { 
         if (outline)
-            outline.OutlineWidth = 2; 
+            outline.OutlineWidth = 8; 
     }
     public void OnTargetStop() 
     { 

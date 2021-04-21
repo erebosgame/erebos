@@ -141,7 +141,6 @@ public class FireThrower : MonoBehaviour
         }
     } */
 
-
     void FireSling()
     {
         GameObject projectile = Instantiate(ammo, this.gameObject.transform.position, Quaternion.identity);
@@ -160,9 +159,6 @@ public class FireThrower : MonoBehaviour
         projectile.transform.forward = direction;
 
         projectile.GetComponent<FireBall>().Fire(direction);
-
-        Debug.Log("Sparo");
         //yield return new WaitForSeconds(20F);
     }
-    
 }

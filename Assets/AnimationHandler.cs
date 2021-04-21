@@ -43,7 +43,6 @@ public class AnimationHandler : MonoBehaviour
 
     IEnumerator ActivateBioIK()
     {
-        print("testone");
         int steps = 20;
         float min = 0f;
         float total_time = 1f;

@@ -8,7 +8,7 @@ public class ElementItem : Item
 
     protected override void Start()
     {
-        this.gameObject.GetComponent<Renderer>().material.color = element.GetColor();
+        // this.gameObject.GetComponent<Renderer>().material.color = element.GetColor();
         base.Start();
     }
 

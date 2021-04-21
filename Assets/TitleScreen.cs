@@ -18,12 +18,6 @@ public class TitleScreen : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        print(Cursor.lockState);
-    }
-
     public void PlayGame()
     {
         Debug.Log("Play");
