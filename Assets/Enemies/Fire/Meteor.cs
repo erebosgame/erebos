@@ -20,7 +20,7 @@ public class Meteor : MonoBehaviour, Damageable
         rb = GetComponent<Rigidbody>();
 
         GameObject healthBarContainer = Instantiate(new GameObject("healthBarContainer"), this.transform);
-        healthBarContainer.transform.localScale = new Vector3(10f, 10f, 10f);
+        healthBarContainer.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         GameObject hpObj = Instantiate(healthBarPrefab, healthBarContainer.transform);
         hpObj.transform.localPosition = new Vector3(0, 1.5f, 0);
         healthBar = hpObj.GetComponent<HpBar>();
