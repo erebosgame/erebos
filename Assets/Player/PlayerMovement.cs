@@ -147,6 +147,11 @@ class PlayerMovement : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(newRotation), speed * Time.deltaTime);
     }
 
+    public void RotatePlayer(Vector3 newRotation)
+    {
+        facingDirection = newRotation;
+        transform.rotation =  Quaternion.LookRotation(newRotation);
+    }
 
     public void RotatePlayer(float degrees)
     {

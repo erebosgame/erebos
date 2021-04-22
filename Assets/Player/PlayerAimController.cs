@@ -24,7 +24,8 @@ public class PlayerAimController : MonoBehaviour
     {
         if(!Player.stats.weapon && !aimCamera.activeInHierarchy)
         {
-            playerMovement.RotatePlayer(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z),900f);
+            print(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
+            playerMovement.RotatePlayer(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
             normalCamera.SetActive(false);
             aimCamera.SetActive(true);
             cameraRotator.SetActive(true);
