@@ -15,12 +15,12 @@ public class ElementUI : MonoBehaviour
     void Awake()
     {
         _instance = this;
+        elements = new Dictionary<Element, GameObject>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        elements = new Dictionary<Element, GameObject>();
         currentElement = Instantiate(currentElementPrefab, this.transform);
     }
 

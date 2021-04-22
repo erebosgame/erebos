@@ -26,6 +26,7 @@ public class TestStaticDamageble : MonoBehaviour, Damageable
     {
         
     }
+
     public void OnDeath()
     {
         //stop render
@@ -43,5 +44,4 @@ public class TestStaticDamageble : MonoBehaviour, Damageable
 
         healthBar.UpdateHealth(hit, 5);
     }
-
 }

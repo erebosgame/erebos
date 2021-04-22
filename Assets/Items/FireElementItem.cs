@@ -5,7 +5,12 @@ using UnityEngine;
 public class FireElementItem : ElementItem
 {
     public GameObject disabledFireElement;
+    public static FireElementItem instance;
 
+    protected override void Awake()
+    {
+        instance = this;
+    }
     protected override void Start()
     {
         element = Element.Fire;
@@ -20,4 +25,9 @@ public class FireElementItem : ElementItem
         disabledFireElement.transform.rotation = this.transform.rotation;
         base.OnInteract();
     }
+
+    public static void LoadElement()
+    {
+        instance.OnInteract();
+    } 
 }

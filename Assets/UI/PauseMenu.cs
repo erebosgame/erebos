@@ -49,18 +49,38 @@ public class PauseMenu : MonoBehaviour
         gamePaused = true;  
     }
 
-    void LoadTitleScreen()
+    public void LoadTitleScreen()
     {
         Debug.Log("TitleScreen!");
     }
 
-    void SaveGame()
+    public void SaveGame()
     {
+        PlayerPrefs.SetInt("FireElement", Player.stats.unlockedElements[Element.Fire] ? 1 : 0);
+        PlayerPrefs.SetInt("EarthElement", Player.stats.unlockedElements[Element.Earth] ? 1 : 0);
+        PlayerPrefs.SetInt("AirElement", Player.stats.unlockedElements[Element.Air] ? 1 : 0);
+        PlayerPrefs.SetInt("WaterElement", Player.stats.unlockedElements[Element.Water] ? 1 : 0);
+
+
+        PlayerPrefs.SetInt("FireDefeated", Player.stats.defeatedBosses.Contains(Element.Fire) ? 1 : 0);
+        PlayerPrefs.SetInt("EarthDefeated", Player.stats.defeatedBosses.Contains(Element.Earth) ? 1 : 0);
+        PlayerPrefs.SetInt("AirDefeated", Player.stats.defeatedBosses.Contains(Element.Air) ? 1 : 0);
+        PlayerPrefs.SetInt("WaterDefeated", Player.stats.defeatedBosses.Contains(Element.Water) ? 1 : 0);
+
+        PlayerPrefs.SetFloat("FireBossDeathAngle", FireBoss.instance.transform.parent.transform.localEulerAngles.y);
+
+        PlayerPrefs.SetFloat("PosX", Player.gameObject.transform.position.x);
+        PlayerPrefs.SetFloat("PosY", Player.gameObject.transform.position.y);
+        PlayerPrefs.SetFloat("PosZ", Player.gameObject.transform.position.z);
+
+
+        PlayerPrefs.Save();
         Debug.Log("Saving...");
     }
 
-    void LoadGame()
+    public void QuitGame()
     {
-        Debug.Log("Loading...");
+        Debug.Log("Quit");
+        Application.Quit();
     }
 }

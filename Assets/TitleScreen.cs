@@ -29,6 +29,39 @@ public class TitleScreen : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public void LoadGame()
+    {
+        Debug.Log("Load");
+        bool fireboss = PlayerPrefs.GetInt("FireDefeated", 0) != 0;
+        bool earthboss = PlayerPrefs.GetInt("EarthDefeated", 0) != 0;
+        bool airboss = PlayerPrefs.GetInt("AirDefeated", 0)!= 0;
+        bool waterboss = PlayerPrefs.GetInt("WaterDefeated", 0) != 0;
+        
+        bool fireelement = PlayerPrefs.GetInt("FireElement", 0) != 0;
+        bool earthelement = PlayerPrefs.GetInt("EarthElement", 0) != 0;
+        bool airelement = PlayerPrefs.GetInt("AirElement", 0)!= 0;
+        bool waterelement = PlayerPrefs.GetInt("WaterElement", 0) != 0;
+
+        int health = PlayerPrefs.GetInt("Health", 100);
+        float posx = PlayerPrefs.GetFloat("PosX", 0);
+        float posy = PlayerPrefs.GetFloat("PosY", 0);
+        float posz = PlayerPrefs.GetFloat("PosZ", 0);
+
+        if (fireboss)
+        {
+            FireBoss.LoadKill();
+            if (fireelement)
+                FireElementItem.LoadElement();
+        }
+        
+        Player.stats.health = health;
+        Player.gameObject.GetComponent<CharacterController>().enabled = false;
+        Player.gameObject.transform.position = new Vector3(posx,posy,posz);
+        Player.gameObject.GetComponent<CharacterController>().enabled = true;
+
+        PlayGame();
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit");

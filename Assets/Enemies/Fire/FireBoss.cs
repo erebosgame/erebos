@@ -33,6 +33,12 @@ public class FireBoss : MonoBehaviour
     float recallTime = 10f;
     float reloadTime = 5f;
 
+    public static FireBoss instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -164,6 +170,7 @@ public class FireBoss : MonoBehaviour
     {
         UpdateHealth(0);
         StartCoroutine("Sink");
+        Player.stats.defeatedBosses.Add(Element.Fire);
     }
 
     IEnumerator Sink() {
@@ -189,6 +196,28 @@ public class FireBoss : MonoBehaviour
         }
         fireElement.transform.SetParent(this.transform.parent);
         this.gameObject.SetActive(false);        
+    }
+
+    public static void LoadKill()
+    {
+        instance.UpdateHealth(0);
+        Player.stats.defeatedBosses.Add(Element.Fire);
+        // instance.animator.SetTrigger("skip");
+        instance.transform.position = new Vector3(instance.transform.position.x, 
+                                                    instance.transform.position.y - 180f, 
+                                                    instance.transform.position.z);
+        instance.platforms.transform.position = new Vector3(instance.platforms.transform.position.x, 
+                                                            instance.platforms.transform.position.y + 21f, 
+                                                            instance.platforms.transform.position.z);
+        instance.doors.transform.position = new Vector3(instance.doors.transform.position.x, 
+                                                        instance.doors.transform.position.y - 210f, 
+                                                        instance.doors.transform.position.z);
+        print(PlayerPrefs.GetFloat("FireBossDeathAngle"));
+        instance.transform.parent.transform.localEulerAngles = new Vector3(0, PlayerPrefs.GetFloat("FireBossDeathAngle"), 0);
+        instance.fireElement.transform.SetParent(instance.transform.parent);
+        instance.fireElement.transform.localPosition = new Vector3(-1f, 23f, 55f);
+        instance.fireElement.transform.localRotation = Quaternion.Euler(180,0,0);
+        instance.gameObject.SetActive(false);
     }
 
     /*  public float GetCurrentAnimatorTime(Animator targetAnim, int layer = 0)

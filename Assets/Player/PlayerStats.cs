@@ -37,6 +37,7 @@ class PlayerStats : MonoBehaviour
 
     public Element elementState;
 
+    public HashSet<Element> defeatedBosses;
     public Dictionary<Element, bool> unlockedElements;
     public Dictionary<Element, float> lastUse;
     public Dictionary<Element, float> cooldowns;
@@ -53,6 +54,7 @@ class PlayerStats : MonoBehaviour
         experience = 0;
 
         lastUse = new Dictionary<Element, float>();
+        defeatedBosses = new HashSet<Element>();
         unlockedElements = new Dictionary<Element, bool>
         {
             { Element.Fire, false },

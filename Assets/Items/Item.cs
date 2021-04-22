@@ -6,6 +6,8 @@ public class Item : MonoBehaviour, Targetable, Interactable
 {
     private Outline outline;
 
+    protected virtual void Awake() {}
+    
     protected virtual void Start()
     {
         outline = GetComponent<Outline>();
