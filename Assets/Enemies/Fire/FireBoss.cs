@@ -79,7 +79,9 @@ public class FireBoss : MonoBehaviour
             {
                 case FireBossState.Waiting:
                     Shoot();
+                    print("START WAIT");
                     yield return new WaitForSeconds(recallTime);
+                    print("STOP WAIT");
                     break;
                 case FireBossState.MeteorShot:
                     Recall();
@@ -138,7 +140,7 @@ public class FireBoss : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && bossState == FireBossState.Sleeping)
         {  
             WakeUp();
         }
@@ -198,7 +200,7 @@ public class FireBoss : MonoBehaviour
         this.gameObject.SetActive(false);        
     }
 
-    public static void LoadKill()
+    public static void LoadKill(float angle)
     {
         instance.UpdateHealth(0);
         Player.stats.defeatedBosses.Add(Element.Fire);
@@ -213,7 +215,7 @@ public class FireBoss : MonoBehaviour
                                                         instance.doors.transform.position.y - 210f, 
                                                         instance.doors.transform.position.z);
         print(PlayerPrefs.GetFloat("FireBossDeathAngle"));
-        instance.transform.parent.transform.localEulerAngles = new Vector3(0, PlayerPrefs.GetFloat("FireBossDeathAngle"), 0);
+        instance.transform.parent.transform.localEulerAngles = new Vector3(0, angle, 0);
         instance.fireElement.transform.SetParent(instance.transform.parent);
         instance.fireElement.transform.localPosition = new Vector3(-1f, 23f, 55f);
         instance.fireElement.transform.localRotation = Quaternion.Euler(180,0,0);

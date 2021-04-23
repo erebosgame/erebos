@@ -68,6 +68,7 @@ public class PauseMenu : MonoBehaviour
         PlayerPrefs.SetInt("WaterDefeated", Player.stats.defeatedBosses.Contains(Element.Water) ? 1 : 0);
 
         PlayerPrefs.SetFloat("FireBossDeathAngle", FireBoss.instance.transform.parent.transform.localEulerAngles.y);
+        PlayerPrefs.SetInt("CurrentAirPhase", AirBoss.instance.currentPhase);
 
         PlayerPrefs.SetFloat("PosX", Player.gameObject.transform.position.x);
         PlayerPrefs.SetFloat("PosY", Player.gameObject.transform.position.y);
