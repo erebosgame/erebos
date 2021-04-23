@@ -94083,20 +94083,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1590222350
+--- !u!64 &58655747773310995
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073483536219777953}
+  m_GameObject: {fileID: 2073483536219777955}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
 --- !u!1001 &2073483535157796878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94109,24 +94109,48 @@ PrefabInstance:
       value: big_lava_rock_01 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -94208,24 +94232,48 @@ PrefabInstance:
       value: big_lava_rock_02 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -94307,24 +94355,48 @@ PrefabInstance:
       value: big_lava_rock_04
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -94418,24 +94490,48 @@ PrefabInstance:
       value: big_lava_rock_02 (2)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -94517,24 +94613,48 @@ PrefabInstance:
       value: big_lava_rock_01 (2)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -94616,24 +94736,48 @@ PrefabInstance:
       value: big_lava_rock_01
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: 696ac210fd1c2194ebc1e3020cb3c3f3, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -94715,24 +94859,48 @@ PrefabInstance:
       value: big_lava_rock_02 (3)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -94826,24 +94994,48 @@ PrefabInstance:
       value: big_lava_rock_04 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: ebcda205cf29c234791c85edad57e15e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -94937,24 +95129,48 @@ PrefabInstance:
       value: medium_lava_rock_01
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -95030,15 +95246,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e84f8c7d5fce28948a9c9914dd603142, type: 3}
---- !u!1 &2073483536219777953 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: e84f8c7d5fce28948a9c9914dd603142,
-    type: 3}
-  m_PrefabInstance: {fileID: 2073483536219876609}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2073483536220272513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e84f8c7d5fce28948a9c9914dd603142,
+    type: 3}
+  m_PrefabInstance: {fileID: 2073483536219876609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2073483536219777955 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: e84f8c7d5fce28948a9c9914dd603142,
     type: 3}
   m_PrefabInstance: {fileID: 2073483536219876609}
   m_PrefabAsset: {fileID: 0}
@@ -95054,24 +95270,48 @@ PrefabInstance:
       value: big_lava_rock_02
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: 7f2eef7fb34697d42bbe3467ee41fbd8, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -95153,24 +95393,48 @@ PrefabInstance:
       value: big_lava_rock_03
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: 0e358a09a0fd3ea4895135e441d4e305, type: 3}
       propertyPath: m_StaticEditorFlags
