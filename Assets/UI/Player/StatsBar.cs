@@ -18,7 +18,7 @@ public class StatsBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hpBar.fillAmount = (float) Player.stats.health / Player.stats.maxHealth;
+        hpBar.fillAmount = (float) Player.stats.Health / Player.stats.MaxHealth;
         xpBar.fillAmount = (float) Player.stats.experience / Player.stats.expToNextLevel;
     }
 }

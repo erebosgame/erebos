@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class ItemSystem : MonoBehaviour
 {
-    Camera mainCamera;
+    public GameObject cameraRotator;
     List<Collider> triggerList = new List<Collider>();
     GameObject selected;
     Item selectedItem;
 
     void Start()
     {
-        mainCamera = Camera.main;
     }
 
     void OnTriggerEnter(Collider other)
@@ -68,16 +67,39 @@ public class ItemSystem : MonoBehaviour
     {
 
         if (Input.GetKeyDown(KeyCode.R))
+        {
             Player.stats.weapon = !Player.stats.weapon;
+            if(!Player.stats.weapon)
+            {
+                print(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
+                Player.movement.RotatePlayer(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
+                // TODO
+                cameraRotator.transform.forward = (Player.gameObject.transform.position - Camera.main.transform.position).normalized;
+                CameraLogic.instance.animator.SetTrigger("startaiming");
+
+                // StartCoroutine("ShowReticle");
+            }
+            else
+            {        
+                CameraLogic.instance.animator.SetTrigger("stopaiming");
+            }
+            
+        }
         GetAimed();
         if (selectedItem && Input.GetKeyDown(selectedItem.GetInteractKey()))
         {
             selectedItem.OnInteract();
         }
     }
+    // IEnumerator ShowReticle()
+    // {
+    //     yield return new WaitForSeconds(0.25f);
+    //     aimReticle.SetActive(true);
+    // }
+
     float GetColliderAngle(Collider collider)
     {
-        Vector3 cameraAngle = mainCamera.transform.forward;
+        Vector3 cameraAngle = Camera.main.transform.forward;
         cameraAngle.y = 0;
         cameraAngle = cameraAngle.normalized;
         Vector3 playerPos = Player.gameObject.transform.position;

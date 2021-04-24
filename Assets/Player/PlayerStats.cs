@@ -28,8 +28,10 @@ public static class ElementMethods
 
 class PlayerStats : MonoBehaviour, Damageable
 {
-    public int maxHealth = 100;
-    public int health;
+    private int maxHealth = 100;
+    private int health;
+    public int Health { get { return health; } }
+    public int MaxHealth { get { return maxHealth; } }
     public int experience;
     public int expToNextLevel = 10;
 
@@ -131,6 +133,11 @@ class PlayerStats : MonoBehaviour, Damageable
         Player.stats.health = Player.stats.maxHealth;
     }
 
+    public void SetHealth(int health)
+    {
+        this.health = health;
+    }
+
     public void TakeDamage(int damage)
     {
         this.health -= damage;
@@ -142,6 +149,16 @@ class PlayerStats : MonoBehaviour, Damageable
 
     public void OnDeath()
     {
+        FireBoss.Reset();
+        BossUI.SetActive(false);
+        CameraLogic.instance.animator.SetTrigger("die");
+        StartCoroutine("Respawn");
+    }
+
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(5f);
+        CameraLogic.instance.animator.SetTrigger("respawn");
         Spawn();
     }
 }

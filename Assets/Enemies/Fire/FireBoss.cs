@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Cinemachine;
 
 enum FireBossState {
@@ -9,16 +7,16 @@ enum FireBossState {
     Waiting,
     CannonPreparing,
     MeteorShot,
-    Recalling
+    Recalling,
+    Dead
 }
 
-public class FireBoss : MonoBehaviour
+public class FireBoss : MonoBehaviour, Damageable
 {
     CinemachineImpulseSource impulse;
     public GameObject platforms;
     public GameObject fireElement;
     public GameObject doors;
-    public Image hpBar;
     public GameObject mouth;
     public GameObject cannon;  
     public Meteor projectile;
@@ -27,6 +25,8 @@ public class FireBoss : MonoBehaviour
 
     int health;
     int maxHealth;
+    public int Health { get { return health; } }
+    public int MaxHealth { get { return maxHealth; } }
     int attackCost;
 
     FireBossState bossState = FireBossState.Sleeping;
@@ -59,16 +59,6 @@ public class FireBoss : MonoBehaviour
             direction = direction.normalized;
             transform.parent.transform.forward = direction;
         }
-
-        if (Input.GetKeyDown(KeyCode.L)) {
-            Recall();
-        }
-        if (Input.GetKeyDown(KeyCode.K)) {
-            Shoot();
-        }
-        if (Input.GetKeyDown(KeyCode.H)) {
-            Die();
-        }
     }
 
     private IEnumerator AILoop() {
@@ -79,14 +69,14 @@ public class FireBoss : MonoBehaviour
             {
                 case FireBossState.Waiting:
                     Shoot();
-                    print("START WAIT");
                     yield return new WaitForSeconds(recallTime);
-                    print("STOP WAIT");
                     break;
                 case FireBossState.MeteorShot:
                     Recall();
                     yield return new WaitForSeconds(reloadTime);
                     break;
+                case FireBossState.Sleeping:
+                    yield break;
                 default:
                     yield return new WaitForSeconds(1f);
                     break;
@@ -149,7 +139,6 @@ public class FireBoss : MonoBehaviour
     private void UpdateHealth(int health)
     {
         this.health = health;
-        hpBar.fillAmount = (float) health / maxHealth;
     }
 
     public void OnMeteorDestroy()
@@ -164,15 +153,8 @@ public class FireBoss : MonoBehaviour
         }
         if (health == 1) 
         {
-            Die();
+            OnDeath();
         }
-    }
-
-    private void Die()
-    {
-        UpdateHealth(0);
-        StartCoroutine("Sink");
-        Player.stats.defeatedBosses.Add(Element.Fire);
     }
 
     IEnumerator Sink() {
@@ -220,6 +202,27 @@ public class FireBoss : MonoBehaviour
         instance.fireElement.transform.localPosition = new Vector3(-1f, 23f, 55f);
         instance.fireElement.transform.localRotation = Quaternion.Euler(180,0,0);
         instance.gameObject.SetActive(false);
+    }
+
+    public static void Reset() 
+    {
+        if (instance.bossState != FireBossState.Sleeping && instance.bossState != FireBossState.Dead)
+        {
+            instance.bossState = FireBossState.Sleeping;
+            instance.animator.SetTrigger("reset");
+            instance.UpdateHealth(instance.maxHealth);
+            instance.projectile.gameObject.SetActive(false);
+        }
+    }
+
+    public void TakeDamage(int damage) {}
+
+    public void OnDeath()
+    {
+        bossState = FireBossState.Dead;
+        UpdateHealth(0);
+        StartCoroutine("Sink");
+        Player.stats.defeatedBosses.Add(Element.Fire);    
     }
 
     /*  public float GetCurrentAnimatorTime(Animator targetAnim, int layer = 0)

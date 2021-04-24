@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class TestStaticDamageble : MonoBehaviour, Damageable
 {
+    int maxHit;
     int hit;
     private HpBar healthBar;
     public GameObject healthBarPrefab;
+
+    public int Health { get { return hit; } }
+    public int MaxHealth { get { return maxHit; } }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        hit = 5;
+        maxHit = 5;
+        hit = maxHit;
         if (healthBarPrefab)
         {
             GameObject hpObj = Instantiate(healthBarPrefab, this.transform);

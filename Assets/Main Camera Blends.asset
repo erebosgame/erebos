@@ -14,21 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CustomBlends:
   - m_From: MenuCam
-    m_To: Third Person Camera
+    m_To: SpawnCam
     m_Blend:
-      m_Style: 2
+      m_Style: 7
       m_Time: 4
       m_CustomCurve:
         serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0.0023499131
+          inSlope: 3.108531
+          outSlope: 3.108531
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.0375
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
         m_RotationOrder: 0
   - m_From: Third Person Camera
     m_To: AimCamera
     m_Blend:
       m_Style: 1
       m_Time: 0.4
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: SpawnCam
+    m_To: Third Person Camera
+    m_Blend:
+      m_Style: 1
+      m_Time: 1
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

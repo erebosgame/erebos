@@ -5,6 +5,11 @@ using UnityEngine;
 public class MeteorDamageable : MonoBehaviour, Damageable
 {
     Meteor meteor;
+
+    public int Health { get { return meteor.Health; } }
+
+    public int MaxHealth { get { return meteor.MaxHealth; } }
+
     public void OnTriggerEnter(Collider collider) 
     {
         if (collider.CompareTag("Player"))

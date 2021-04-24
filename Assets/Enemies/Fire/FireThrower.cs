@@ -14,7 +14,7 @@ public class FireThrower : MonoBehaviour
     private State state;
     private EnemyController controller;
     private Enemy enemy;
-    private bool isAttacking;
+    // private bool isAttacking;
     private bool isMovingIdle;
     public GameObject ammo;
     private Vector3 destination;
@@ -67,7 +67,7 @@ public class FireThrower : MonoBehaviour
                 }
             break;
             case State.Attack:
-                isAttacking = true;
+                // isAttacking = true;
                 if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < 8F)
                 {   
                     state = State.Escape;
@@ -84,7 +84,7 @@ public class FireThrower : MonoBehaviour
                 controller.LookAt(Player.gameObject.transform.position);
             break;
             case State.Escape:
-                isAttacking = false;
+                // isAttacking = false;
                 controller.speed = 8;
                 if (!isMovingIdle)
                 {
@@ -119,7 +119,7 @@ public class FireThrower : MonoBehaviour
 
             //attackRoutine = StartCoroutine("FireSling");
             state = State.ChaseTarget;
-            isAttacking = true;
+            // isAttacking = true;
         }
     }
     void OnTriggerExit(Collider other)
@@ -128,7 +128,7 @@ public class FireThrower : MonoBehaviour
         {
             //StopCoroutine(attackRoutine);
             state = State.Idle;
-            isAttacking = false;
+            // isAttacking = false;
         }
     }
 

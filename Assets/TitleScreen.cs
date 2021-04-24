@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class TitleScreen : MonoBehaviour
 {
-    public GameObject thirdPersonCamera;
-    public GameObject menuCamera;
     public GameObject titleUI;
     public GameObject mainUI;
     public GameObject pauseUI;
     // Start is called before the first frame update
     void Start()
     {
-        menuCamera.SetActive(true);
-        thirdPersonCamera.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
     }
@@ -21,6 +17,7 @@ public class TitleScreen : MonoBehaviour
     public void NewGame()
     {
         Debug.Log("New");
+        CameraLogic.instance.animator.SetTrigger("spawn");
         Player.stats.Spawn();  
         PlayGame();
     }
@@ -28,8 +25,6 @@ public class TitleScreen : MonoBehaviour
     public void PlayGame()
     {
         titleUI.SetActive(false);
-        thirdPersonCamera.SetActive(true);
-        menuCamera.SetActive(false);
         mainUI.SetActive(true);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;         
@@ -66,10 +61,11 @@ public class TitleScreen : MonoBehaviour
         if (airelement)
             AirElementItem.LoadElement();
         
-        Player.stats.health = health;
+        Player.stats.SetHealth(health);
         Player.gameObject.GetComponent<CharacterController>().enabled = false;
         Player.gameObject.transform.position = new Vector3(posx,posy,posz);
         Player.gameObject.GetComponent<CharacterController>().enabled = true;
+        CameraLogic.instance.animator.SetTrigger("respawn");
 
         PlayGame();
     }

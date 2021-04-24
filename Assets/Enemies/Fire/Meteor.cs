@@ -7,8 +7,12 @@ public class Meteor : MonoBehaviour, Damageable
     public FireBoss fireBoss;
     public GameObject healthBarPrefab;
     HpBar healthBar;
-    int hitMax;
+    int maxHit;
     int hit;
+    
+    public int Health { get { return hit; } }
+    public int MaxHealth { get { return maxHit; } }
+    
     bool attacking;
 
     GameObject recallTarget;
@@ -25,7 +29,7 @@ public class Meteor : MonoBehaviour, Damageable
         hpObj.transform.localPosition = new Vector3(0, 1.5f, 0);
         healthBar = hpObj.GetComponent<HpBar>();
         healthBar.size = 0.15f;
-        hitMax = 10;
+        maxHit = 10;
     }
 
     public void Fire(Vector3 position, Vector3 direction)
@@ -37,8 +41,8 @@ public class Meteor : MonoBehaviour, Damageable
         rb.isKinematic = false; 
         rb.velocity = Vector3.zero;
         rb.AddForce(direction * 100, ForceMode.Impulse);
-        hit = hitMax; 
-        healthBar.UpdateHealth(hit, hitMax);   
+        hit = maxHit; 
+        healthBar.UpdateHealth(hit, maxHit);   
         attacking = true;    
     }
 
@@ -68,13 +72,13 @@ public class Meteor : MonoBehaviour, Damageable
         if (hit <= 0)
             OnDeath();
 
-        healthBar.UpdateHealth(hit, hitMax);
+        healthBar.UpdateHealth(hit, maxHit);
     }
 
     public void OnCollisionEnter(Collision collision)
     {
         rb.isKinematic = true;
-        healthBar.UpdateHealth(hit, hitMax, true);  
+        healthBar.UpdateHealth(hit, maxHit, true);  
         attacking = false;
     }
 

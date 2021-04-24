@@ -374,7 +374,6 @@ MonoBehaviour:
   platforms: {fileID: 2090760655022692392}
   fireElement: {fileID: 7438128151771362151}
   doors: {fileID: 0}
-  hpBar: {fileID: 0}
   mouth: {fileID: 273169849}
   cannon: {fileID: 7438128151342198271}
   projectile: {fileID: 3775323844561418059}
@@ -534,6 +533,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7438128151272668825}
+  - component: {fileID: 8479076119017063312}
+  - component: {fileID: 5701151447203825125}
   m_Layer: 0
   m_Name: Fire enemy boss env
   m_TagString: Untagged
@@ -557,6 +558,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8479076119017063312
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7438128151272668822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 600
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5701151447203825125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7438128151272668822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222ad669b8d01404eb6c1f77365db347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 3474956593972264258}
 --- !u!1 &7438128151283642850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,15 +1978,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cb4c933a1332944899b3c63e6e1384d, type: 3}
---- !u!1 &3219919584936605035 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 6cb4c933a1332944899b3c63e6e1384d,
-    type: 3}
-  m_PrefabInstance: {fileID: 3219919584936702923}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3219919584937093451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6cb4c933a1332944899b3c63e6e1384d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3219919584936702923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3219919584936605035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 6cb4c933a1332944899b3c63e6e1384d,
     type: 3}
   m_PrefabInstance: {fileID: 3219919584936702923}
   m_PrefabAsset: {fileID: 0}

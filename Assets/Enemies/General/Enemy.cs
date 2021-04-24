@@ -7,10 +7,13 @@ public class Enemy : MonoBehaviour, Targetable, Damageable
     public GameObject healthBarPrefab;
     private HpBar healthBar;
     private Outline outline;
-    public int maxHealth;
-    public int health;
+    private int maxHealth;
+    private int health;
 
     private Spawner spawner;
+
+    public int Health { get { return health; } }
+    public int MaxHealth { get { return maxHealth; } }
 
     public void OnTargetStart() 
     { 
