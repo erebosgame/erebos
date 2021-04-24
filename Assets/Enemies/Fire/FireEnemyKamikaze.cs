@@ -69,7 +69,7 @@ public class FireEnemyKamikaze : MonoBehaviour
         UnityEngine.Object.Destroy(explosion, 10f);
         if (Vector3.Distance(Player.gameObject.transform.position, this.transform.position) < 5)
         {
-            Player.stats.health -= 100;
+            Player.stats.TakeDamage(80);
         }
         enemy.OnDeath();
     }

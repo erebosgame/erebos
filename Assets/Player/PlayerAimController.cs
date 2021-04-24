@@ -28,6 +28,7 @@ public class PlayerAimController : MonoBehaviour
             playerMovement.RotatePlayer(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
             normalCamera.SetActive(false);
             aimCamera.SetActive(true);
+            cameraRotator.transform.forward = (Player.gameObject.transform.position - normalCamera.transform.position).normalized;
             cameraRotator.SetActive(true);
 
 

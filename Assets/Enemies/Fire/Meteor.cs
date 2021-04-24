@@ -81,7 +81,7 @@ public class Meteor : MonoBehaviour, Damageable
     public void OnCollisionPlayer(Collider collider)
     {
         if (attacking) {
-            Player.stats.health -= 50;
+            Player.stats.TakeDamage(50);
         }
     }
 

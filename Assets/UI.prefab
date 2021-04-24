@@ -2317,7 +2317,7 @@ GameObject:
   - component: {fileID: 7320290364347949806}
   - component: {fileID: 7320290364347949807}
   - component: {fileID: 7320290364347949800}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2625,7 +2625,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7320290364187683515}
         m_TargetAssemblyTypeName: TitleScreen, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3045,7 +3045,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7320290365038533197}
   - component: {fileID: 7320290365038533198}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: MenuCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3059,14 +3059,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7320290365038533192}
-  m_LocalRotation: {x: 0.0071376795, y: 0.9796935, z: -0.03545802, w: 0.19721182}
-  m_LocalPosition: {x: -2750.392, y: 281.3661, z: 4008.4143}
-  m_LocalScale: {x: 1.0965164, y: 1.0965163, z: 1.0965164}
+  m_LocalRotation: {x: 0.04205388, y: 0.93495405, z: -0.11852578, w: 0.33172905}
+  m_LocalPosition: {x: -2541, y: 253, z: 2330}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7320290364347949801}
   m_Father: {fileID: 7320290364187683508}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 4.146, y: 157.237, z: 0}
+  m_LocalEulerAnglesHint: {x: 14.45, y: 140.93, z: 0}
 --- !u!114 &7320290365038533198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3088,7 +3088,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 80
     OrthographicSize: 5
     NearClipPlane: 0.1
     FarClipPlane: 8000

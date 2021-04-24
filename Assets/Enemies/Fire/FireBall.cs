@@ -23,7 +23,7 @@ public class FireBall : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            Player.stats.health -= 20;
+            Player.stats.TakeDamage(20);
             Destroy(gameObject);
         }
     }

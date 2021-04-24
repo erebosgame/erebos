@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2863625344915784664}
-  m_LocalRotation: {x: 0.0071376795, y: 0.9796935, z: -0.03545802, w: 0.19721182}
+  m_LocalRotation: {x: 0.007138368, y: 0.97969335, z: -0.035461422, w: 0.19721182}
   m_LocalPosition: {x: -1790.3921, y: 821.3661, z: 4008.4143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 4.146, y: 157.237, z: 0}
 --- !u!20 &2863625344915784666
 Camera:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 8000
-  field of view: 60
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -112,7 +112,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
+  m_CustomBlends: {fileID: 11400000, guid: 45761e9690c830f4ea97ce40d4733f19, type: 2}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []

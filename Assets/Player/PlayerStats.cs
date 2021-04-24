@@ -26,7 +26,7 @@ public static class ElementMethods
     }
 }
 
-class PlayerStats : MonoBehaviour
+class PlayerStats : MonoBehaviour, Damageable
 {
     public int maxHealth = 100;
     public int health;
@@ -72,6 +72,7 @@ class PlayerStats : MonoBehaviour
             { Element.NoElement, 1.2f }
         };
     }
+    
 
     public void UseSkill(Element e)
     {
@@ -121,5 +122,26 @@ class PlayerStats : MonoBehaviour
     {
         unlockedElements[e] = true;
         ElementUI._instance.AddElement(e);
+    }
+    
+    public void Spawn()
+    {
+        Player.movement.GotoSpawnpoint();
+        Camera.main.transform.forward = Player.gameObject.transform.forward;
+        Player.stats.health = Player.stats.maxHealth;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        this.health -= damage;
+        if (this.health <= 0) 
+        {
+            OnDeath();
+        }
+    }
+
+    public void OnDeath()
+    {
+        Spawn();
     }
 }

@@ -124,7 +124,7 @@ public class EarthEnemyBoss : MonoBehaviour
             direction = Quaternion.AngleAxis(70,Vector3.Cross(direction, Vector3.up)) * direction;
             direction = direction.normalized;
             print("Damage: "+ v);
-            Player.stats.health -= (int)v;
+            Player.stats.TakeDamage((int) v);
             Player.movement.PushPlayer(direction, 10f);   
         }
         else

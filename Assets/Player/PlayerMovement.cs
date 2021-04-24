@@ -6,8 +6,6 @@ class PlayerMovement : MonoBehaviour
 {
     CharacterController controller;
 
-    Camera mainCamera;
-
     public Vector3 jumpVector = new Vector3();
     public Vector3 facingDirection { get; private set; }
     public Vector3 currentVelocity { get; private set; }
@@ -22,17 +20,19 @@ class PlayerMovement : MonoBehaviour
     bool isJumping = false;
 
     public GameObject glider;
+    public GameObject spawnpoint;
+    public Cinemachine.CinemachineFreeLook thirdPersonCamera;
 
     void Awake()
     {
         Player.movement = this;
     }
 
+
     // Start is called before the first frame update
     void Start()
     {
         controller = this.GetComponent<CharacterController>();
-        mainCamera = Camera.main;
         facingDirection = transform.forward;
         //Cursor.lockState = CursorLockMode.Locked;
     }
@@ -100,13 +100,29 @@ class PlayerMovement : MonoBehaviour
     
     public Vector3 GetRelativeDirection(Vector3 direction) 
     {
-        return Quaternion.LookRotation(new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z)) * direction;
+        return Quaternion.LookRotation(new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z)) * direction;
     }
+
     public void FaceRelativeDirection(Vector3 direction) 
     {
         facingDirection = GetRelativeDirection(direction);
     }
     
+    public void Teleport(Vector3 position, Quaternion rotation)
+    {
+        controller.enabled = false;
+        transform.position = position;
+        transform.rotation = rotation;
+        controller.enabled = true;
+    }
+
+    public void GotoSpawnpoint()
+    {
+        Teleport(spawnpoint.transform.position, spawnpoint.transform.rotation);
+        thirdPersonCamera.m_XAxis.Value = 140f;
+        thirdPersonCamera.m_YAxis.Value = 0.3f;
+    }
+
     private void ApplyGravity(float elapsed)
     {
         if (controller.isGrounded) 

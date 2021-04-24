@@ -58,7 +58,7 @@ public class EarthEnemyRock : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player") && isAttacking)
         {
-            Player.stats.health -= 40;
+            Player.stats.TakeDamage(40);
             isAttacking = false;
         }
     }

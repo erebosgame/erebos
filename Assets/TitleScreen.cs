@@ -18,15 +18,21 @@ public class TitleScreen : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    public void NewGame()
+    {
+        Debug.Log("New");
+        Player.stats.Spawn();  
+        PlayGame();
+    }
+
     public void PlayGame()
     {
-        Debug.Log("Play");
         titleUI.SetActive(false);
         thirdPersonCamera.SetActive(true);
         menuCamera.SetActive(false);
         mainUI.SetActive(true);
         Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;         
     }
 
     public void LoadGame()

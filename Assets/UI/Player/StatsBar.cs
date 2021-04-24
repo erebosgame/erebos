@@ -18,11 +18,6 @@ public class StatsBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            Player.stats.health -= 10;
-        }
-
         hpBar.fillAmount = (float) Player.stats.health / Player.stats.maxHealth;
         xpBar.fillAmount = (float) Player.stats.experience / Player.stats.expToNextLevel;
     }
