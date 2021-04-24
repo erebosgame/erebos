@@ -41,7 +41,7 @@ public class EarthEnemyBoss : MonoBehaviour
             attack = !attack;
             if (attack)
             {
-                target = Player.gameObject.transform.position + Vector3.down * 5f;            
+                target = Player.gameObject.transform.position + Vector3.down * 15f;            
                 ToConvex();
             }
             else

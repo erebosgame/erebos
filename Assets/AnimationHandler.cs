@@ -36,7 +36,7 @@ public class AnimationHandler : MonoBehaviour
         return currentTime;
     } */
 
-    public void wakeUpEnd()
+    public void WakeUpEnd()
     {
         StartCoroutine("ActivateBioIK");
     }
@@ -45,8 +45,8 @@ public class AnimationHandler : MonoBehaviour
     {
         int steps = 20;
         float min = 0f;
-        float total_time = 1f;
-        for (int i = 0; i < 20; i++)
+        float total_time = 3f;
+        for (int i = 0; i <= 20; i++)
         {
             yield return new WaitForSeconds(total_time/steps);
             bioik.AnimationBlend = 1 - (float)i*(1-min) / steps;
