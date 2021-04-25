@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class TitleScreen : MonoBehaviour
 {
-    public GameObject titleUI;
-    public GameObject mainUI;
-    public GameObject pauseUI;
+    public static TitleScreen instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
+    }
+    public static void SetActive(bool value)
+    {
+        instance.gameObject.SetActive(value);
     }
 
     public void NewGame()
@@ -24,8 +32,8 @@ public class TitleScreen : MonoBehaviour
 
     public void PlayGame()
     {
-        titleUI.SetActive(false);
-        mainUI.SetActive(true);
+        TitleScreen.SetActive(false);
+        MainUI.SetActive(true);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;         
     }

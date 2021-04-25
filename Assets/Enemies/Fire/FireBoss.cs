@@ -22,7 +22,8 @@ public class FireBoss : MonoBehaviour, Damageable
     public Meteor projectile;
     private Animator animator;
     private SphereCollider triggerArea;
-
+    public AudioSource shootAudio;
+    AudioSource deathAudio;
     int health;
     int maxHealth;
     public int Health { get { return health; } }
@@ -45,6 +46,7 @@ public class FireBoss : MonoBehaviour, Damageable
         impulse = GetComponent<CinemachineImpulseSource>();
         animator = GetComponent<Animator>();
         triggerArea = GetComponent<SphereCollider>();
+        deathAudio = GetComponent<AudioSource>();
         attackCost = 20;
         maxHealth = 101;
         health = maxHealth;
@@ -58,6 +60,10 @@ public class FireBoss : MonoBehaviour, Damageable
             direction.y = 0;
             direction = direction.normalized;
             transform.parent.transform.forward = direction;
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            OnDeath();
         }
     }
 
@@ -92,6 +98,7 @@ public class FireBoss : MonoBehaviour, Damageable
 
     public void _FireMeteor()
     {
+        shootAudio.Play();
         UpdateHealth(health - attackCost);
         Vector3 direction = (Player.gameObject.transform.position - cannon.gameObject.transform.position).normalized;
         projectile.Fire(cannon.transform.position, direction);
@@ -158,6 +165,8 @@ public class FireBoss : MonoBehaviour, Damageable
     }
 
     IEnumerator Sink() {
+        deathAudio.Play();
+
         int steps = 300;
         float total_transform_boss = -160f;
         float total_transform_platf = 21f;
@@ -176,10 +185,11 @@ public class FireBoss : MonoBehaviour, Damageable
                                                     doors.transform.position.y+(1.0f/steps)*total_transform_doors, 
                                                     doors.transform.position.z);
             yield return new WaitForSeconds(total_time/steps);
-            print(total_time/steps);
         }
+
+        yield return StartCoroutine (AudioFadeOut.FadeOut(deathAudio, 2f));
         fireElement.transform.SetParent(this.transform.parent);
-        this.gameObject.SetActive(false);        
+        this.gameObject.SetActive(false);     
     }
 
     public static void LoadKill(float angle)

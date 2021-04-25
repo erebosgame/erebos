@@ -184,7 +184,7 @@ class PlayerMovement : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(transform.position, Vector3.down, out hit);
-        if (hit.distance > 4)
+        if (hit.collider == null     || hit.distance > 4)
         {
             isGliding = !isGliding;
             glider.SetActive(isGliding);

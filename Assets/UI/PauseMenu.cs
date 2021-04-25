@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool gamePaused = false;
-
-    public GameObject mainUI;
+    public static PauseMenu instance;
     public GameObject pauseUI;
     // Start is called before the first frame update
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
-        
+        pauseUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -19,34 +22,34 @@ public class PauseMenu : MonoBehaviour
     {   
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(gamePaused)
+            if(MenuLogic.State == MenuState.Paused)
             {
                 ResumeGame();
             }
-            else 
+            else if (MenuLogic.State == MenuState.Playing)
             {
                 PauseGame();
             }
         }
     }
 
+    public static void SetActive(bool value)
+    {
+        instance.pauseUI.SetActive(value);
+    }
+
     public void ResumeGame()
     {
-        pauseUI.SetActive(false);
-        mainUI.SetActive(true);
-        Time.timeScale = 1;
-        gamePaused = false;
         Cursor.lockState = CursorLockMode.Locked;
-
+        Time.timeScale = 1;
+        MenuLogic.Update(MenuState.Playing);
     }
 
     void PauseGame()
     {
         Cursor.lockState = CursorLockMode.None;
-        pauseUI.SetActive(true);
-        mainUI.SetActive(false);
         Time.timeScale = 0;
-        gamePaused = true;  
+        MenuLogic.Update(MenuState.Paused);
     }
 
     public void LoadTitleScreen()

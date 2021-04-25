@@ -8,6 +8,7 @@ public class AirBoss : MonoBehaviour
     public AirEgg eggScript;
 
     Animator animator;
+    AudioSource audioSource;
 
     public static AirBoss instance;
     public int currentPhase;
@@ -21,6 +22,7 @@ public class AirBoss : MonoBehaviour
     void Start()
     {
         currentPhase = 0;
+        audioSource = GetComponent<AudioSource>();
         eggScript = egg.GetComponent<AirEgg>();
         animator = GetComponent<Animator>();
     }
@@ -29,6 +31,11 @@ public class AirBoss : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Cry()
+    {
+    audioSource.Play();
     }
 
     public void GrabEgg()
@@ -43,7 +50,8 @@ public class AirBoss : MonoBehaviour
         eggScript.onTerrain = true;
     }
 
-    public void MoveEgg() {
+    public void MoveEgg() 
+    {
         animator.SetTrigger("Move");  
         currentPhase += 1;
     }

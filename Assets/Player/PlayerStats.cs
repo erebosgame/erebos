@@ -150,15 +150,11 @@ class PlayerStats : MonoBehaviour, Damageable
     public void OnDeath()
     {
         FireBoss.Reset();
-        BossUI.SetActive(false);
-        CameraLogic.instance.animator.SetTrigger("die");
-        StartCoroutine("Respawn");
-    }
+        
+        Player.gameObject.SetActive(false);
 
-    IEnumerator Respawn()
-    {
-        yield return new WaitForSeconds(5f);
-        CameraLogic.instance.animator.SetTrigger("respawn");
-        Spawn();
+        MenuLogic.Update(MenuState.Dead);
+        Cursor.lockState = CursorLockMode.None;
+        CameraLogic.instance.animator.SetTrigger("die");
     }
 }

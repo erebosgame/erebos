@@ -18,9 +18,12 @@ public class Meteor : MonoBehaviour, Damageable
     GameObject recallTarget;
     Collider recallCollider;
     Rigidbody rb;
+
+    AudioSource collisionAudio;
     public GameObject destroyParticles;
     private void Start()
     {
+        collisionAudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
 
         GameObject healthBarContainer = Instantiate(new GameObject("healthBarContainer"), this.transform);
@@ -40,7 +43,7 @@ public class Meteor : MonoBehaviour, Damageable
         gameObject.SetActive(true);
         rb.isKinematic = false; 
         rb.velocity = Vector3.zero;
-        rb.AddForce(direction * 100, ForceMode.Impulse);
+        rb.AddForce(direction * 80, ForceMode.Impulse);
         hit = maxHit; 
         healthBar.UpdateHealth(hit, maxHit);   
         attacking = true;    
@@ -77,6 +80,7 @@ public class Meteor : MonoBehaviour, Damageable
 
     public void OnCollisionEnter(Collision collision)
     {
+        collisionAudio.Play();
         rb.isKinematic = true;
         healthBar.UpdateHealth(hit, maxHit, true);  
         attacking = false;
