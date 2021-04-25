@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EarthEnemyBoss : MonoBehaviour
+public class EarthEnemyBoss : MonoBehaviour, Damageable
 {
     public bool attack;
     private bool done;
@@ -18,10 +18,21 @@ public class EarthEnemyBoss : MonoBehaviour
     BioIK.Position elbowObjective;
     Vector3 direction;
     Vector3 target;
+    Animator animator;
+
+    int health;
+    int maxHealth;
+
+    public int Health { get { return health; } }
+
+    public int MaxHealth { get { return maxHealth; } }
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+        maxHealth = 3;
+        health = maxHealth;
         elbowTarget.transform.position = fistTarget.transform.position + direction * 100;
         colliderVectors = new Dictionary<Collider, Vector3>();
         elbowObjective = (BioIK.Position) bioIK.Segments.Where(s => s.name.Equals("LowerArm.R")).Single().Objectives.GetValue(0);
@@ -29,8 +40,6 @@ public class EarthEnemyBoss : MonoBehaviour
         colliders.ToList().ForEach(c => colliderVectors[c] = c.transform.position);
         segments = new Dictionary<string, BioIK.BioSegment>();
         bioIK.Segments.ForEach(s => segments[s.name] = s);
-        //print(segments["Head 1"].Joint.X.LowerLimit);
-        WakeUp();
     }
 
     // Update is called once per frame
@@ -65,12 +74,12 @@ public class EarthEnemyBoss : MonoBehaviour
         colliders.ToList().ForEach(c => colliderVectors[c] = c.transform.position);
     }
 
-    public void WakeUp()
-    {
-        segments["Head 1"].Joint.X.UpperLimit = 20;
-        segments["Head 1"].Joint.X.TargetValue = 0;
-        segments["Torso"].Joint.X.UpperLimit = 10;
-    }
+    // public void WakeUp()
+    // {
+    //     segments["Head 1"].Joint.X.UpperLimit = 20;
+    //     segments["Head 1"].Joint.X.TargetValue = 0;
+    //     segments["Torso"].Joint.X.UpperLimit = 10;
+    // }
 
     private void MoveFistToTarget()
     {
@@ -147,6 +156,18 @@ public class EarthEnemyBoss : MonoBehaviour
             Player.ActiveGameObject.transform.SetParent(null);
             print(collider.name + " exit");
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= 1;
+        if (health <= 0)
+            OnDeath();
+    }
+
+    public void OnDeath()
+    {
+        animator.SetTrigger("death");
     }
 }
 

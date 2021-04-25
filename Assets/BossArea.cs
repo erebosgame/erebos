@@ -8,32 +8,39 @@ public class BossArea : MonoBehaviour
     public GameObject boss;
     Damageable bossDamageable;
 
-    private void Start() {
+    private void Start() 
+    {
         bossDamageable = boss.GetComponent<Damageable>();
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other) 
+    {
         if (other.CompareTag("Player") && bossDamageable.Health > 0)
         {
             BossUI.SetActive(true);
         }    
     }
     
-    private void OnTriggerExit(Collider other) {
+    private void OnTriggerExit(Collider other) 
+    {
         if (other.CompareTag("Player"))
         {
             BossUI.SetActive(false);
         }    
     }
 
-    private void OnTriggerStay(Collider other) {
-        if (bossDamageable.Health > 0)
+    private void OnTriggerStay(Collider other) 
+    {
+        if (other.CompareTag("Player"))
         {
-            BossUI.UpdateHealth((float) bossDamageable.Health / bossDamageable.MaxHealth);
-        }
-        else
-        {
-            BossUI.SetActive(false);
+            if (bossDamageable.Health > 0)
+            {
+                BossUI.UpdateHealth((float) bossDamageable.Health / bossDamageable.MaxHealth);
+            }
+            else
+            {
+                BossUI.SetActive(false);
+            }
         }
     }
 }

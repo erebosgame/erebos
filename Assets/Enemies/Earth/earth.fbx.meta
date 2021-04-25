@@ -7,9 +7,6 @@ ModelImporter:
       74: -982115091633673366
     second: Armature|Death
   - first:
-      74: -2142118036446059745
-    second: Armature|Death.001
-  - first:
       74: -8945691123924629249
     second: Armature|Idle
   - first:
@@ -21,9 +18,6 @@ ModelImporter:
   - first:
       74: 7933569904715140662
     second: Armature|WakeUp
-  - first:
-      74: -2417153915741567853
-    second: Armature|WakeUp (1)
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -53,48 +47,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|WakeUp (1)
-      takeName: Armature|WakeUp
+      name: Armature|Death
+      takeName: Armature|Death
       internalID: 0
       firstFrame: 0
-      lastFrame: 81
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.3940887
-        functionName: WakeUpEnd
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 01c0c6dce975f924eb1eadc02b0c6a5c,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Death.001
-      takeName: Armature|Death.001
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 82
+      lastFrame: 49
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -229,7 +186,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.48953977
+        functionName: WakeUpEnd
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 01c0c6dce975f924eb1eadc02b0c6a5c,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

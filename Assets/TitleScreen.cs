@@ -32,8 +32,7 @@ public class TitleScreen : MonoBehaviour
 
     public void PlayGame()
     {
-        TitleScreen.SetActive(false);
-        MainUI.SetActive(true);
+        MenuLogic.Update(MenuState.Playing);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;         
     }

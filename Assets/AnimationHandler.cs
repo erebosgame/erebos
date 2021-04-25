@@ -43,10 +43,10 @@ public class AnimationHandler : MonoBehaviour
 
     IEnumerator ActivateBioIK()
     {
-        int steps = 20;
+        int steps = 150;
         float min = 0f;
         float total_time = 3f;
-        for (int i = 0; i <= 20; i++)
+        for (int i = 0; i <= steps; i++)
         {
             yield return new WaitForSeconds(total_time/steps);
             bioik.AnimationBlend = 1 - (float)i*(1-min) / steps;
