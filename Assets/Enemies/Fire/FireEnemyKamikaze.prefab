@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921022236446021993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.098496, y: 0, z: -2.0497892}
+  m_LocalPosition: {x: -1.8339267, y: 0, z: -3.4684892}
   m_LocalScale: {x: 1, y: 0.554739, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,6 +60,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -84,6 +85,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &921022236446021992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,8 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarPrefab: {fileID: 1904692497953718069, guid: f49b17edff782074cb86ec12de5f2c2d,
     type: 3}
-  maxHealth: 100
-  health: 0
 --- !u!135 &921022236446021969
 SphereCollider:
   m_ObjectHideFlags: 0
