@@ -11,10 +11,13 @@ public class EarthEnemyBoss : MonoBehaviour, Damageable
     public Dictionary<Collider, Vector3> colliderVectors;
     public GameObject fistTarget;
     public GameObject elbowTarget;
+    public GameObject resetTarget;
     public BioIK.BioIK bioIK;
 
+    public WaveAttack waveAttack;
+
     private Dictionary<string, BioIK.BioSegment> segments;
-    private Vector3 fistPosition = new Vector3(1.5f, 2.1f, 1.7f);
+    private Vector3 fistPosition = new Vector3(2.39f,1.75f,2.22f);
     BioIK.Position elbowObjective;
     Vector3 direction;
     Vector3 target;
@@ -33,7 +36,6 @@ public class EarthEnemyBoss : MonoBehaviour, Damageable
         animator = GetComponent<Animator>();
         maxHealth = 3;
         health = maxHealth;
-        elbowTarget.transform.position = fistTarget.transform.position + direction * 100;
         colliderVectors = new Dictionary<Collider, Vector3>();
         elbowObjective = (BioIK.Position) bioIK.Segments.Where(s => s.name.Equals("LowerArm.R")).Single().Objectives.GetValue(0);
         colliders = GetComponentsInChildren<MeshCollider>();
@@ -45,20 +47,25 @@ public class EarthEnemyBoss : MonoBehaviour, Damageable
     // Update is called once per frame
     void Update()
     {
+        RaycastHit hit;
         if (Input.GetKeyDown(KeyCode.P))
         {
             attack = !attack;
             if (attack)
             {
-                target = Player.gameObject.transform.position + Vector3.down * 15f;            
-                ToConvex();
+                Physics.Raycast(Player.gameObject.transform.position, Vector3.down, out hit);
+                target = hit.point + Vector3.down * 15f;            
             }
             else
             {
                 fistTarget.transform.localPosition = fistPosition;
                 elbowObjective.enabled = true;
-                ToConcave();
             }
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            animator.SetTrigger("thomp");
+            StartCoroutine(ActivateBioIK(150,0.5f,false));
         }
 
         if (attack)
@@ -67,19 +74,28 @@ public class EarthEnemyBoss : MonoBehaviour, Damageable
             MoveFistToTarget();
         }
 
-        if (IsIdle())
-        {                
-            ToConcave();
-        }        
         colliders.ToList().ForEach(c => colliderVectors[c] = c.transform.position);
+        
+        Physics.Raycast(Player.gameObject.transform.position, Vector3.down, out hit, 2f);
+        if (hit.collider)
+        {
+            if (colliders.Contains(hit.collider))
+            {
+                Player.ActiveGameObject.transform.SetParent(hit.collider.transform.parent);
+            }
+            else
+            {
+                Player.ActiveGameObject.transform.SetParent(null);
+            }
+        }
     }
 
-    // public void WakeUp()
-    // {
-    //     segments["Head 1"].Joint.X.UpperLimit = 20;
-    //     segments["Head 1"].Joint.X.TargetValue = 0;
-    //     segments["Torso"].Joint.X.UpperLimit = 10;
-    // }
+    public void StartWaveAttack()
+    {
+        waveAttack.gameObject.transform.localScale = new Vector3(1,1,1);
+        waveAttack.gameObject.SetActive(true);
+        StartCoroutine(ActivateBioIK(150,0.5f,true));
+    }
 
     private void MoveFistToTarget()
     {
@@ -93,17 +109,22 @@ public class EarthEnemyBoss : MonoBehaviour, Damageable
         {
             direction = newDirection.normalized;
         }
-
-        elbowTarget.transform.position = fistTarget.transform.position + direction * 100;
     }
 
-    private void ToConvex()
+    public IEnumerator ActivateBioIK(int steps, float total_time, bool activate)
     {
-        // colliders.ToList().ForEach(c => c.convex = true);
-    }
-    private void ToConcave()
-    {
-        // colliders.ToList().Where(c => !c.isTrigger).ToList().ForEach(c => c.convex = false);
+        for (int i = 0; i <= steps; i++)
+        {
+            yield return new WaitForSeconds(total_time/steps);
+            bioIK.AnimationBlend = 1 - (float)i / steps;
+            bioIK.AnimationWeight = 1 - (float)i / steps;
+            if (!activate)
+            {
+                bioIK.AnimationBlend = 1 - bioIK.AnimationBlend;
+                bioIK.AnimationWeight = 1 - bioIK.AnimationWeight;   
+            }
+            //print(bioik.AnimationBlend);
+        }
     }
 
     private bool IsIdle()
@@ -136,14 +157,6 @@ public class EarthEnemyBoss : MonoBehaviour, Damageable
             Player.stats.TakeDamage((int) v);
             Player.movement.PushPlayer(direction, 10f);   
         }
-        else
-        {
-            Player.ActiveGameObject.transform.SetParent(collided.transform.parent);
-            Debug.Log("Player" + Player.gameObject.transform.forward);
-            Debug.Log("Camera" + Camera.main.transform.forward);
-            Debug.Log("Direzione palla" + collider.transform.forward);
-            print(collider.name + " enter");
-        }
     }
 
     public void OnChildTriggerExit(Collider collided, Collider collider)
@@ -160,6 +173,10 @@ public class EarthEnemyBoss : MonoBehaviour, Damageable
 
     public void TakeDamage(int damage)
     {
+        Vector3 direction = (resetTarget.transform.position - Player.gameObject.transform.position).normalized;
+        direction.y = 1f;
+        direction = direction.normalized;
+        Player.movement.PushPlayer(direction, 50f);   
         health -= 1;
         if (health <= 0)
             OnDeath();

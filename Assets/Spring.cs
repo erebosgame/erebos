@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spring : MonoBehaviour
 {
+    public float force = 50f;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class Spring : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player") && !collider.isTrigger)
         {
-            Player.gameObject.GetComponent<PlayerMovement>().jumpVector += new Vector3(0, 50f, 0f);
+            Player.gameObject.GetComponent<PlayerMovement>().jumpVector += new Vector3(0, force, 0f);
         }
     }
 }

@@ -38,19 +38,21 @@ public class AnimationHandler : MonoBehaviour
 
     public void WakeUpEnd()
     {
-        StartCoroutine("ActivateBioIK");
+        StartCoroutine(ActivateBioIK(150,0,3,true));
     }
 
-    IEnumerator ActivateBioIK()
+    IEnumerator ActivateBioIK(int steps, float min, float total_time, bool activate)
     {
-        int steps = 150;
-        float min = 0f;
-        float total_time = 3f;
         for (int i = 0; i <= steps; i++)
         {
             yield return new WaitForSeconds(total_time/steps);
             bioik.AnimationBlend = 1 - (float)i*(1-min) / steps;
             bioik.AnimationWeight = 1 - (float)i*(1-min) / steps;
+            if (!activate)
+            {
+                bioik.AnimationBlend = 1 - bioik.AnimationBlend;
+                bioik.AnimationWeight = 1 - bioik.AnimationWeight;   
+            }
             //print(bioik.AnimationBlend);
         }
     }
