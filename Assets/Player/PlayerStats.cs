@@ -44,6 +44,9 @@ class PlayerStats : MonoBehaviour, Damageable
     public Dictionary<Element, float> lastUse;
     public Dictionary<Element, float> cooldowns;
 
+    public float slingCooldown = 0.9f;
+    public float lastSlingUse = -1;
+
     public void Awake() {
         Player.stats = this;
         Player.gameObject = this.gameObject;
@@ -71,7 +74,7 @@ class PlayerStats : MonoBehaviour, Damageable
             { Element.Earth, 10f },
             { Element.Water, 5f },
             { Element.Air, 7f },
-            { Element.NoElement, 1.2f }
+            { Element.NoElement, 0.6f }
         };
     }
     
@@ -101,7 +104,7 @@ class PlayerStats : MonoBehaviour, Damageable
         if (!unlockedElements[e])
             return -1;
         if (!lastUse.ContainsKey(e))
-            return 0;
+            return 1;
         
         float cd = (Time.time - lastUse[e])/cooldowns[e];
 

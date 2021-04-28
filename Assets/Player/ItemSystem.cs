@@ -7,7 +7,9 @@ public class ItemSystem : MonoBehaviour
     public GameObject cameraRotator;
     List<Collider> triggerList = new List<Collider>();
     GameObject selected;
-    Item selectedItem;
+    Item selectedItem;    
+    public GameObject reticle;
+
 
     void Start()
     {
@@ -65,7 +67,6 @@ public class ItemSystem : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             Player.stats.weapon = !Player.stats.weapon;
@@ -77,13 +78,12 @@ public class ItemSystem : MonoBehaviour
                 cameraRotator.transform.forward = (Player.gameObject.transform.position - Camera.main.transform.position).normalized;
                 CameraLogic.instance.animator.SetTrigger("startaiming");
 
-                // StartCoroutine("ShowReticle");
             }
             else
             {        
                 CameraLogic.instance.animator.SetTrigger("stopaiming");
             }
-            
+            StartCoroutine(ShowReticle(!Player.stats.weapon));            
         }
         GetAimed();
         if (selectedItem && Input.GetKeyDown(selectedItem.GetInteractKey()))
@@ -91,11 +91,11 @@ public class ItemSystem : MonoBehaviour
             selectedItem.OnInteract();
         }
     }
-    // IEnumerator ShowReticle()
-    // {
-    //     yield return new WaitForSeconds(0.25f);
-    //     aimReticle.SetActive(true);
-    // }
+    IEnumerator ShowReticle(bool value)
+    {
+        yield return new WaitForSeconds(0.25f);
+        reticle.SetActive(value);
+    }
 
     float GetColliderAngle(Collider collider)
     {

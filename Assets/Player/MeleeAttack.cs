@@ -11,9 +11,6 @@ public class MeleeAttack : MonoBehaviour
     Damageable hitEnemy;
 
     public GameObject ammo;
-
-    public GameObject reticle;
-
     public GameObject cameraRotator;
 
     void Start()
@@ -23,9 +20,9 @@ public class MeleeAttack : MonoBehaviour
 
     void Update() 
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Player.stats.CanUseSkill(Element.NoElement))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(Player.stats.weapon)
+            if(Player.stats.weapon && Player.stats.CanUseSkill(Element.NoElement))
             {
                 for (int i = 0; i < 4; i++)
                 {
@@ -41,8 +38,9 @@ public class MeleeAttack : MonoBehaviour
                     }
                 }
             }
-            else
+            else if (!Player.stats.weapon && (Time.time - Player.stats.lastSlingUse) > Player.stats.slingCooldown)
             {
+                Player.stats.lastSlingUse = Time.time;
                 FireSling();
             }
         }    

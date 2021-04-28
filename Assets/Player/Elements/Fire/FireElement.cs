@@ -60,7 +60,7 @@ class FireElement : MonoBehaviour
             explosion.transform.position = Player.gameObject.transform.position;
             UnityEngine.Object.Destroy(explosion, 10f);
             // other.GetComponent<Rigidbody>().AddForce(200f*direction);
-            enemy.TakeDamage(40);
+            enemy.TakeDamage(80);
             End();
         }
     }
