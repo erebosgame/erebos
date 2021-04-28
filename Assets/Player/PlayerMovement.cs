@@ -64,17 +64,30 @@ class PlayerMovement : MonoBehaviour
     {
         ApplyGravity(Time.fixedDeltaTime);
 
-        Collider[] colliders = Physics.OverlapCapsule(controller.bounds.min-Vector3.down*0.45f, controller.bounds.max-Vector3.up*0.45f, 0.5f, 1<<LayerMask.NameToLayer("Liquids"), QueryTriggerInteraction.Collide);
+        Collider found = null;
+        Collider[] colliders = Physics.OverlapCapsule(controller.bounds.min-Vector3.down*0.5f, controller.bounds.max-Vector3.up*0.5f, 0.5f, LayerMask.GetMask("Liquids"), QueryTriggerInteraction.Collide);
+        RaycastHit hit;
+        Physics.Raycast(this.transform.position, Vector3.down, out hit, 1.1f, LayerMask.GetMask("Liquids"), QueryTriggerInteraction.Collide);
+
         if (colliders.Length > 0)
         {
-            if (colliders[0].CompareTag("Water")) 
+            found = colliders[0];
+        }
+        else if (hit.collider != null)
+        {
+            found = hit.collider;
+        }
+
+        if (found != null)
+        {
+            if (found.CompareTag("Water")) 
             {
                 liquid = LiquidState.Water;
                 speed = speedNormal * speedWaterMultiplier;
                 jumpVelocity = jumpVelocityNormal * jumpVelocityWaterMultiplier;
                 fallMultiplier = fallMultiplierNormal * fallMultiplierWaterMultiplier;
             }
-            else if (colliders[0].CompareTag("Lava"))
+            else if (found.CompareTag("Lava"))
             {
                 liquid = LiquidState.Lava;
                 speed = speedNormal * speedLavaMultiplier;
