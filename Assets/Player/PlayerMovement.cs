@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum LiquidState {
+    Water,
+    Lava, 
+    Air,
+}
 class PlayerMovement : MonoBehaviour
 {
     CharacterController controller;
@@ -10,9 +15,23 @@ class PlayerMovement : MonoBehaviour
     public Vector3 facingDirection { get; private set; }
     public Vector3 currentVelocity { get; private set; }
 
-    private float speed = 8f;
-    private float jumpVelocity = 6f;
-    private float fallMultiplier = 2.8f;
+    private LiquidState liquid;
+
+    private float speed;
+    private float speedNormal = 10f;
+    private float speedWaterMultiplier = 0.5f;
+    private float speedLavaMultiplier = 0.25f;
+
+    private float jumpVelocity;
+    private float jumpVelocityNormal = 6f;
+    private float jumpVelocityWaterMultiplier = 0.9f;
+    private float jumpVelocityLavaMultiplier = 0.8f;
+    
+    private float fallMultiplier;
+    private float fallMultiplierNormal = 2.8f;
+    private float fallMultiplierWaterMultiplier = 0.03f;
+    private float fallMultiplierLavaMultiplier = 0.01f;
+
     private float airControl = 0.7f;
     public bool isGliding = false;
     private float glidingGravity = 0.055f;
@@ -34,12 +53,43 @@ class PlayerMovement : MonoBehaviour
     {
         controller = this.GetComponent<CharacterController>();
         facingDirection = transform.forward;
+
+        speed = speedNormal;
+        jumpVelocity = jumpVelocityNormal;
+        fallMultiplier = fallMultiplierNormal;
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
     void FixedUpdate()
     {
         ApplyGravity(Time.fixedDeltaTime);
+
+        Collider[] colliders = Physics.OverlapCapsule(controller.bounds.min-Vector3.down*0.45f, controller.bounds.max-Vector3.up*0.45f, 0.5f, 1<<LayerMask.NameToLayer("Liquids"), QueryTriggerInteraction.Collide);
+        if (colliders.Length > 0)
+        {
+            if (colliders[0].CompareTag("Water")) 
+            {
+                liquid = LiquidState.Water;
+                speed = speedNormal * speedWaterMultiplier;
+                jumpVelocity = jumpVelocityNormal * jumpVelocityWaterMultiplier;
+                fallMultiplier = fallMultiplierNormal * fallMultiplierWaterMultiplier;
+            }
+            else if (colliders[0].CompareTag("Lava"))
+            {
+                liquid = LiquidState.Lava;
+                speed = speedNormal * speedLavaMultiplier;
+                jumpVelocity = jumpVelocityNormal * jumpVelocityLavaMultiplier;
+                fallMultiplier = fallMultiplierNormal * fallMultiplierLavaMultiplier;
+                Player.stats.TakeDamage(10f*Time.fixedDeltaTime);
+            }  
+        }
+        else 
+        {  
+            liquid = LiquidState.Air;
+            speed = speedNormal;
+            jumpVelocity = jumpVelocityNormal;
+            fallMultiplier = fallMultiplierNormal;
+        }
     }
 
     // Update is called once per frame
@@ -77,7 +127,6 @@ class PlayerMovement : MonoBehaviour
             }
             else 
             {
-
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     ActivateGlider();

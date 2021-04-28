@@ -29,8 +29,8 @@ public static class ElementMethods
 class PlayerStats : MonoBehaviour, Damageable
 {
     private int maxHealth = 100;
-    private int health;
-    public int Health { get { return health; } }
+    private float health;
+    public int Health { get { return (int) health; } }
     public int MaxHealth { get { return maxHealth; } }
     public int experience;
     public int expToNextLevel = 10;
@@ -140,11 +140,16 @@ class PlayerStats : MonoBehaviour, Damageable
 
     public void TakeDamage(int damage)
     {
+        TakeDamage((float) damage);   
+    }
+
+    public void TakeDamage(float damage)
+    {
         this.health -= damage;
         if (this.health <= 0) 
         {
             OnDeath();
-        }
+        }        
     }
 
     public void OnDeath()

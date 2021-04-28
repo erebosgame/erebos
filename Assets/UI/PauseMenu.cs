@@ -78,6 +78,8 @@ public class PauseMenu : MonoBehaviour
         PlayerPrefs.SetFloat("PosY", Player.gameObject.transform.position.y);
         PlayerPrefs.SetFloat("PosZ", Player.gameObject.transform.position.z);
 
+        PlayerPrefs.SetInt("Health", Player.stats.Health);
+
 
         PlayerPrefs.Save();
         Debug.Log("Saving...");

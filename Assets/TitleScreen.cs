@@ -50,10 +50,10 @@ public class TitleScreen : MonoBehaviour
         bool airelement = PlayerPrefs.GetInt("AirElement", 0) != 0;
         bool waterelement = PlayerPrefs.GetInt("WaterElement", 0) != 0;
 
-        int health = PlayerPrefs.GetInt("Health", 100);
         float posx = PlayerPrefs.GetFloat("PosX", 0);
         float posy = PlayerPrefs.GetFloat("PosY", 0);
         float posz = PlayerPrefs.GetFloat("PosZ", 0);
+        int health = PlayerPrefs.GetInt("Health", 100);
 
         if (fireboss)
         {

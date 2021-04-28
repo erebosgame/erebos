@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6030593715550759864
 Transform:
   m_ObjectHideFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 326737310232394124}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &2800196349550753512
 ParticleSystem:
@@ -4880,7 +4880,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 326737310232394124}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -8.153, y: -0.815, z: 0.32}
 --- !u!33 &897088126469722393
 MeshFilter:
@@ -4982,9 +4982,10 @@ GameObject:
   - component: {fileID: 6242116532587430821}
   - component: {fileID: 6242116532587430826}
   - component: {fileID: 6242116532587430827}
-  m_Layer: 4
+  - component: {fileID: 1607750537076204030}
+  m_Layer: 18
   m_Name: River Right
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6596,6 +6597,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1607750537076204030
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6242116532587430824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6242116533233796403
 GameObject:
   m_ObjectHideFlags: 0
@@ -6608,9 +6623,10 @@ GameObject:
   - component: {fileID: 6242116533233796396}
   - component: {fileID: 6242116533233796397}
   - component: {fileID: 6242116533233796402}
-  m_Layer: 4
+  - component: {fileID: 4323000425381790444}
+  m_Layer: 18
   m_Name: River Left Right
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8934,6 +8950,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4323000425381790444
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6242116533233796403}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6242116533239528961
 GameObject:
   m_ObjectHideFlags: 0
@@ -8946,9 +8976,10 @@ GameObject:
   - component: {fileID: 6242116533239528963}
   - component: {fileID: 6242116533239528960}
   - component: {fileID: 6242116533239528962}
-  m_Layer: 4
+  - component: {fileID: 2986663992267514054}
+  m_Layer: 18
   m_Name: River Left
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10167,6 +10198,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2986663992267514054
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6242116533239528961}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6242116533730240784
 GameObject:
   m_ObjectHideFlags: 0
@@ -10179,12 +10224,14 @@ GameObject:
   - component: {fileID: 6242116533730240781}
   - component: {fileID: 6242116533730240786}
   - component: {fileID: 6242116533730240787}
-  m_Layer: 4
-  m_Name: Lake Polygon
-  m_TagString: Untagged
+  - component: {fileID: 2756144593267831467}
+  - component: {fileID: 1033720082678260334}
+  m_Layer: 18
+  m_Name: Sea
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6242116533730240780
 Transform:
@@ -37544,6 +37591,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2756144593267831467
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6242116533730240784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3700, y: 150, z: 6249.5}
+  m_Center: {x: -272.9, y: -75, z: -56}
+--- !u!114 &1033720082678260334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6242116533730240784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 93a612107b4b67e46b75ab2f22d7de0d, type: 2}
+  isGlobal: 0
+  blendDistance: 0
+  weight: 1
+  priority: 1
 --- !u!1 &6242116533866459219
 GameObject:
   m_ObjectHideFlags: 0
@@ -37556,9 +37633,10 @@ GameObject:
   - component: {fileID: 6242116533866459213}
   - component: {fileID: 6242116533866459218}
   - component: {fileID: 6242116533866459212}
-  m_Layer: 4
+  - component: {fileID: 3529134372193460522}
+  m_Layer: 18
   m_Name: River Start
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -41777,6 +41855,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3529134372193460522
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6242116533866459219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6242116534119211406
 GameObject:
   m_ObjectHideFlags: 0
@@ -41789,9 +41881,10 @@ GameObject:
   - component: {fileID: 6242116534119211403}
   - component: {fileID: 6242116534119211400}
   - component: {fileID: 6242116534119211401}
-  m_Layer: 4
+  - component: {fileID: 2513755244086871416}
+  m_Layer: 18
   m_Name: River Left Left
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -44115,68 +44208,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &6462558490014703986
-GameObject:
+--- !u!64 &2513755244086871416
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6994157684600804371}
-  - component: {fileID: 2327340866017139749}
-  - component: {fileID: 3938847976703070231}
-  m_Layer: 15
-  m_Name: Sea underwater
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6994157684600804371
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6462558490014703986}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2146.1912, y: 897.48, z: 3963.519}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 326737310232394124}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2327340866017139749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6462558490014703986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 93a612107b4b67e46b75ab2f22d7de0d, type: 2}
-  isGlobal: 0
-  blendDistance: 0
-  weight: 1
-  priority: 0
---- !u!65 &3938847976703070231
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6462558490014703986}
+  m_GameObject: {fileID: 6242116534119211406}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3700, y: 150, z: 6249.5}
-  m_Center: {x: -272.9, y: -75, z: -56}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &7575858624969089386
 GameObject:
   m_ObjectHideFlags: 0
@@ -44349,7 +44394,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 326737310232394124}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &6265463721588107566
 SphereCollider:
@@ -44406,7 +44451,6 @@ Transform:
   m_Children:
   - {fileID: 6242116533730240780}
   - {fileID: 6242116533866459215}
-  - {fileID: 6994157684600804371}
   - {fileID: 8069622271080602213}
   - {fileID: 3838666186882030376}
   - {fileID: 12474181774539684}
@@ -44624,7 +44668,7 @@ PrefabInstance:
     - target: {fileID: 1611294928095715965, guid: 766a6193731e82f44a8b4b81138a6502,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1611294928095715965, guid: 766a6193731e82f44a8b4b81138a6502,
         type: 3}
@@ -44703,18 +44747,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 766a6193731e82f44a8b4b81138a6502, type: 3}
---- !u!114 &3838666187512086182 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1611294927601616883, guid: 766a6193731e82f44a8b4b81138a6502,
+--- !u!4 &3838666187766729743 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1611294928955192666, guid: 766a6193731e82f44a8b4b81138a6502,
     type: 3}
   m_PrefabInstance: {fileID: 2529288769390033237}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc329982edfc412a8a508a8e175eef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3838666187766729737 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1611294928955192668, guid: 766a6193731e82f44a8b4b81138a6502,
@@ -44727,9 +44765,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc329982edfc412a8a508a8e175eef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &3838666187766729743 stripped
+--- !u!114 &3838666187512086182 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1611294927601616883, guid: 766a6193731e82f44a8b4b81138a6502,
+    type: 3}
+  m_PrefabInstance: {fileID: 2529288769390033237}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc329982edfc412a8a508a8e175eef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3838666186882030382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1611294928095715963, guid: 766a6193731e82f44a8b4b81138a6502,
+    type: 3}
+  m_PrefabInstance: {fileID: 2529288769390033237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3838666186882030376 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1611294928955192666, guid: 766a6193731e82f44a8b4b81138a6502,
+  m_CorrespondingSourceObject: {fileID: 1611294928095715965, guid: 766a6193731e82f44a8b4b81138a6502,
     type: 3}
   m_PrefabInstance: {fileID: 2529288769390033237}
   m_PrefabAsset: {fileID: 0}
@@ -44745,15 +44801,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cfd7ed5d69f41aaa4d87968caf6a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &3838666186882030376 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1611294928095715965, guid: 766a6193731e82f44a8b4b81138a6502,
-    type: 3}
-  m_PrefabInstance: {fileID: 2529288769390033237}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3838666186882030382 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1611294928095715963, guid: 766a6193731e82f44a8b4b81138a6502,
-    type: 3}
-  m_PrefabInstance: {fileID: 2529288769390033237}
-  m_PrefabAsset: {fileID: 0}
