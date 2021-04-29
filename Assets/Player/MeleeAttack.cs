@@ -13,6 +13,8 @@ public class MeleeAttack : MonoBehaviour
     public GameObject ammo;
     public GameObject cameraRotator;
 
+    public Bonk bonk;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -24,6 +26,7 @@ public class MeleeAttack : MonoBehaviour
         {
             if(Player.stats.weapon && Player.stats.CanUseSkill(Element.NoElement))
             {
+                bonk.PerformAttack();
                 for (int i = 0; i < 4; i++)
                 {
                     Collider collider = GetColliderAtDistance(i);
