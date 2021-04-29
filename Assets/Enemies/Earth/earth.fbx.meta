@@ -18,6 +18,9 @@ ModelImporter:
   - first:
       74: 7933569904715140662
     second: Armature|WakeUp
+  - first:
+      74: 6996760543400208561
+    second: Armature|Slide Attack (1)
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -100,8 +103,46 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Torso
+        weight: 1
+      - path: Armature/Torso/Head 1
+        weight: 1
+      - path: Armature/Torso/Head 1/Head_end
+        weight: 1
+      - path: Armature/Torso/Shoulder.L
+        weight: 1
+      - path: Armature/Torso/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: Armature/Torso/Shoulder.L/UpperArm.L/UpperArm.L_end
+        weight: 1
+      - path: Armature/Torso/Shoulder.R
+        weight: 0
+      - path: Armature/Torso/Shoulder.R/UpperArm.R
+        weight: 0
+      - path: Armature/Torso/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 0
+      - path: Armature/Torso/Shoulder.R/UpperArm.R/LowerArm.R/LowerArm.R_end
+        weight: 0
+      - path: Body
+        weight: 1
+      - path: Forearm.R
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Shoulders.L
+        weight: 1
+      - path: Shoulders.R
+        weight: 1
+      - path: Stump.L
+        weight: 1
+      - path: Upper arm R
+        weight: 1
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
@@ -166,8 +207,46 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Torso
+        weight: 1
+      - path: Armature/Torso/Head 1
+        weight: 1
+      - path: Armature/Torso/Head 1/Head_end
+        weight: 1
+      - path: Armature/Torso/Shoulder.L
+        weight: 1
+      - path: Armature/Torso/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: Armature/Torso/Shoulder.L/UpperArm.L/UpperArm.L_end
+        weight: 1
+      - path: Armature/Torso/Shoulder.R
+        weight: 0
+      - path: Armature/Torso/Shoulder.R/UpperArm.R
+        weight: 0
+      - path: Armature/Torso/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 0
+      - path: Armature/Torso/Shoulder.R/UpperArm.R/LowerArm.R/LowerArm.R_end
+        weight: 0
+      - path: Body
+        weight: 1
+      - path: Forearm.R
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Shoulders.L
+        weight: 1
+      - path: Shoulders.R
+        weight: 1
+      - path: Stump.L
+        weight: 1
+      - path: Upper arm R
+        weight: 1
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16

@@ -13,12 +13,6 @@ public class AirEgg : MonoBehaviour
         onTerrain = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other) 
     {
         if (other.CompareTag("Player") && onTerrain)

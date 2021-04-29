@@ -63,6 +63,14 @@ public class TitleScreen : MonoBehaviour
                 FireElementItem.LoadElement();
         }
 
+        Debug.Log(earthboss);
+        if (earthboss)
+        {
+            EarthBoss.LoadKill();
+            if (earthelement)
+                EarthElementItem.LoadElement();
+        }
+
         int airbossphase = PlayerPrefs.GetInt("CurrentAirPhase");
         AirBoss.LoadPhase(airbossphase);
         if (airelement)

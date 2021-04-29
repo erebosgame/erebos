@@ -172,6 +172,7 @@ class PlayerMovement : MonoBehaviour
     
     public void Teleport(Vector3 position, Quaternion rotation)
     {
+        jumpVector = Vector3.zero;
         controller.enabled = false;
         transform.position = position;
         transform.rotation = rotation;
@@ -246,7 +247,7 @@ class PlayerMovement : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(transform.position, Vector3.down, out hit);
-        if (hit.collider == null     || hit.distance > 4)
+        if (Player.stats.canGlider && (hit.collider == null || hit.distance > 4))
         {
             isGliding = !isGliding;
             glider.SetActive(isGliding);
@@ -256,6 +257,22 @@ class PlayerMovement : MonoBehaviour
 
     public void PushPlayer(Vector3 direction, float force)
     {
+        PushPlayer(direction, force, 0f);
+    }
+    public void PushPlayer(Vector3 direction, float force, float disableGlider)
+    {
         jumpVector += direction.normalized * force;
+        if (disableGlider > 0)
+        {
+            Player.stats.canGlider = false;
+            StartCoroutine(ReenableGlider(disableGlider));
+        }
+        
+    }
+
+    IEnumerator ReenableGlider(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Player.stats.canGlider = true;
     }
 }

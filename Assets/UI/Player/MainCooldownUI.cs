@@ -20,7 +20,6 @@ public class MainCooldownUI : MonoBehaviour
         if (Player.stats.weapon)
         {
             perc = Player.stats.GetCooldownProportion(Element.NoElement);
-            Debug.Log(perc);
         }
         else
         {

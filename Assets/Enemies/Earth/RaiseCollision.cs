@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RaiseCollision : MonoBehaviour
 {
-    public EarthEnemyBoss parent;
+    public EarthBoss parent;
 
     void OnTriggerEnter(Collider other)
     {

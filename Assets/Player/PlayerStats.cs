@@ -47,6 +47,8 @@ class PlayerStats : MonoBehaviour, Damageable
     public float slingCooldown = 0.9f;
     public float lastSlingUse = -1;
 
+    public bool canGlider = true;
+
     public void Awake() {
         Player.stats = this;
         Player.gameObject = this.gameObject;
@@ -158,6 +160,7 @@ class PlayerStats : MonoBehaviour, Damageable
     public void OnDeath()
     {
         FireBoss.Reset();
+        EarthBoss.Reset();
         
         Player.gameObject.SetActive(false);
 
