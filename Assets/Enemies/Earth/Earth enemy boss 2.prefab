@@ -1001,7 +1001,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611294927940638771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.3113695e-13}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00000371}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1611294928083183382}
@@ -1120,7 +1120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611294928083183380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 2.1, z: 1.7}
+  m_LocalPosition: {x: 2.391, y: 1.752, z: 2.215}
   m_LocalScale: {x: 360000.12, y: 359999.97, z: 359999.97}
   m_Children:
   - {fileID: 1611294927940638773}
@@ -1187,6 +1187,7 @@ Transform:
   - {fileID: 1611294929276514484}
   - {fileID: 1611294927579634939}
   - {fileID: 1611294928083183382}
+  - {fileID: 4780245232956437342}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1205,25 +1206,25 @@ MonoBehaviour:
   attack: 0
   colliders:
   - {fileID: 1611294927210197208}
-  - {fileID: 0}
   - {fileID: 1611294927866603682}
   - {fileID: 1611294928812913032}
   - {fileID: 1611294928322300017}
-  - {fileID: 0}
   - {fileID: 1611294928247313397}
   - {fileID: 1611294927807257752}
   - {fileID: 1611294928696354251}
-  - {fileID: 0}
   - {fileID: 1611294927356861812}
-  - {fileID: 0}
   - {fileID: 1611294928835844710}
-  - {fileID: 0}
   fistTarget: {fileID: 1611294928083183380}
   elbowTarget: {fileID: 1611294927940638771}
   resetTarget: {fileID: 0}
   bioIK: {fileID: 1611294928502224752}
   waveAttack: {fileID: 0}
-  crystals: []
+  crystals:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!95 &1611294928095715966
 Animator:
   serializedVersion: 3
@@ -1294,15 +1295,15 @@ MonoBehaviour:
       m_AttackShape:
         serializedVersion: 2
         m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
       m_DecayShape:
         serializedVersion: 2
         m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
       m_AttackTime: 0
       m_SustainTime: 0.2
       m_DecayTime: 0.4
@@ -2955,3 +2956,33 @@ MonoBehaviour:
   Childs: []
   Joint: {fileID: 0}
   Objectives: []
+--- !u!1 &5197256444575096123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4780245232956437342}
+  m_Layer: 0
+  m_Name: Retarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4780245232956437342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197256444575096123}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1611294928095715965}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

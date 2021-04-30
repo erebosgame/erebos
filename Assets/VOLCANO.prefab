@@ -21172,12 +21172,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1577759226064948388}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FLOOR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1577759226064948388
 Transform:
@@ -21235,12 +21235,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8652838643316829349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HALLWAY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8652838643316829349
 Transform:
@@ -21280,12 +21280,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4103851953023943736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WALLS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4103851953023943736
 Transform:
@@ -21972,15 +21972,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6184a6514c5cf5343b2728ea3e46a9c0, type: 3}
---- !u!4 &4962524483633025847 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7438128151272668825, guid: 6184a6514c5cf5343b2728ea3e46a9c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2587291170938858926}
-  m_PrefabAsset: {fileID: 0}
 --- !u!82 &5791872921442962569 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8324686349166666023, guid: 6184a6514c5cf5343b2728ea3e46a9c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2587291170938858926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4962524483633025847 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7438128151272668825, guid: 6184a6514c5cf5343b2728ea3e46a9c0,
     type: 3}
   m_PrefabInstance: {fileID: 2587291170938858926}
   m_PrefabAsset: {fileID: 0}
