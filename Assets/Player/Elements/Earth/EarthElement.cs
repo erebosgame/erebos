@@ -9,7 +9,6 @@ class EarthElement : MonoBehaviour
 
     public GameObject explosionPrefab;
 
-    private MeshRenderer meshRenderer;
     private Rigidbody rb;
 
     private float boulderRadius;
@@ -19,7 +18,6 @@ class EarthElement : MonoBehaviour
     public EarthElement(GameObject explosionPrefab)
     {
         this.explosionPrefab = explosionPrefab;
-        this.meshRenderer = Player.gameObject.GetComponent<MeshRenderer>();
     }
 
     void Start()
@@ -35,8 +33,7 @@ class EarthElement : MonoBehaviour
         Player.gameObject.GetComponent<CharacterController>().enabled = false;
         Player.stats.elementState = Element.Earth;
         
-        meshRenderer = Player.gameObject.GetComponent<MeshRenderer>();
-        meshRenderer.enabled = false;
+        Player.stats.ToggleRenderer(false);
 
         this.gameObject.transform.SetParent(Player.gameObject.transform.parent);
         Player.gameObject.transform.SetParent(this.gameObject.transform);
@@ -97,7 +94,7 @@ class EarthElement : MonoBehaviour
         }
         Player.gameObject.transform.rotation = Quaternion.identity;
         Player.stats.elementState = Element.NoElement;
-        meshRenderer.enabled = true;
+        Player.stats.ToggleRenderer(true);
         Player.elementGameObject = null;
 
         Player.gameObject.GetComponent<CharacterController>().enabled = true;

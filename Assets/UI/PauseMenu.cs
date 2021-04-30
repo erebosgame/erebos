@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadTitleScreen()
     {
-        Debug.Log("TitleScreen!");
+        SceneManager.LoadScene(0);
     }
 
     public void SaveGame()
@@ -64,6 +65,7 @@ public class PauseMenu : MonoBehaviour
         PlayerPrefs.SetInt("EarthElement", Player.stats.unlockedElements[Element.Earth] ? 1 : 0);
         PlayerPrefs.SetInt("AirElement", Player.stats.unlockedElements[Element.Air] ? 1 : 0);
         PlayerPrefs.SetInt("WaterElement", Player.stats.unlockedElements[Element.Water] ? 1 : 0);
+        PlayerPrefs.SetInt("Saved", 1);
 
 
         PlayerPrefs.SetInt("FireDefeated", Player.stats.defeatedBosses.Contains(Element.Fire) ? 1 : 0);

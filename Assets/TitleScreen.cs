@@ -40,6 +40,8 @@ public class TitleScreen : MonoBehaviour
     public void LoadGame()
     {
         Debug.Log("Load");
+        if (PlayerPrefs.GetInt("Saved") != 1)
+            return; 
         bool fireboss = PlayerPrefs.GetInt("FireDefeated", 0) != 0;
         bool earthboss = PlayerPrefs.GetInt("EarthDefeated", 0) != 0;
         bool airboss = PlayerPrefs.GetInt("AirDefeated", 0) != 0;
@@ -67,14 +69,18 @@ public class TitleScreen : MonoBehaviour
         if (earthboss)
         {
             EarthBoss.LoadKill();
+            Debug.Log(earthelement);
             if (earthelement)
                 EarthElementItem.LoadElement();
         }
 
         int airbossphase = PlayerPrefs.GetInt("CurrentAirPhase");
         AirBoss.LoadPhase(airbossphase);
-        if (airelement)
-            AirElementItem.LoadElement();
+        if (airbossphase >= 5)
+        {
+            if (airelement)
+                AirElementItem.LoadElement();
+        }
         
         Player.stats.SetHealth(health);
         Player.gameObject.GetComponent<CharacterController>().enabled = false;

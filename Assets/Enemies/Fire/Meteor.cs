@@ -32,7 +32,7 @@ public class Meteor : MonoBehaviour, Damageable
         hpObj.transform.localPosition = new Vector3(0, 1.5f, 0);
         healthBar = hpObj.GetComponent<HpBar>();
         healthBar.size = 0.15f;
-        maxHit = 10;
+        maxHit = 7;
     }
 
     public void Fire(Vector3 position, Vector3 direction)

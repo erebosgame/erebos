@@ -39,6 +39,7 @@ class PlayerStats : MonoBehaviour, Damageable
     public bool isAttacking;
 
     public Element elementState;
+    public Renderer[] renderers;
 
     public HashSet<Element> defeatedBosses;
     public Dictionary<Element, bool> unlockedElements;
@@ -81,7 +82,21 @@ class PlayerStats : MonoBehaviour, Damageable
             { Element.NoElement, 0.6f }
         };
     }
-    
+  
+    public void ToggleRenderer(bool value)
+    {
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.enabled = value;
+        }
+    }
+
+    public void Heal(int amount)
+    {
+        health += amount;
+        if (health > maxHealth)
+            health = maxHealth;
+    }
 
     public void UseSkill(Element e)
     {

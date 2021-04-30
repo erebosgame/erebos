@@ -31,7 +31,7 @@ public class FireBoss : MonoBehaviour, Damageable
     int attackCost;
 
     FireBossState bossState = FireBossState.Sleeping;
-    float recallTime = 10f;
+    float recallTime = 20f;
     float reloadTime = 5f;
 
     public static FireBoss instance;

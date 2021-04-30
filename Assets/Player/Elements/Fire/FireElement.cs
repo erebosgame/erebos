@@ -5,9 +5,9 @@ using UnityEngine;
 
 class FireElement : MonoBehaviour
 {
-    private MeshRenderer meshRenderer;
     public GameObject explosionPrefab;
     private CharacterController controller;
+    Cinemachine.CinemachineCollider cameraCollider;
     
     private Vector3 initialPosition;
     private Vector3 initialDirection;
@@ -17,14 +17,22 @@ class FireElement : MonoBehaviour
 
     void Start()
     {
+        GameObject o = Camera.main.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject;
+        cameraCollider = o.GetComponentInChildren<Cinemachine.CinemachineCollider>();
+
+        print(o);
+        print(o.name);
         if (Player.movement.isGliding)
             Player.movement.ActivateGlider();
+
+        if (cameraCollider)
+            cameraCollider.enabled = false;
+        
         controller = GetComponent<CharacterController>();
         Player.stats.elementState = Element.Fire;
         
-        meshRenderer = Player.gameObject.GetComponent<MeshRenderer>();
-        meshRenderer.enabled = false;
-        
+        Player.stats.ToggleRenderer(false);
+
         this.gameObject.transform.SetParent(Player.gameObject.transform.parent);
         Debug.Log("Padre palla: "+ Player.gameObject.transform.parent);
         Player.gameObject.transform.SetParent(this.gameObject.transform);
@@ -79,8 +87,11 @@ class FireElement : MonoBehaviour
             return;
         ended = true;
 
+        if (cameraCollider)
+            cameraCollider.enabled = true;
+
         this.GetComponentInChildren<ParticleSystem>().Stop(true);
-        meshRenderer.enabled = true;
+        Player.stats.ToggleRenderer(true);
         Player.stats.elementState = Element.NoElement;
         while (transform.childCount > 0) 
         {

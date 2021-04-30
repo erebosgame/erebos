@@ -25,8 +25,8 @@ class AirElement : MonoBehaviour
         
         Player.gameObject.GetComponent<CharacterController>().enabled = false;
         meshRenderer = Player.gameObject.GetComponent<MeshRenderer>();
-        meshRenderer.enabled = false;
-        
+        Player.stats.ToggleRenderer(false);
+
         this.gameObject.transform.SetParent(Player.gameObject.transform.parent);
         Player.gameObject.transform.SetParent(this.gameObject.transform);
         Player.elementGameObject = this.gameObject;
@@ -61,7 +61,7 @@ class AirElement : MonoBehaviour
             return;
         ended = true;
 
-        meshRenderer.enabled = true;
+        Player.stats.ToggleRenderer(true);
         Player.gameObject.GetComponent<CharacterController>().enabled = true;
         Player.stats.elementState = Element.NoElement;
         this.GetComponentInChildren<ParticleSystem>().Stop(true);
