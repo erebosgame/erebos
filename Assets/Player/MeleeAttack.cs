@@ -26,17 +26,22 @@ public class MeleeAttack : MonoBehaviour
         {
             if(Player.stats.weapon && Player.stats.CanUseSkill(Element.NoElement))
             {
+                Vector3 lookDirection = Camera.main.transform.forward;
+                lookDirection.y = 0;
+                lookDirection = lookDirection.normalized;
+                Player.movement.RotatePlayer(lookDirection, 900f);
+                Player.stats.UseSkill(Element.NoElement);
+                Player.stats.isAttacking = true;
                 bonk.PerformAttack();
                 for (int i = 0; i < 4; i++)
                 {
-                    Collider collider = GetColliderAtDistance(i);
+                    Collider collider = GetColliderAtDistance(i*2);
                     if (collider)
                     {
                         hitEnemyObject = collider.gameObject;
                         hitEnemy = hitEnemyObject.GetComponent<Damageable>();
                         Debug.Log(hitEnemy);
                         hitEnemy.TakeDamage(15);
-                        Player.stats.UseSkill(Element.NoElement);
                         break;
                     }
                 }
@@ -48,7 +53,6 @@ public class MeleeAttack : MonoBehaviour
             }
         }    
     }
-
     Collider GetColliderAtDistance(float distance)
     {
         Collider[] colliders = Physics.OverlapSphere(this.transform.position - this.transform.forward, distance);        

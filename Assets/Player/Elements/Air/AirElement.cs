@@ -17,6 +17,9 @@ class AirElement : MonoBehaviour
 
     void Start()
     {
+        if (Player.movement.isGliding)
+            Player.movement.ActivateGlider();
+            
         controller = GetComponent<CharacterController>();
         Player.stats.elementState = Element.Air;
         
@@ -32,6 +35,7 @@ class AirElement : MonoBehaviour
         initialDirection = Camera.main.transform.forward;
         initialPosition = Player.gameObject.transform.position;
 
+        Bonk.instance.gameObject.SetActive(true);
         StartCoroutine("EndAfterTime");
     }
 
@@ -66,6 +70,8 @@ class AirElement : MonoBehaviour
             transform.GetChild(0).parent = transform.parent;
         }
         Player.elementGameObject = null;
+        Bonk.instance.gameObject.SetActive(true);
+
         UnityEngine.Object.Destroy(this.gameObject);
     }
 }

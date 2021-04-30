@@ -60,6 +60,7 @@ public class FireThrower : MonoBehaviour
                 if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < 10F)
                 {   
                     state = State.Attack;
+                    shootTimer = Time.time + 3f;
                 }
                 else if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < 8F)
                 {   

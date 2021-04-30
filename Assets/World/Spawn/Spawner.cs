@@ -26,18 +26,24 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
+        RaycastHit hit;
         alive = count;
         for (int i = 0; i < count; i++)
         {
             Vector2 angle = Random.insideUnitCircle;
             float distance = Random.Range(0, radius);
             GameObject e = Instantiate(enemy, this.transform);
-            enemy.transform.localPosition = new Vector3(angle.x,0,angle.y) * distance;
+            Vector3 position = new Vector3(angle.x,0,angle.y) * distance;
+            Physics.Raycast(position, Vector3.up, out hit, 1000f, LayerMask.GetMask("Terrain"));
+            if (hit.collider != null)
+                position = hit.point + Vector3.up * 3;
+            enemy.transform.localPosition = position;
         }
     }
 
     public void OnSpawnedDeath()
     {
+        Debug.Log("onspawneddeath");
         alive--;
         if (alive <= 0)
         {

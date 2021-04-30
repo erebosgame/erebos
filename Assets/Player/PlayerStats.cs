@@ -36,6 +36,7 @@ class PlayerStats : MonoBehaviour, Damageable
     public int expToNextLevel = 10;
 
     public bool weapon;
+    public bool isAttacking;
 
     public Element elementState;
 
@@ -59,6 +60,7 @@ class PlayerStats : MonoBehaviour, Damageable
     {
         health = maxHealth;
         experience = 0;
+        isAttacking = false;
 
         lastUse = new Dictionary<Element, float>();
         defeatedBosses = new HashSet<Element>();

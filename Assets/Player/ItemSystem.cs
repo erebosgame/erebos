@@ -9,6 +9,7 @@ public class ItemSystem : MonoBehaviour
     GameObject selected;
     Item selectedItem;    
     public GameObject reticle;
+    public GameObject bonk;
 
 
     void Start()
@@ -77,7 +78,6 @@ public class ItemSystem : MonoBehaviour
                 // TODO
                 cameraRotator.transform.forward = (Player.gameObject.transform.position - Camera.main.transform.position).normalized;
                 CameraLogic.instance.animator.SetTrigger("startaiming");
-
             }
             else
             {        
@@ -95,6 +95,7 @@ public class ItemSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f);
         reticle.SetActive(value);
+        bonk.SetActive(!value);
     }
 
     float GetColliderAngle(Collider collider)

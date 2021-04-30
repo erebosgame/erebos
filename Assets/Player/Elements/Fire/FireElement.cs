@@ -17,6 +17,8 @@ class FireElement : MonoBehaviour
 
     void Start()
     {
+        if (Player.movement.isGliding)
+            Player.movement.ActivateGlider();
         controller = GetComponent<CharacterController>();
         Player.stats.elementState = Element.Fire;
         
@@ -33,6 +35,7 @@ class FireElement : MonoBehaviour
         initialDirection = Camera.main.transform.forward;
         initialPosition = Player.gameObject.transform.position;
 
+        Bonk.instance.gameObject.SetActive(false);
         StartCoroutine("EndAfterTime");
     }
 
@@ -84,6 +87,8 @@ class FireElement : MonoBehaviour
             transform.GetChild(0).parent = transform.parent;
         }
         Player.elementGameObject = null;
+        Bonk.instance.gameObject.SetActive(true);
+
         UnityEngine.Object.Destroy(this.gameObject);
     }
 }

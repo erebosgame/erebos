@@ -148,7 +148,6 @@ public class EarthBoss : MonoBehaviour, Damageable
     void Update()
     {
         RaycastHit hit;
-        Debug.Log(colliders);
         colliders.ToList().ForEach(c => colliderVectors[c] = c.transform.position);
         
         Physics.Raycast(Player.gameObject.transform.position, Vector3.down, out hit, 2f, LayerMask.GetMask("Terrain"), QueryTriggerInteraction.Ignore);

@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Bonk : MonoBehaviour
 {
+    public static Bonk instance;
+    
     private Animator animator;
+    
+    void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +28,10 @@ public class Bonk : MonoBehaviour
     public void PerformAttack()
     {
         animator.SetTrigger("BaseAttack");
+    }
+
+    public void OnAttackEnd()
+    {
+        Player.stats.isAttacking = false;
     }
 }

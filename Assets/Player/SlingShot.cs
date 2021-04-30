@@ -14,7 +14,7 @@ public class SlingShot : MonoBehaviour
 
     public void Fire(Vector3 direction)
     {
-        rb.AddForce(direction * 100, ForceMode.Impulse);
+        rb.AddForce(direction * 50, ForceMode.Impulse);
         
         StartCoroutine(SelfDestruct());
     }

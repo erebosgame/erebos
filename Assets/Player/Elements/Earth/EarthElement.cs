@@ -24,6 +24,10 @@ class EarthElement : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(Player.movement.isGliding);
+        if (Player.movement.isGliding)
+            Player.movement.ActivateGlider();
+
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
         hitsRemaining = 3;
@@ -41,6 +45,7 @@ class EarthElement : MonoBehaviour
 
         rb.velocity = Player.movement.currentVelocity;
 
+        Bonk.instance.gameObject.SetActive(false);
         StartCoroutine("EndAfterTime");
     }
 
@@ -85,15 +90,19 @@ class EarthElement : MonoBehaviour
     }
     public void End() 
     {
+        this.gameObject.SetActive(false);
         while (transform.childCount > 0) 
         {
-            transform.GetChild(0).parent = transform.parent;
+            transform.GetChild(0).SetParent(transform.parent);
         }
-        Player.gameObject.GetComponent<CharacterController>().enabled = true;
         Player.gameObject.transform.rotation = Quaternion.identity;
         Player.stats.elementState = Element.NoElement;
         meshRenderer.enabled = true;
         Player.elementGameObject = null;
+
+        Player.gameObject.GetComponent<CharacterController>().enabled = true;
+        Player.movement.jumpVector = rb.velocity;
+        Bonk.instance.gameObject.SetActive(true);
         UnityEngine.Object.Destroy(this.gameObject);
     }
     public Vector3 GetRelativeDirection(Vector3 direction) 

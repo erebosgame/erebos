@@ -68,6 +68,11 @@ class PlayerMovement : MonoBehaviour
         Collider[] colliders = Physics.OverlapCapsule(controller.bounds.min-Vector3.down*0.5f, controller.bounds.max-Vector3.up*0.5f, 0.5f, LayerMask.GetMask("Liquids"), QueryTriggerInteraction.Collide);
         RaycastHit hit;
         Physics.Raycast(this.transform.position, Vector3.down, out hit, 1.1f, LayerMask.GetMask("Liquids"), QueryTriggerInteraction.Collide);
+        if (hit.collider == null)
+        {
+            Physics.Raycast(this.transform.position, Vector3.up, out hit, 200f, LayerMask.GetMask("Liquids"), QueryTriggerInteraction.Collide);
+        }
+
 
         if (colliders.Length > 0)
         {
@@ -108,6 +113,7 @@ class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
+        Vector3 newDirection = facingDirection;
         Vector3 moveDirection = new Vector3();
         Vector3 moveVector = new Vector3();
         bool jump = false;
@@ -127,7 +133,7 @@ class PlayerMovement : MonoBehaviour
             {
                 if (moveDirection.magnitude > 0)
                 {
-                    facingDirection = relativeMoveDirection;
+                    newDirection = relativeMoveDirection;
                 }
                 if (jump)
                 {
@@ -144,6 +150,10 @@ class PlayerMovement : MonoBehaviour
                 {
                     ActivateGlider();
                 }
+                if (isGliding && relativeMoveDirection != Vector3.zero)
+                {
+                    newDirection = relativeMoveDirection;
+                }
 
                 moveVector = relativeMoveDirection * (isGliding ? glidingSpeed : speed) * (1- (isGliding ? 0f : airControl));
             }
@@ -151,8 +161,11 @@ class PlayerMovement : MonoBehaviour
             currentVelocity = moveVector + jumpVector;
             Move(currentVelocity * Time.deltaTime);
             if(Player.stats.weapon)
-                RotatePlayer(facingDirection, 900f);
+                RotatePlayer(newDirection, 900f);
         }
+
+        if (this.transform.position.y <= -200)
+            Player.stats.TakeDamage(20f*Time.deltaTime);
     }
 
     public void Move(Vector3 vector)
@@ -167,7 +180,8 @@ class PlayerMovement : MonoBehaviour
 
     public void FaceRelativeDirection(Vector3 direction) 
     {
-        facingDirection = GetRelativeDirection(direction);
+        if (!Player.stats.isAttacking)
+            facingDirection = GetRelativeDirection(direction);
     }
     
     public void Teleport(Vector3 position, Quaternion rotation)
@@ -222,19 +236,22 @@ class PlayerMovement : MonoBehaviour
 
     public void RotatePlayer(Vector3 newRotation, float speed)
     {
-        facingDirection = newRotation;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(newRotation), speed * Time.deltaTime);
+        if (!Player.stats.isAttacking)
+            facingDirection = newRotation;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(facingDirection), speed * Time.deltaTime);
     }
 
     public void RotatePlayer(Vector3 newRotation)
     {
-        facingDirection = newRotation;
-        transform.rotation =  Quaternion.LookRotation(newRotation);
+        if (!Player.stats.isAttacking)
+            facingDirection = newRotation;
+        transform.rotation =  Quaternion.LookRotation(facingDirection);
     }
 
     public void RotatePlayer(float degrees)
     {
-        facingDirection = Quaternion.Euler(0,degrees,0) * facingDirection;
+        if (!Player.stats.isAttacking)
+            facingDirection = Quaternion.Euler(0,degrees,0) * facingDirection;
         transform.forward = facingDirection;
     }
 
@@ -243,11 +260,11 @@ class PlayerMovement : MonoBehaviour
         return Player.stats.elementState == Element.NoElement;
     }
 
-    private void ActivateGlider()
+    public void ActivateGlider()
     {
         RaycastHit hit;
         Physics.Raycast(transform.position, Vector3.down, out hit);
-        if (Player.stats.canGlider && (hit.collider == null || hit.distance > 4))
+        if (isGliding || Player.stats.canGlider && (hit.collider == null || hit.distance > 4))
         {
             isGliding = !isGliding;
             glider.SetActive(isGliding);
