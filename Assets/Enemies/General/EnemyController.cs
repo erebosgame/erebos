@@ -32,7 +32,6 @@ public class EnemyController : MonoBehaviour
         // if (isRolling)
         //     Roll(moveVector * Time.deltaTime);
         // else
-        Debug.Log(FacingDirection);
         RotateSlow(FacingDirection, 900f);
         controller.Move(jumpVector * Time.fixedDeltaTime);
     }
@@ -74,7 +73,8 @@ public class EnemyController : MonoBehaviour
 
     private void RotateSlow(Vector3 newRotation, float speed)
     {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(newRotation), speed * Time.deltaTime);
+        if (newRotation != Vector3.zero)
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(newRotation), speed * Time.deltaTime);
     }
 
     private void ApplyGravity(float elapsed)

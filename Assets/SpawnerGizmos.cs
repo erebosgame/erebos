@@ -14,7 +14,7 @@ public class SpawnerGizmos : MonoBehaviour
         Gizmos.color = color;
         Gizmos.DrawSphere(this.transform.position, 4);
 
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, spawner.radius);
     }
 }

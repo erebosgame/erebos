@@ -21,17 +21,25 @@ public class EarthEnemyRock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {       
-        if (isAttacking)
+        if (isAggroed)
         {
-            Vector3 newRotation = new Vector3(Player.gameObject.transform.position.x - this.transform.position.x, 0 ,Player.gameObject.transform.position.z - this.transform.position.z);
-            rb.velocity = Vector3.RotateTowards(rb.velocity, newRotation.normalized * rb.velocity.magnitude, 0.8f* Time.deltaTime, 1f);
-        }
+            if (isAttacking)
+            {
+                Vector3 newRotation = new Vector3(Player.gameObject.transform.position.x - this.transform.position.x, 0 ,Player.gameObject.transform.position.z - this.transform.position.z);
+                rb.velocity = Vector3.RotateTowards(rb.velocity, newRotation.normalized * rb.velocity.magnitude, 0.8f* Time.deltaTime, 1f);
+            }
 
-        if (Vector3.Dot(playerNormal, this.transform.position - Player.gameObject.transform.position) > 0)
-        {
-            //add delta time
-            this.rb.velocity = new Vector3(0.9f*this.rb.velocity.x, this.rb.velocity.y, 0.9f*this.rb.velocity.z);
-            isAttacking = false;
+            if (!isAttacking || Vector3.Dot(playerNormal, this.transform.position - Player.gameObject.transform.position) > 0)
+            {
+                //add delta time
+                this.rb.velocity = new Vector3(0.9f*this.rb.velocity.x, this.rb.velocity.y, 0.9f*this.rb.velocity.z);
+                isAttacking = false;
+            }
+        }
+        else
+        {                
+            this.rb.velocity = new Vector3(0.3f*this.rb.velocity.x, this.rb.velocity.y, 0.3f*this.rb.velocity.z);
+            this.rb.angularVelocity = new Vector3(0.3f*this.rb.angularVelocity.x, 0.3f*this.rb.angularVelocity.y, 0.3f*this.rb.angularVelocity.z);
         }
     }
 
@@ -43,6 +51,7 @@ public class EarthEnemyRock : MonoBehaviour
                 StopCoroutine(attackRoutine);
 
             attackRoutine = StartCoroutine("Attack");
+            isAggroed = true;
         }
     }
     void OnTriggerExit(Collider other)
@@ -51,6 +60,7 @@ public class EarthEnemyRock : MonoBehaviour
         {
             StopCoroutine(attackRoutine);
             isAttacking = false;
+            isAggroed = false;
         }
     }
 

@@ -26,6 +26,8 @@ public class SwordEnemy : MonoBehaviour
 
     Animator animator;
 
+    private float lastIdlePos;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,18 +43,25 @@ public class SwordEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastHit hit;
         switch (state) {
             case State.Idle:
                 controller.speed = 3;
-                if (!isMovingIdle)
+                if (!isMovingIdle || Time.time > lastIdlePos + 20f)
                 {
                     direction = Random.insideUnitCircle.normalized * Random.Range(7f,10f);
                     destination = spawnPosition + new Vector3(direction.x, 0, direction.y);
+                    Physics.Raycast(destination, Vector3.down, out hit, 500f, LayerMask.GetMask("Terrain"));
+                    if (hit.collider == null)
+                        Physics.Raycast(destination, Vector3.up, out hit, 500f, LayerMask.GetMask("Terrain"));
+                    if (hit.collider == null)
+                        break;
+                    destination = hit.point;
+                    lastIdlePos = Time.time;
                     isMovingIdle = true;
                 }
                 else
                 {
-                    Debug.Log(Vector3.Distance(this.gameObject.transform.position, destination));
                     if (Vector3.Distance(this.gameObject.transform.position, destination) < 5f)
                     {
                         isMovingIdle = false;
@@ -139,6 +148,4 @@ public class SwordEnemy : MonoBehaviour
         }        
         //yield return new WaitForSeconds(20F);
     }
-
-    public void OnAttackEnd() {}
 }
