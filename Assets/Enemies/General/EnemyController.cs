@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour
         // if (isRolling)
         //     Roll(moveVector * Time.deltaTime);
         // else
+        Debug.Log(FacingDirection);
         RotateSlow(FacingDirection, 900f);
         controller.Move(jumpVector * Time.fixedDeltaTime);
     }

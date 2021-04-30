@@ -5,13 +5,14 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject enemy;
+    private SphereCollider sphereCollider;
     public int count;
     public float radius;
-    
     public float respawnTime;
     public float respawnPM;
 
     private int alive;
+    private bool canSpawn;
 
     void StartRespawnTimer()
     {
@@ -21,7 +22,8 @@ public class Spawner : MonoBehaviour
     IEnumerator RespawnAfterTime()
     {
         yield return new WaitForSeconds(respawnTime + Random.Range(-respawnPM, +respawnPM));
-        Spawn();
+        if(canSpawn)
+            Spawn();
     }
 
     void Spawn()
@@ -43,7 +45,6 @@ public class Spawner : MonoBehaviour
 
     public void OnSpawnedDeath()
     {
-        Debug.Log("onspawneddeath");
         alive--;
         if (alive <= 0)
         {
@@ -54,12 +55,40 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Spawn();
+        sphereCollider = this.gameObject.AddComponent<SphereCollider>();
+        sphereCollider.radius = 1500F;
+        sphereCollider.isTrigger = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !canSpawn)
+        {
+            canSpawn = true;
+            Spawn();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player") && canSpawn)
+        {
+            canSpawn = false;
+            Despawn();
+        }
+    }
+
+    private void Despawn()
+    {
+        foreach(Transform child in transform)
+        {
+            //Destroy(child.gameObject);
+            alive--;
+        }
     }
 }

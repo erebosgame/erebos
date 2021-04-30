@@ -46,19 +46,20 @@ public class SwordEnemy : MonoBehaviour
                 controller.speed = 3;
                 if (!isMovingIdle)
                 {
-                    direction = Random.insideUnitCircle.normalized * Random.Range(10f,7f);
+                    direction = Random.insideUnitCircle.normalized * Random.Range(7f,10f);
                     destination = spawnPosition + new Vector3(direction.x, 0, direction.y);
                     isMovingIdle = true;
                 }
                 else
                 {
-                    if (Vector3.Distance(this.gameObject.transform.position, destination) < 5f && isMovingIdle)
+                    Debug.Log(Vector3.Distance(this.gameObject.transform.position, destination));
+                    if (Vector3.Distance(this.gameObject.transform.position, destination) < 5f)
                     {
                         isMovingIdle = false;
                     }
                 }
                 controller.MoveTowards(destination, Time.deltaTime);
-            break;
+                break;
             case State.ChaseTarget:
                 controller.speed = 7;
                 controller.MoveTowards(Player.gameObject.transform.position, Time.deltaTime);
@@ -66,9 +67,9 @@ public class SwordEnemy : MonoBehaviour
                 if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < attackDistance)
                 {   
                     state = State.Attack;
-                    attackTimer = Time.time + 1F;
+                    attackTimer = Time.time + 0.35F;
                 }
-            break;
+                break;
             case State.Attack:
                 // isAttacking = true;
                 if (enemy.Health < 15)

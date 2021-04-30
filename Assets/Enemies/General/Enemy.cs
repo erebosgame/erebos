@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour, Targetable, Damageable
     public GameObject healthBarPrefab;
     private HpBar healthBar;
     private Outline outline;
-    private int maxHealth;
+    public int maxHealth;
     private int health;
 
     private Spawner spawner;
@@ -43,7 +43,6 @@ public class Enemy : MonoBehaviour, Targetable, Damageable
             outline.OutlineWidth = 0;
         }
         
-        maxHealth = 100;
         health = maxHealth;
 
         if (this.transform.parent && this.transform.parent.CompareTag("Spawner"))

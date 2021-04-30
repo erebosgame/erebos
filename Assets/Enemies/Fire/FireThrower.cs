@@ -9,6 +9,7 @@ public class FireThrower : MonoBehaviour
         ChaseTarget,
         Attack,
         Escape,
+        Return
     }
 
     private State state;
@@ -22,6 +23,11 @@ public class FireThrower : MonoBehaviour
     private Vector3 spawnPosition;
 
     private float shootTimer;
+
+    public GameObject eye;
+
+    private float attackRange = 60F;
+    private float escapeRange = 20F;
 
 
     // Start is called before the first frame update
@@ -41,7 +47,7 @@ public class FireThrower : MonoBehaviour
             case State.Idle:
                 if (!isMovingIdle)
                 {
-                    direction = Random.insideUnitCircle.normalized * Random.Range(10f,7f);
+                    direction = Random.insideUnitCircle.normalized * Random.Range(7f,10f);
                     destination = spawnPosition + new Vector3(direction.x, 0, direction.y);
                     isMovingIdle = true;
                 }
@@ -53,40 +59,44 @@ public class FireThrower : MonoBehaviour
                     }
                 }
                 controller.MoveTowards(destination, Time.deltaTime);
-            break;
+                break;
             case State.ChaseTarget:
                 controller.MoveTowards(Player.gameObject.transform.position, Time.deltaTime);
 
-                if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < 10F)
+                if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < attackRange)
                 {   
                     state = State.Attack;
-                    shootTimer = Time.time + 3f;
+                    shootTimer = Time.time + 1f;
                 }
-                else if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < 8F)
+                else if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < escapeRange)
                 {   
                     state = State.Escape;
                 }
-            break;
+                else if (Vector3.Distance(this.gameObject.transform.position, spawnPosition) > 70F)
+                {
+                    state = State.Return;
+                }
+                 break;
             case State.Attack:
                 // isAttacking = true;
-                if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < 8F)
+                if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) < escapeRange)
                 {   
                     state = State.Escape;
                 }
-                if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) > 10F)
+                if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) > attackRange * 1.2)
                 {   
                     state = State.ChaseTarget;
                 }
                 if (Time.time > shootTimer)
                 {
                     FireSling();
-                    shootTimer = Time.time + 5F;
+                    shootTimer = Time.time + 2F;
                 }
                 controller.LookAt(Player.gameObject.transform.position);
-            break;
+                break;
             case State.Escape:
                 // isAttacking = false;
-                controller.speed = 8;
+                controller.speed = 15;
                 if (!isMovingIdle)
                 {
                     direction = (Player.gameObject.transform.position - this.transform.position) * -1* Random.Range(10f,7f);
@@ -101,13 +111,19 @@ public class FireThrower : MonoBehaviour
                     }
                 }
                 controller.MoveTowards(destination, Time.deltaTime);
-                if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) >= 10F)
+                if (Vector3.Distance(this.gameObject.transform.position, Player.gameObject.transform.position) >= attackRange) 
                 {   
                     controller.speed = 5;
                     state = State.Attack;
                 }
-            break;
-
+                break;
+            case State.Return:
+                controller.MoveTowards(spawnPosition, Time.deltaTime);
+                if (Vector3.Distance(this.gameObject.transform.position, spawnPosition) < 5f)
+                {
+                    state = State.Idle;
+                }
+                break;
         }
     }
 
@@ -119,7 +135,7 @@ public class FireThrower : MonoBehaviour
            //     StopCoroutine(attackRoutine); 
 
             //attackRoutine = StartCoroutine("FireSling");
-            state = State.ChaseTarget;
+            state = State.Attack;
             // isAttacking = true;
         }
     }
@@ -128,7 +144,7 @@ public class FireThrower : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //StopCoroutine(attackRoutine);
-            state = State.Idle;
+            state = State.ChaseTarget;
             // isAttacking = false;
         }
     }
@@ -144,18 +160,9 @@ public class FireThrower : MonoBehaviour
 
     void FireSling()
     {
-        GameObject projectile = Instantiate(ammo, this.gameObject.transform.position, Quaternion.identity);
-        Ray ray = new Ray(this.gameObject.transform.position, this.gameObject.transform.forward);
-        RaycastHit hit;
+        GameObject projectile = Instantiate(ammo, eye.transform.position, Quaternion.identity);
 
-        Vector3 target;
-        Physics.Raycast(ray, out hit, 1000f, ~LayerMask.GetMask(), QueryTriggerInteraction.Ignore);
-        if (hit.collider)
-            target = hit.point;
-        else
-            target = ray.GetPoint(1000);
-
-        Vector3 direction = (target - projectile.transform.position).normalized;
+        Vector3 direction = (Player.gameObject.transform.position - projectile.transform.position).normalized;
 
         projectile.transform.forward = direction;
 
